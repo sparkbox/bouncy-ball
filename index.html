@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bouncy Ball - Comparing Web Animation Techniques</title>
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+    }
+    .gallery-header {
+      text-align: center;
+    }
+    .gallery {
+      max-width: 766px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-content: flex-end;
+    }
+    .gallery > li {
+      text-align: center;
+      list-style-type: none;
+      margin: 30px 16px 16px;
+      width: 140px;
+      font-size: 18px;
+      text-decoration: none;
+      color: #252525;
+      background-color: #eeeeee;
+    }
+    .label {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    iframe {
+      width: 66px; /* 50px ball + 8px margin left/right */
+      height: 226px; /* 160px range + 50px ball + 8px margin top/bottom */
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="gallery-header">
+    <h1>Bouncy Ball</h1>
+    <p>Comparing web animation techniques by showing how to bounce a ball with each one.</p>
+    <p>It's like the TodoMVC of web animation.</p>
+    <iframe src="examples/vanilla-js/index.html" name="bouncy ball demo" frameborder="1"></iframe>
+  </header>
+  <section class="gallery">
+    <li>
+      <h2 class="label">Vanilla JS</h2>
+      <a href="#">View Source</a>
+    </li>
+    <li>
+      <h2 class="label">CSS</h2>
+      <a href="#">View Source</a>
+    </li>
+    <li>
+      <h2 class="label">Canvas</h2>
+      <a href="#">View Source</a>
+    </li>
+    <li>
+      <h2 class="label">SVG</h2>
+      <a href="#">View Source</a>
+    </li>
+    <li>
+      <h2 class="label">jQuery</h2>
+      <a href="#">View Source</a>
+    </li>
+    <li>
+      <h2 class="label">Greensock</h2>
+      <a href="#">View Source</a>
+    </li>
+    <li>
+      <h2 class="label">Processing</h2>
+      <a href="#">View Source</a>
+    </li>
+  </section>
+  <a href="https://github.com/sparkbox/bouncy-ball"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+</body>
+</html>

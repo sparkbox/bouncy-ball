@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bouncy Ball - Comparing Web Animation Techniques - Vanilla JS</title>
+  <style>
+    ball {
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <ball></ball>
+  <script>
+    (function() {
+      var maxHeight = 160,
+          speed =3,
+          startTime = Date.now(),
+          yPos = 0;
+
+      function reposition() {
+        var now = Date.now(),
+            startDelta = (now - startTime) / 1000, // seconds since first frame;
+            translatedPos;
+
+        yPos = (maxHeight/2 * Math.sin(speed * startDelta + Math.PI/2)) + maxHeight/2; // ranges from 200px to 0px;
+        translatedPos = maxHeight - yPos;
+
+        document.querySelector('ball').style.transform = 'translate3d(0px,' + translatedPos + 'px, 0px)';
+        window.requestAnimationFrame(reposition);
+      }
+
+      reposition(0);
+    })();
+  </script>
+</body>
+</html>
