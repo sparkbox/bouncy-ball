@@ -17,24 +17,70 @@
   <ball></ball>
   <script>
     (function() {
-      var maxHeight = 160,
-          speed =3,
-          startTime = Date.now(),
-          yPos = 0;
+      var maxHeight = 160, // px
+          position = 160, // px
+          velocity = 0, // px/second
+          acceleration = -1200, // px/second^2
+          then = Date.now(),
+          now,
+          delta;
 
-      function reposition() {
-        var now = Date.now(),
-            startDelta = (now - startTime) / 1000, // seconds since first frame;
-            translatedPos;
+      function update() {
+        now = Date.now();
+        delta = (now - then) / 1000; // seconds since last update
 
-        yPos = (maxHeight/2 * Math.sin(speed * startDelta + Math.PI/2)) + maxHeight/2; // ranges from 200px to 0px;
-        translatedPos = maxHeight - yPos;
+        if (position <= 0) {
+          // There's some bug but otherwise I think this is good.
+          //
+          // Uh oh. We're off the map, so we need to back up a bit and figure
+          // out at what point in time our position was zero. This shouldn't be
+          // too bad because dt is discrete, so we don't need calculus. We just
+          // use the old velocity and position to find at what t position is 0.
+          //
+          // We use that break our delta into delta1 and delta 2.
+          //
+          // Then we just calculate the intermediate velocity and position with delta1,
+          // make velocity negative, and recalculate the final velocity and position with
+          // delta2. That's the one we render, for this specific iteration.
 
+          // Formula for a line, given a slope and a point:
+          //   y - y1 = m(x - x1)
+          //
+          // Using position, velocity, and time:
+          //   p - p1 = v(t - t1)
+          //
+          // Solving for t:
+          //   t = (p - p1)/v + t1
+          //
+          //   timeAtp0 (ms) = (0 - position (px)) / (velocity (px/s) / (1s/1000ms)) + then (ms);
+          //
+          timeAtp0 = ((0 - position) / (velocity / 1000)) + then;
+          delta1 = (timeAtp0 - then) / 1000;
+          delta2 = (now - timeAtp0) / 1000;
+
+          velocity = velocity + (acceleration * delta1);
+          position = position + (velocity * delta1);
+
+          velocity = -velocity;
+
+          velocity = velocity + (acceleration * delta2);
+          position = position + (velocity * delta2);
+
+        } else {
+          velocity = velocity + (acceleration * delta);
+          position = position + (velocity * delta);
+        }
+
+        then = now;
+
+        console.log('pos: ' + position + '; vel: ' + velocity + '; acc: ' + acceleration + '; delta: ' + delta);
+
+        translatedPos = maxHeight - position;
         document.querySelector('ball').style.transform = 'translate3d(0px,' + translatedPos + 'px, 0px)';
-        window.requestAnimationFrame(reposition);
+        window.requestAnimationFrame(update);
       }
 
-      reposition(0);
+      update();
     })();
   </script>
 </body>
