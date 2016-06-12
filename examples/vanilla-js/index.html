@@ -17,65 +17,50 @@
   <ball></ball>
   <script>
     (function() {
-      var maxHeight = 160, // px
-          position = 160, // px
-          velocity = 0, // px/second
-          acceleration = -1200, // px/second^2
-          then = Date.now(),
-          now,
-          delta;
+      var initialPosition = 160,               // px
+          initialVelocity = 0,                 // px/second
+          initialTime = (Date.now() / 1000),   // seconds
+          acceleration = -1000,                // px/second^2
+
+          referencePosition = initialPosition, // this is either the initial height or the ground height.
+          referenceVelocity = initialVelocity, // this is either the initial velocity or rebound velocity
+          referenceTime = initialTime,         // this is either the initial time or time at the ground
+          reboundVelocity,
+          elapsedTime,
+
+          ball = {
+            position: initialPosition
+          };
 
       function update() {
-        now = Date.now();
-        delta = (now - then) / 1000; // seconds since last update
+        elapsedTime = (Date.now() / 1000) - referenceTime; // seconds
 
-        if (position <= 0) {
-          // There's some bug but otherwise I think this is good.
-          //
-          // Uh oh. We're off the map, so we need to back up a bit and figure
-          // out at what point in time our position was zero. This shouldn't be
-          // too bad because dt is discrete, so we don't need calculus. We just
-          // use the old velocity and position to find at what t position is 0.
-          //
-          // We use that break our delta into delta1 and delta 2.
-          //
-          // Then we just calculate the intermediate velocity and position with delta1,
-          // make velocity negative, and recalculate the final velocity and position with
-          // delta2. That's the one we render, for this specific iteration.
+        // Kinematic Equation 1
+        //   d = Vi*t + (1/2)a*t^2
+        distance = referenceVelocity * elapsedTime + 0.5 * acceleration * Math.pow(elapsedTime, 2);
+        ball.position = referencePosition + distance;
 
-          // Formula for a line, given a slope and a point:
-          //   y - y1 = m(x - x1)
-          //
-          // Using position, velocity, and time:
-          //   p - p1 = v(t - t1)
-          //
-          // Solving for t:
-          //   t = (p - p1)/v + t1
-          //
-          //   timeAtp0 (ms) = (0 - position (px)) / (velocity (px/s) / (1s/1000ms)) + then (ms);
-          //
-          timeAtp0 = ((0 - position) / (velocity / 1000)) + then;
-          delta1 = (timeAtp0 - then) / 1000;
-          delta2 = (now - timeAtp0) / 1000;
+        if (ball.position < 0 ) {
+          // This animation doesn't account for bounce decay so we can save processing
+          // by only calculating the return velocity on the first bounce.
+          if (!reboundVelocity) {
 
-          velocity = velocity + (acceleration * delta1);
-          position = position + (velocity * delta1);
+            // Kinematic Equation 2
+            //   Vf = Vi + a*t
+            reboundVelocity = initialVelocity + acceleration * elapsedTime;
 
-          velocity = -velocity;
+            // reverse ball direction with 100% velocity preserved.
+            referenceVelocity = -reboundVelocity;
+          }
 
-          velocity = velocity + (acceleration * delta2);
-          position = position + (velocity * delta2);
-
-        } else {
-          velocity = velocity + (acceleration * delta);
-          position = position + (velocity * delta);
+          // Reset initial states.
+          ball.position = 0;
+          referencePosition = 0; // Our new initial position.
+          referenceTime = Date.now() / 1000; // Our new initial time.
         }
 
-        then = now;
-
-        console.log('pos: ' + position + '; vel: ' + velocity + '; acc: ' + acceleration + '; delta: ' + delta);
-
-        translatedPos = maxHeight - position;
+        // Draw the ball.
+        translatedPos = initialPosition - ball.position;
         document.querySelector('ball').style.transform = 'translate3d(0px,' + translatedPos + 'px, 0px)';
         window.requestAnimationFrame(update);
       }

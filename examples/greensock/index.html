@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bouncy Ball - Comparing Web Animation Techniques - Greensock</title>
+  <style>
+    ball {
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <ball></ball>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+  <script>
+    var ball = document.getElementsByTagName('ball');
+
+    TweenMax.to(ball, 0.6, {
+      transform: 'translate3d(0px, 160px, 0px)',
+      repeat: -1,
+      yoyo: true,
+      ease: Power1.easeIn
+    });
+  </script>
+</body>
+</html>
