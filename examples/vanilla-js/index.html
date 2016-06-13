@@ -28,6 +28,7 @@
           reboundVelocity,
           elapsedTime,
 
+          ballEl = document.getElementsByTagName('ball')[0],
           ball = {
             position: initialPosition
           };
@@ -61,7 +62,7 @@
 
         // Draw the ball.
         translatedPos = initialPosition - ball.position;
-        document.querySelector('ball').style.transform = 'translate3d(0px,' + translatedPos + 'px, 0px)';
+        ballEl.style.transform = 'translate3d(0px,' + translatedPos + 'px, 0px)';
         window.requestAnimationFrame(update);
       }
 
