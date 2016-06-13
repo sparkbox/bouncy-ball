@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bouncy Ball - Comparing Web Animation Techniques - Web Animations API</title>
+  <style>
+    ball {
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #E44D26;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <ball></ball>
+  <!-- Uses Chrome's Web Animations Polyfill, while browser support improves -->
+  <!-- See: https://github.com/web-animations/web-animations-js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.1/web-animations.min.js"></script>
+  <script>
+    var ball = document.getElementsByTagName('ball')[0],
+        // I'm declaring multiple keyframes until single keyframes are supported.
+        // See https://github.com/web-animations/web-animations-js/issues/14
+        keyframes = [{ transform: 'translate3d(0, 0, 0)' },
+                     { transform: 'translate3d(0, 160px, 0)' }],
+        timing = {
+          duration: 575,
+          iterations: Infinity,
+          direction: 'alternate',
+          easing: 'cubic-bezier(.6,0.08,0.8,.6)'
+        };
+
+    ball.animate(keyframes, timing);
+  </script>
+</body>
+</html>
