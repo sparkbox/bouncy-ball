@@ -12,7 +12,7 @@
     }
     .gallery {
       max-width: 766px;
-      margin: 0 auto;
+      margin: 16px auto 0;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -20,19 +20,29 @@
       flex-wrap: wrap;
       align-content: flex-end;
     }
-    .gallery > li {
+    .gallery > label {
       text-align: center;
       list-style-type: none;
-      margin: 30px 16px 16px;
+      margin: 16px 16px 0 16px;
+      padding: 10px;
+      border: 6px solid transparent;
       width: 140px;
       font-size: 18px;
       text-decoration: none;
       color: #252525;
       background-color: #eeeeee;
+      cursor: pointer;
     }
-    .label {
+    .title {
       margin-bottom: 8px;
       font-size: 1rem;
+    }
+    input[type="radio"] {
+      opacity: 0;
+      position: absolute;
+    }
+    input[type="radio"]:checked + label {
+      border: 6px solid #777A8C;
     }
     iframe {
       width: 66px; /* 50px ball + 8px margin left/right */
@@ -45,56 +55,61 @@
   <header class="gallery-header">
     <h1>Bouncy Ball</h1>
     <p>Comparing web animation techniques by showing how to bounce a ball with each one.</p>
-    <p>It's like the TodoMVC of web animation.</p>
+    <!-- Maybe one day: <p>Think "TodoMVC," but for web animation.</p> -->
     <iframe id="demo" src="examples/vanilla-js/index.html" name="bouncy ball demo" frameborder="1"></iframe>
   </header>
-  <section class="gallery">
-    <li data-embed="examples/vanilla-js/index.html">
-      <h2 class="label">Vanilla JS (requestAnimationFrame)</h2>
-      <a href="#">View Source</a>
-    </li>
-    <li data-embed="examples/css/index.html">
-      <h2 class="label">CSS</h2>
-      <a href="#">View Source</a>
-    </li>
-    <li data-embed="examples/jquery/index.html">
-      <h2 class="label">jQuery</h2>
-      <a href="#">View Source</a>
-    </li>
-    <li data-embed="examples/greensock/index.html">
-      <h2 class="label">Greensock</h2>
-      <a href="#">View Source</a>
-    </li>
-    <li data-embed="examples/velocity/index.html">
-      <h2 class="label">Velocity</h2>
-      <a href="#">View Source</a>
-    </li>
+  <form class="gallery">
+    <input type="radio" id="vanilla-js" name="approaches" checked data-embed="examples/vanilla-js/index.html" />
+    <label for="vanilla-js">
+      <h2 class="title">Vanilla JS</h2>
+      <a href="https://github.com/sparkbox/bouncy-ball/blob/gh-pages/examples/vanilla-js/index.html">View Source</a>
+    </label>
+    <input type="radio" id="css" name="approaches" data-embed="examples/css/index.html" />
+    <label for="css">
+      <h2 class="title">CSS</h2>
+      <a href="https://github.com/sparkbox/bouncy-ball/blob/gh-pages/examples/css/index.html">View Source</a>
+    </label>
+    <input type="radio" id="jquery" name="approaches" data-embed="examples/jquery/index.html" />
+    <label for="jquery">
+      <h2 class="title">jQuery</h2>
+      <a href="https://github.com/sparkbox/bouncy-ball/blob/gh-pages/examples/jquery/index.html">View Source</a>
+    </label>
+    <input type="radio" id="greensock" name="approaches" data-embed="examples/greensock/index.html" />
+    <label for="greensock">
+      <h2 class="title">Greensock</h2>
+      <a href="https://github.com/sparkbox/bouncy-ball/blob/gh-pages/examples/greensock/index.html">View Source</a>
+    </label>
+    <input type="radio" id="velocity" name="approaches" data-embed="examples/velocity/index.html" />
+    <label for="velocity">
+      <h2 class="title">Velocity</h2>
+      <a href="https://github.com/sparkbox/bouncy-ball/blob/gh-pages/examples/velocity/index.html">View Source</a>
+    </label>
+    <input type="radio" id="web-animations-api" name="approaches" data-embed="examples/web-animations-api/index.html" />
+    <label for="web-animations-api">
+      <h2 class="title">Web Animations API</h2>
+      <a href="https://github.com/sparkbox/bouncy-ball/blob/gh-pages/examples/web-animations-api/index.html">View Source</a>
+    </label>
     <!--
-    <li data-embed="examples/canvas/index.html">
-      <h2 class="label">Canvas</h2>
+    <input type="radio" id="processing" name="approaches" data-embed="examples/processing/index.html" />
+    <label for="processing">
+      <h2 class="title">Processing</h2>
       <a href="#">View Source</a>
-    </li>
-    <li data-embed="examples/processing/index.html">
-      <h2 class="label">Processing</h2>
+    </label>
+    <input type="radio" id="smil" name="approaches" data-embed="examples/svg/index.html" />
+    <label for="smil">
+      <h2 class="title">SVG-SMIL (deprecated)</h2>
       <a href="#">View Source</a>
-    </li>
-    <li data-embed="examples/svg/index.html">
-      <h2 class="label">SVG-SMIL (deprecated)</h2>
-      <a href="#">View Source</a>
-    </li>
-    <li data-embed="examples/web-animations-api/index.html">
-      <h2 class="label">Web Animations API</h2>
-      <a href="#">View Source</a>
-    </li>
+    </label>
     -->
   </section>
   <a href="https://github.com/sparkbox/bouncy-ball"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
   <script>
-    document.querySelectorAll('li').forEach(function(el) {
-      el.addEventListener('click', function(e) {
+    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
+      el.addEventListener('change', function(e) {
+        // @todo: Maybe infer the URL from the ID instead of having the whole thing in a data embed?
         var url = e.currentTarget.dataset.embed,
             demo = document.getElementById('demo');
-        console.log()
+
         demo.setAttribute('src', url);
       });
     });
