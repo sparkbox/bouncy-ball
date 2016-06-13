@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bouncy Ball - Comparing Web Animation Techniques - Velocity</title>
+  <style>
+    ball {
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <ball></ball>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+  <script>
+    var ball = document.getElementsByTagName('ball');
+
+    function bounce() {
+      Velocity(ball, { translateY: '160px' }, {
+        duration: 575,
+        easing: 'easeInQuad'
+      });
+      Velocity(ball, 'reverse', {
+        easing: 'easeOutQuad'
+        complete: bounce,
+      });
+    }
+
+    bounce();
+  </script>
+</body>
+</html>
