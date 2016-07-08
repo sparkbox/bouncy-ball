@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Bouncy Ball - Comparing Web Animation Techniques</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400|Ubuntu:500" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="header">
-    <h1>Bouncy Ball</h1>
+    <h1 class="title">Bouncy Ball</h1>
     <p>Comparing web animation techniques by showing how to bounce a ball with each one.</p>
     <!-- Maybe one day: <p>Think "TodoMVC," but for web animation.</p> -->
   </header>
@@ -53,10 +54,11 @@
 
     // Some function declarations.
     function updatePanes() {
-      // @todo: Maybe infer the URL from the ID instead of having the whole thing in a data embed?
       var selected = document.querySelector('input[type="radio"]:checked'),
-          url = selected.dataset.embed,
           name = selected.nextElementSibling.textContent,
+          srcFileName = (selected.id === 'css') ? 'styles.css' : 'script.js',
+          srcUrl = 'examples/' + selected.id + '/' + srcFileName,
+          demoUrl = 'examples/' + selected.id + '/index.html',
           demoName = document.querySelector('.demo-name h2'),
           demoFrame = document.querySelector('.demo-frame');
 
@@ -64,10 +66,11 @@
       demoName.textContent = name;
 
       // Update the demo pane
-      demoFrame.setAttribute('src', url);
+      demoFrame.setAttribute('src', demoUrl);
 
-      // Update the source pane
-      sourceDump(url, '.source-pane > pre > code');
+      // Update the source pane and scroll it to the top.
+      sourceDump(srcUrl, '.source-pane > pre > code');
+      document.querySelector('.source-pane > pre').scrollTop = 0;
     }
 
     function sourceDump(url, dumpSelector) {

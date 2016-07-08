@@ -4,27 +4,7 @@
   <meta charset="UTF-8">
   <title>Bouncy Ball - Comparing Web Animation Techniques - CSS</title>
   <link rel="stylesheet" href="../shared-styles.css">
-  <style>
-    ball {
-      display: block;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: #16A1DC;
-
-      /* animation properties */
-      animation-name: bounce;
-      animation-duration: 0.575s;
-      animation-direction: alternate;
-      animation-timing-function: cubic-bezier(.6,0.08,0.8,.6);
-      animation-iteration-count: infinite;
-    }
-
-    @keyframes bounce {
-    from { transform: translate3d(0, 0, 0); }
-    to   { transform: translate3d(0, 160px, 0); }
-}
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <ball></ball>

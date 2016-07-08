@@ -18,21 +18,6 @@
 <body>
   <ball></ball>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
-  <script>
-    var ball = document.getElementsByTagName('ball');
-
-    function bounce() {
-      Velocity(ball, { translateY: '160px' }, {
-        duration: 575,
-        easing: 'easeInQuad'
-      });
-      Velocity(ball, 'reverse', {
-        easing: 'easeOutQuad',
-        complete: bounce
-      });
-    }
-
-    bounce();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

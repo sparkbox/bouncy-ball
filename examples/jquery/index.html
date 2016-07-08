@@ -22,25 +22,6 @@
   <ball></ball>
   <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
-  <script>
-    var $ball = $('ball'),
-        duration = 575;
-
-    function dropBall() {
-      // We animate 'top' because jquery can't animate tranforms (wihtout plugins):
-      // See https://bugs.jquery.com/ticket/4171
-      $ball.animate({ top: '160px' }, duration, 'easeInQuad', restoreBall);
-    }
-
-    function restoreBall() {
-      // Easings ('easeInQuad' & 'easeOutQuad') provided by jQuery UI.
-      // See https://jqueryui.com/easing/
-      $ball.animate({ top: '0' }, duration, 'easeOutQuad', dropBall);
-    }
-
-    $(document).ready(function(){
-      dropBall();
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
