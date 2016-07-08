@@ -108,7 +108,7 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
   background-color: #292929;
   border-left: 11px solid #383838;
   color: #f7f7f7;
-  font-family: "Inconsolata", "Menlo", "Consolas", monospace;
+  font-family: 'Source Code Pro', 'Courier' monospace;
   font-size: 0.9em;
   line-height: 1.4;
   margin: 0;
