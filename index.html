@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Bouncy Ball - Comparing Web Animation Techniques</title>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400|Source+Code+Pro|Ubuntu:500" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/site/assets/styles.css">
 </head>
 <body>
   <header class="header">
@@ -41,58 +41,10 @@
       <iframe class="demo-frame" src="examples/vanilla-js/index.html" name="bouncy ball demo" frameborder="1"></iframe>
     </div>
     <div class="pane source-pane">
-      <pre><code></code></pre>
+      <pre><code class="language-javascript"></code></pre>
     </div>
   </div>
   <a href="https://github.com/sparkbox/bouncy-ball"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
-  <script>
-    // Update panes once for initial page load, then set listeners for future updates:
-    updatePanes();
-    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
-      el.addEventListener('change', updatePanes);
-    });
-
-    // Some function declarations.
-    function updatePanes() {
-      var selected = document.querySelector('input[type="radio"]:checked'),
-          name = selected.nextElementSibling.textContent,
-          srcFileName = (selected.id === 'css') ? 'styles.css' : 'script.js',
-          srcUrl = 'examples/' + selected.id + '/' + srcFileName,
-          demoUrl = 'examples/' + selected.id + '/index.html',
-          demoName = document.querySelector('.demo-name h2'),
-          demoFrame = document.querySelector('.demo-frame');
-
-      // Update the title
-      demoName.textContent = name;
-
-      // Update the demo pane
-      demoFrame.setAttribute('src', demoUrl);
-
-      // Update the source pane and scroll it to the top.
-      sourceDump(srcUrl, '.source-pane > pre > code');
-      document.querySelector('.source-pane > pre').scrollTop = 0;
-    }
-
-    function sourceDump(url, dumpSelector) {
-      var request = new XMLHttpRequest();
-      request.open('GET', url, true);
-
-      request.onload = function() {
-        var dumpElement;
-        if (request.status >= 200 && request.status < 400) {
-          dumpElement = document.querySelector(dumpSelector);
-          dumpElement.textContent = request.responseText;
-        } else {
-          console.log('an error occured at the target server');
-        }
-      };
-
-      request.onerror = function() {
-        console.log('There was a connection error');
-      };
-
-      request.send();
-    }
-  </script>
+  <script src="/site/assets/bundle.js"></script>
 </body>
 </html>
