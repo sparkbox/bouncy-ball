@@ -1,7 +1,8 @@
-const updatePanes = require('./updatePanes');
+const updatePanes = require('./updatePanes'),
+      options = document.querySelectorAll('input[type="radio"]');
 
 // Update panes once for initial page load, then set listeners for future updates:
 updatePanes();
-document.querySelectorAll('input[type="radio"]').forEach(el => {
-  el.addEventListener('change', updatePanes);
-});
+for (var i = 0; i < options.length; i++) {
+  options[i].addEventListener('change', updatePanes);
+}

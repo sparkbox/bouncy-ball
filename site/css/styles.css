@@ -1,6 +1,11 @@
 /* Prism Styles */
 @import "prism-okaidia";
 
+/* Cross-browser support of CSS-hidden iframe scrollbars */
+iframe[scrolling='no'] {
+  overflow: hidden;
+}
+
 /* Site Styles */
 html {
   box-sizing: border-box;
@@ -18,8 +23,9 @@ body {
 }
 .header {
   text-align: center;
-  margin: 6px;
+  margin: 6px 16px;
   border: 1px solid transparent;
+  flex-shrink: 0;
 }
 .title {
   font-family: 'Ubuntu', 'Source Sans Pro', Verdana, sans-serif;
@@ -92,6 +98,8 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
   align-items: stretch;
   position: relative;
   flex-basis: 100%;
+  /* Solves a Firefox issue. See: http://stackoverflow.com/a/29400042/1154642 */
+  min-height: 0;
 }
 .pane {
   width: 50%;
@@ -104,10 +112,12 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
 }
 
 .source-pane {
-  overflow-y: scroll;
+  display: flex;
+  align-items: stretch;
 }
 
 .source-pane > pre {
+  flex-grow: 1;
   background-color: #292929;
   border-left: 11px solid #383838;
   color: #f7f7f7;
@@ -115,9 +125,8 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
   font-size: 0.9em;
   line-height: 1.4;
   margin: 0;
-  overflow-x: scroll;
+  overflow: scroll;
   padding: 3em 0.5em 0.5em 0.7em;
-  height: 100%;
 }
 code {
   font-family: inherit;

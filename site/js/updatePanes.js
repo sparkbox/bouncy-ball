@@ -20,15 +20,15 @@ function updatePanes() {
 
   // Update the source pane (scroll it to the top, and get the new source).
   document.querySelector('.source-pane > pre').scrollTop = 0;
-  sourceDump(srcUrl, srcEl).then(response => {
+  sourceDump(srcUrl, srcEl, { successCallback: _highlightSource });
+
+  function _highlightSource(response) {
     const srcLanguage = (selected.id === 'css') ? 'css' : 'javascript';
-    srcEl.classList = '';
+    srcEl.className = '';
     srcEl.classList.add('language-' + srcLanguage);
 
     Prism.highlightAll();
-  }, error => {
-    console.error('Request Failed :(', error);
-  });
+  }
 }
 
 module.exports = updatePanes;

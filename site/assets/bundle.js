@@ -786,18 +786,19 @@ Prism.languages.js = Prism.languages.javascript;
 },{}],2:[function(require,module,exports){
 'use strict';
 
-var updatePanes = require('./updatePanes');
+var updatePanes = require('./updatePanes'),
+    options = document.querySelectorAll('input[type="radio"]');
 
 // Update panes once for initial page load, then set listeners for future updates:
 updatePanes();
-document.querySelectorAll('input[type="radio"]').forEach(function (el) {
-  el.addEventListener('change', updatePanes);
-});
+for (var i = 0; i < options.length; i++) {
+  options[i].addEventListener('change', updatePanes);
+}
 
 },{"./updatePanes":4}],3:[function(require,module,exports){
 'use strict';
 
-function sourceDump(url, dumpLocation) {
+function sourceDump(url, dumpLocation, options) {
 
   return new Promise(function (resolve, reject) {
     var request = new XMLHttpRequest();
@@ -808,14 +809,21 @@ function sourceDump(url, dumpLocation) {
         var dumpElement = typeof dumpLocation === 'string' || dumpLocation instanceof String ? document.querySelector(dumpLocation) : dumpLocation;
 
         dumpElement.textContent = request.responseText;
-        resolve(request.response);
+
+        if (options.successCallback) {
+          options.successCallback(request.response);
+        }
       } else {
-        reject(Error(request.statusText));
+        console.error(request.statusText, Error(request.statusText));
       }
     };
 
     request.onerror = function () {
-      reject(Error('Network Error'));
+      console.error('Request Failed :(', Error('Network Error'));
+
+      if (options.failureCallback) {
+        options.failureCallback();
+      };
     };
 
     request.send();
@@ -832,32 +840,32 @@ var Prism = require('prismjs'),
 
 // Some function declarations.
 function updatePanes() {
-  var selected = document.querySelector('input[type="radio"]:checked'),
-      name = selected.nextElementSibling.textContent,
-      srcFileName = selected.id === 'css' ? 'styles.css' : 'script.js',
-      srcUrl = 'examples/' + selected.id + '/' + srcFileName,
-      srcEl = document.querySelector('.source-pane > pre > code'),
-      demoUrl = 'examples/' + selected.id + '/index.html',
-      demoName = document.querySelector('.demo-name h2'),
-      demoFrame = document.querySelector('.demo-frame');
+      var selected = document.querySelector('input[type="radio"]:checked'),
+          name = selected.nextElementSibling.textContent,
+          srcFileName = selected.id === 'css' ? 'styles.css' : 'script.js',
+          srcUrl = 'examples/' + selected.id + '/' + srcFileName,
+          srcEl = document.querySelector('.source-pane > pre > code'),
+          demoUrl = 'examples/' + selected.id + '/index.html',
+          demoName = document.querySelector('.demo-name h2'),
+          demoFrame = document.querySelector('.demo-frame');
 
-  // Update the title
-  demoName.textContent = name;
+      // Update the title
+      demoName.textContent = name;
 
-  // Update the demo pane
-  demoFrame.setAttribute('src', demoUrl);
+      // Update the demo pane
+      demoFrame.setAttribute('src', demoUrl);
 
-  // Update the source pane (scroll it to the top, and get the new source).
-  document.querySelector('.source-pane > pre').scrollTop = 0;
-  sourceDump(srcUrl, srcEl).then(function (response) {
-    var srcLanguage = selected.id === 'css' ? 'css' : 'javascript';
-    srcEl.classList = '';
-    srcEl.classList.add('language-' + srcLanguage);
+      // Update the source pane (scroll it to the top, and get the new source).
+      document.querySelector('.source-pane > pre').scrollTop = 0;
+      sourceDump(srcUrl, srcEl, { successCallback: _highlightSource });
 
-    Prism.highlightAll();
-  }, function (error) {
-    console.error('Request Failed :(', error);
-  });
+      function _highlightSource(response) {
+            var srcLanguage = selected.id === 'css' ? 'css' : 'javascript';
+            srcEl.className = '';
+            srcEl.classList.add('language-' + srcLanguage);
+
+            Prism.highlightAll();
+      }
 }
 
 module.exports = updatePanes;
