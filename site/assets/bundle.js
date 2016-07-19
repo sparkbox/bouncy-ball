@@ -786,14 +786,22 @@ Prism.languages.js = Prism.languages.javascript;
 },{}],2:[function(require,module,exports){
 'use strict';
 
-var updatePanes = require('./updatePanes'),
-    options = document.querySelectorAll('input[type="radio"]');
+(function () {
+  var updatePanes = require('./updatePanes'),
+      options = document.querySelectorAll('input[type="radio"]');
 
-// Update panes once for initial page load, then set listeners for future updates:
-updatePanes();
-for (var i = 0; i < options.length; i++) {
-  options[i].addEventListener('change', updatePanes);
-}
+  // Pre-select an option, if it is found in the URL fragment.
+  if (window.location.hash) {
+    document.querySelector('input[checked]').removeAttribute('checked');
+    document.getElementById(window.location.hash.slice(1)).setAttribute('checked', true);
+  }
+
+  updatePanes();
+  // Set listeners for future updates:
+  for (var i = 0; i < options.length; i++) {
+    options[i].addEventListener('change', updatePanes);
+  }
+})();
 
 },{"./updatePanes":4}],3:[function(require,module,exports){
 'use strict';
@@ -838,34 +846,46 @@ module.exports = sourceDump;
 var Prism = require('prismjs'),
     sourceDump = require('./sourceDump');
 
-// Some function declarations.
-function updatePanes() {
-      var selected = document.querySelector('input[type="radio"]:checked'),
-          name = selected.nextElementSibling.textContent,
-          srcFileName = selected.id === 'css' ? 'styles.css' : 'script.js',
-          srcUrl = 'examples/' + selected.id + '/' + srcFileName,
-          srcEl = document.querySelector('.source-pane > pre > code'),
-          demoUrl = 'examples/' + selected.id + '/index.html',
-          demoName = document.querySelector('.demo-name h2'),
-          demoFrame = document.querySelector('.demo-frame');
+/**
+ * Updates the preview & source panes based to match the currently selected option.
+ */
+function updatePanes(event) {
+  var selected = document.querySelector('input[type="radio"]:checked'),
+      name = selected.nextElementSibling.textContent,
+      srcFileName = selected.id === 'css' ? 'styles.css' : 'script.js',
+      srcUrl = 'examples/' + selected.id + '/' + srcFileName,
+      srcEl = document.querySelector('.source-pane > pre > code'),
+      demoUrl = 'examples/' + selected.id + '/index.html',
+      demoName = document.querySelector('.demo-name h2'),
+      demoFrame = document.querySelector('.demo-frame');
 
-      // Update the title
-      demoName.textContent = name;
+  // Update the page URL, when an option is changed.
+  // We only do this on the change event to prevent hash updates on initial page load.
+  if (event && event.type === 'change') {
+    window.location.hash = selected.id;
+  }
 
-      // Update the demo pane
-      demoFrame.setAttribute('src', demoUrl);
+  // Update the title
+  demoName.textContent = name;
 
-      // Update the source pane (scroll it to the top, and get the new source).
-      document.querySelector('.source-pane > pre').scrollTop = 0;
-      sourceDump(srcUrl, srcEl, { successCallback: _highlightSource });
+  // Update the demo pane
+  demoFrame.setAttribute('src', demoUrl);
 
-      function _highlightSource(response) {
-            var srcLanguage = selected.id === 'css' ? 'css' : 'javascript';
-            srcEl.className = '';
-            srcEl.classList.add('language-' + srcLanguage);
+  // Update the source pane (scroll it to the top, and get the new source).
+  document.querySelector('.source-pane > pre').scrollTop = 0;
+  sourceDump(srcUrl, srcEl, { successCallback: _highlightSource });
 
-            Prism.highlightAll();
-      }
+  /**
+   * Runs PrismJS on the page. Designed to be called once the new source is on the page.
+   * @private
+   */
+  function _highlightSource() {
+    var srcLanguage = selected.id === 'css' ? 'css' : 'javascript';
+    srcEl.className = '';
+    srcEl.classList.add('language-' + srcLanguage);
+
+    Prism.highlightAll();
+  }
 }
 
 module.exports = updatePanes;
