@@ -4,9 +4,14 @@
       initialTime = (Date.now() / 1000),   // seconds
       acceleration = -1000,                // px/second^2
 
-      referencePosition = initialPosition, // this is either the initial height or the ground height.
-      referenceVelocity = initialVelocity, // this is either the initial velocity or rebound velocity
-      referenceTime = initialTime,         // this is either the initial time or time at the ground
+      // this is either the initial height or the ground height
+      referencePosition = initialPosition,
+
+      // this is either the initial velocity or rebound velocity
+      referenceVelocity = initialVelocity,
+
+      // this is either the initial time or time at the ground
+      referenceTime = initialTime,
       reboundVelocity,
       elapsedTime,
 
@@ -20,12 +25,14 @@
 
     // Kinematic Equation 1
     //   d = Vi*t + (1/2)a*t^2
-    distance = referenceVelocity * elapsedTime + 0.5 * acceleration * Math.pow(elapsedTime, 2);
+    distance = referenceVelocity * elapsedTime +
+               0.5 * acceleration * Math.pow(elapsedTime, 2);
     ball.position = referencePosition + distance;
 
     if (ball.position < 0 ) {
-      // This animation doesn't account for bounce decay so we can save processing
-      // by only calculating the return velocity on the first bounce.
+      // This animation doesn't account for bounce decay
+      // so we can save processing by only calculating
+      // the return velocity on the first bounce.
       if (!reboundVelocity) {
 
         // Kinematic Equation 2

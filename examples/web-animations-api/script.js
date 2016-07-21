@@ -1,8 +1,10 @@
-// Requires Chrome's Web Animations Polyfill, until browser support improves
+// Requires Chrome's Web Animations
+// Polyfill, until browser support improves.
 // See: https://github.com/web-animations/web-animations-js
 var ball = document.getElementsByTagName('ball')[0],
 
-    // I'm declaring multiple keyframes until single keyframes are supported.
+    // I'm declaring multiple keyframes
+    // until single keyframes are supported.
     // See https://github.com/web-animations/web-animations-js/issues/14
     keyframes = [{ transform: 'translate3d(0, 0, 0)' },
                  { transform: 'translate3d(0, 160px, 0)' }],
