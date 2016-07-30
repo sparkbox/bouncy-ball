@@ -9,9 +9,6 @@ function dropBall() {
 }
 
 function restoreBall() {
-  // Easings ('easeInQuad' & 'easeOutQuad')
-  // are provided by jQuery UI.
-  // See https://jqueryui.com/easing/
   $ball.animate({ top: '0' }, DURATION, 'easeOutQuad', dropBall);
 }
 
