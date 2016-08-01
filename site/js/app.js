@@ -1,5 +1,6 @@
 (function() {
   const updatePanes = require('./updatePanes'),
+        docsToggle = require('./docsToggle'),
         options = document.querySelectorAll('input[type="radio"]');
 
   // Pre-select an option, if it is found in the URL fragment.
@@ -9,6 +10,7 @@
   }
 
   updatePanes();
+  docsToggle.setup();
   // Set listeners for future updates:
   for (var i = 0; i < options.length; i++) {
     options[i].addEventListener('change', updatePanes);

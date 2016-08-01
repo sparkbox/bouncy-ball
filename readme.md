@@ -1,6 +1,8 @@
 # Bouncy Ball
 
-[![Bouncy Ball Graphic](site/assets/images/graphic.png)](http://sparkbox.github.io/bouncy-ball/)
+<p align="center">
+[!][Bouncy Ball Graphic](site/assets/images/graphic.png)](http://sparkbox.github.io/bouncy-ball/)
+</p>
 
 This project compares web animation techniques by recreating a simple animation (a bouncing ball) with each one. It's kind of like TodoMVC, but for web animation.
 

@@ -8,7 +8,11 @@ function sourceDump(url, dumpLocation, options) {
                             ? document.querySelector(dumpLocation)
                             : dumpLocation;
 
-      dumpElement.textContent = request.responseText;
+      // If no dumpLocation value is provided, it won't dump the text,
+      // and will defer to the successCallback to handle the response.
+      if (dumpElement) {
+        dumpElement.textContent = request.responseText;
+      }
 
       if (options.successCallback) {
         options.successCallback(request.response);

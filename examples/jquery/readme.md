@@ -10,8 +10,8 @@ jQuery License: MIT
 
 ## Project Links
 
-  # [jQuery on Github](https://github.com/jquery/jquery)
-  # [jQuery `.animate()` Documentation](http://api.jquery.com/animate/)
+  * [jQuery on Github](https://github.com/jquery/jquery)
+  * [jQuery `.animate()` Documentation](http://api.jquery.com/animate/)
 
 ## Resources
 
