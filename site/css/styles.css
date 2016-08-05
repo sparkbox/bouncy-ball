@@ -1,5 +1,10 @@
-/* Prism Styles */
+/* Imports must be first */
 @import "prism-okaidia";
+
+/* Variables */
+@custom-media --midphone-plus (width >= 460px);
+@custom-media --tablet-plus (width >= 780px);
+@custom-media --megatablet-plus (width >= 900px);
 
 /* Cross-browser support of CSS-hidden iframe scrollbars */
 iframe[scrolling='no'] {
@@ -26,8 +31,8 @@ body {
   margin: 0 16px;
   border: 1px solid transparent;
   flex-shrink: 0;
-  
-  @media (min-width: 460px) {
+
+  @media (--midphone-plus) {
     margin-top: 6px;
     margin-bottom: 6px;
   }
@@ -36,14 +41,14 @@ body {
   font-family: 'Ubuntu', 'Source Sans Pro', Verdana, sans-serif;
   font-size: 18px;
 
-  @media (min-width: 460px) {
+  @media (--midphone-plus) {
     font-size: 32px;
   }
 }
 .description {
   font-size: 14px;
 
-  @media (min-width: 460px) {
+  @media (--midphone-plus) {
     font-size: 16px;
   }
 }
@@ -57,7 +62,7 @@ body {
   padding: 14px 12vw;
   flex-shrink: 0;
 
-  @media (min-width: 460px) {
+  @media (--midphone-plus) {
     padding-top: 16px;
     padding-bottom: 16px;
   }
@@ -73,7 +78,7 @@ body {
   cursor: pointer;
   box-shadow: 0px 1px 6px -3px #000;
 
-  @media (min-width: 460px) {
+  @media (--midphone-plus) {
     font-size: 16px;
     padding: 6px 12px;
   }
@@ -124,7 +129,7 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
   flex-grow: 0;
   flex-shrink: 1;
 
-  @media (min-width: 780px) {
+  @media (--tablet-plus) {
     font-size: 1em;
   }
 }
@@ -184,7 +189,7 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
 
   /* note: detailed source code styles are provided by prismjs */
 
-  @media (min-width: 900px) {
+  @media (--megatablet-plus) {
     font-size: 0.9em;
   }
 }
