@@ -16,7 +16,7 @@ function updatePanes(event) {
         // pane elements
         srcEl = document.querySelector('.source-pane > pre > code'),
         demoEl = document.querySelector('.demo-frame'),
-        docsEl = document.querySelector('.docs-pane'),
+        docsEl = document.querySelector('.docs-pane-content'),
 
         docsLinkDemoName = document.querySelector('.demo-name');
 

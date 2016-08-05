@@ -131,6 +131,11 @@ body {
   text-align: center;
   margin: 0 16px;
   border: 1px solid transparent;
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   -ms-flex-negative: 0;
       flex-shrink: 0
 }
@@ -172,6 +177,11 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding: 14px 12vw;
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   -ms-flex-negative: 0;
       flex-shrink: 0
 }
@@ -230,33 +240,54 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
       -ms-flex-align: stretch;
           align-items: stretch;
   position: relative;
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
   /* Solves a Firefox issue. See: http://stackoverflow.com/a/29400042/1154642 */
   min-height: 0;
+
+  /* flex-basis: 100%; */
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
 }
 .docs-pane {
   display: none;
   background-color: #151515;
-  color: #fff;
-  font-size: 0.85em;
-  padding: 1.25em 1em 1em 1.5em;
-  overflow: scroll;
   -ms-flex-preferred-size: 400px;
       flex-basis: 400px;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
   -ms-flex-negative: 1;
-      flex-shrink: 1
+      flex-shrink: 1;
+}
+.docs-pane_is-open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+.docs-pane-content {
+  color: #fff;
+  font-size: 0.85em;
+  padding: 0 1em 1em 1.5em;
+  /* Provides a constant background for the more/less link */
+  margin-top: 40px;
+  margin-top: 2.5rem;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch
 }
 @media (min-width: 780px) {
-	.docs-pane {
+	.docs-pane-content {
 		font-size: 1em;
 	}
   }
-.docs-pane_is-open {
-  display: block;
+.docs-pane-content h1:first-of-type {
+  margin-top: 0;
 }
 .docs-toggle {
   position: absolute;
@@ -295,9 +326,10 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
   -ms-flex-negative: 2;
       flex-shrink: 2;
   min-width: 150px;
+  /* clips the bouncing ball, if the frame is too short */
+  overflow: hidden;
 }
 .source-pane {
-  overflow: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -311,6 +343,8 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
       flex-shrink: 1;
   -ms-flex-preferred-size: 60%;
       flex-basis: 60%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 .source-pane > pre {
   -webkit-box-flex: 1;
