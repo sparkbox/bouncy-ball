@@ -7,7 +7,7 @@
 /*******************************
  ********** Variables **********
  *******************************/
-@custom-media --midphone-plus (width >= 460px);
+@custom-media --midphone-plus (width >= 500px);
 @custom-media --tablet-plus (width >= 780px);
 @custom-media --megatablet-plus (width >= 900px);
 :root {
@@ -189,13 +189,20 @@ input[type="radio"] {
 
 .docs-toggle {
   position: absolute;
-  top: 1em;
-  left: 1.5em;
-  font-size: 13px;
+  top: 0.75em;
+  left: 1em;
+  font-size: 10px;
   color: var(--linkYellow);
+  z-index: 1;
 
   &::before {
     content: 'More '
+  }
+
+  @media (--midphone-plus) {
+    font-size: 13px;
+    top: 1em;
+    left: 1.5em;
   }
 }
 

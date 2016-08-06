@@ -2,7 +2,7 @@
 
 Uses the Web Animations API, a proposed browser API for synchronizing and timing web animations.
 
-Browser support for the API is limited, so this demo relies on web-animations-js, an official JavaScript polyfill. The demo defines two ball positions as keyframes and alternates between them, using a cubic-bezier function to define the easing.
+Browser support for the API is limited, so this demo relies on [web-animations-js](https://github.com/web-animations/web-animations-js), an official JavaScript polyfill. The demo defines two ball positions as keyframes and alternates between them, using a cubic-bezier function to define the easing.
 
 ## Project Links
 
