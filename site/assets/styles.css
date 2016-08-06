@@ -1,4 +1,6 @@
-/* Imports must be first */
+/*******************************
+ *** Imports (must be first) ***
+ *******************************/
 /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
@@ -103,16 +105,21 @@ pre[class*="language-"] {
 .token.entity {
 	cursor: help;
 }
-/* Variables */
-/* Cross-browser support of CSS-hidden iframe scrollbars */
-iframe[scrolling='no'] {
-  overflow: hidden;
+/*******************************
+ ********** Variables **********
+ *******************************/
+:root {
+  /* dark background colors */
+
+  /* This matches a color from our syntax highlighting */
 }
-/* Site Styles */
+/*******************************
+ ********* Site Styles *********
+ *******************************/
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 body {
@@ -126,6 +133,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+/* Cross-browser support of CSS-hidden iframe scrollbars */
+iframe[scrolling='no'] {
+  overflow: hidden;
 }
 .header {
   text-align: center;
@@ -164,7 +175,6 @@ body {
   }
 .selection-bar {
   background: #eaeaea;
-  /* layout */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,41 +202,56 @@ body {
 	}
   }
 .selection-bar > label {
-  text-align: center;
-  list-style-type: none;
-  font-size: 14px;
-  padding: 4px 9px;
-  margin: 4px;
-  border-radius: 16px;
-  background-color: #fff;
-  cursor: pointer;
-  box-shadow: 0px 1px 6px -3px #000
+	text-align: center;
+	list-style-type: none;
+	font-size: 14px;
+	padding: 4px 9px;
+	margin: 4px;
+	border-radius: 16px;
+	background-color: white;
+	cursor: pointer;
+	box-shadow: 0px 1px 6px -3px black;
 }
 @media (min-width: 460px) {
 	.selection-bar > label {
 		font-size: 16px;
 		padding: 6px 12px;
 	}
-  }
+}
 .selection-bar > label:hover {
-  background-color: #111;
-  color: white;
+	background-color: #111111;
+	color: white;
 }
 input[type="radio"] {
   opacity: 0;
-  position: absolute;
+  position: absolute
+}
+input[type="radio"]:checked {/* library-specific colors */
 }
 input[type="radio"]:checked + label {
-  background-color: #111;
+	background-color: #111111;
 }
-/* library-specific colors */
-input[type="radio"]:checked + .label-css { color: #16A1DC; }
-input[type="radio"]:checked + .label-vanillajs { color: #F0DB4F; }
-input[type="radio"]:checked + .label-p5 { color: #EC245E; }
-input[type="radio"]:checked + .label-greensock { color: #88CE02; }
-input[type="radio"]:checked + .label-jquery { color: #0769AD; }
-input[type="radio"]:checked + .label-velocity { color: white; }
-input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
+input[type="radio"]:checked + .label-css {
+	color: #16A1DC;
+}
+input[type="radio"]:checked + .label-vanillajs {
+	color: #F0DB4F;
+}
+input[type="radio"]:checked + .label-p5 {
+	color: #EC245E;
+}
+input[type="radio"]:checked + .label-greensock {
+	color: #88CE02;
+}
+input[type="radio"]:checked + .label-jquery {
+	color: #0769AD;
+}
+input[type="radio"]:checked + .label-velocity {
+	color: #FFFFFF;
+}
+input[type="radio"]:checked + .label-webanimations {
+	color: #E44D26;
+}
 .demo-frame {
   width: 66px; /* 50px ball + 8px margin left/right */
   height: 226px; /* 160px range + 50px ball + 8px margin top/bottom */
@@ -243,8 +268,8 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
   /* Solves a Firefox issue. See: http://stackoverflow.com/a/29400042/1154642 */
   min-height: 0;
 
-  /* flex-basis: 100%; */
   -ms-flex-preferred-size: auto;
+
       flex-basis: auto;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -261,7 +286,10 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
       -ms-flex-positive: 0;
           flex-grow: 0;
   -ms-flex-negative: 1;
-      flex-shrink: 1;
+      flex-shrink: 1
+}
+.docs-pane a {
+	color: #e6db74;
 }
 .docs-pane_is-open {
   display: -webkit-box;
@@ -275,6 +303,7 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
   color: #fff;
   font-size: 0.85em;
   padding: 0 1em 1em 1.5em;
+
   /* Provides a constant background for the more/less link */
   margin-top: 40px;
   margin-top: 2.5rem;
@@ -287,28 +316,23 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
 	}
   }
 .docs-pane-content h1:first-of-type {
-  margin-top: 0;
+	margin-top: 0;
 }
 .docs-toggle {
   position: absolute;
   top: 1em;
   left: 1.5em;
   font-size: 13px;
-  /* This matches a color from the syntax highlighting */
-  color: #e6db74;
+  color: #e6db74
 }
 .docs-toggle::before {
-  content: 'More '
+	content: 'More ';
 }
 .docs-toggle_is-less::before {
   content: 'Less '
 }
-.docs-pane a {
-  /* This matches a color from the syntax highlighting */
-  color: #e6db74;
-}
 .preview-pane {
-  background-color: #111;
+  background-color: #111111;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -344,25 +368,23 @@ input[type="radio"]:checked + .label-webanimations { color: #E44D26; }
   -ms-flex-preferred-size: 60%;
       flex-basis: 60%;
   overflow: scroll;
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch
 }
 .source-pane > pre {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  background-color: #1d1d1d;
-  border-radius: 0;
-  font-size: 0.75em;
-  margin: 0;
-  padding: 1.5em 0.5em 0.5em 1.5em
-
-  /* note: detailed source code styles are provided by prismjs */
+	-webkit-box-flex: 1;
+	    -ms-flex-positive: 1;
+	        flex-grow: 1;
+	background-color: #1d1d1d;
+	border-radius: 0;
+	font-size: 0.75em;
+	margin: 0;
+	padding: 1.5em 0.5em 0.5em 1.5em;/* note: detailed source code styles are provided by prismjs */
 }
 @media (min-width: 900px) {
 	.source-pane > pre {
 		font-size: 0.9em;
 	}
-  }
+}
 code {
   font-family: 'Source Code Pro', 'Courier', monospace;
 }
