@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm run build:css && npm run build:js",
     "build:js": "browserify site/js/app.js -o site/assets/bundle.js -t [ babelify --presets [es2015] ]",
-    "build:css": "postcss --use postcss-import --postcss-import.path 'node_modules/prismjs/themes' --use postcss-cssnext -o site/assets/styles.css site/css/*.css"
+    "build:css": "postcss --use stylelint --use postcss-import --postcss-import.path 'node_modules/prismjs/themes' --use postcss-cssnext --use postcss-reporter -o site/assets/styles.css site/css/*.css"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,8 @@
     "postcss": "^5.0.21",
     "postcss-cli": "^2.5.2",
     "postcss-cssnext": "^2.7.0",
-    "postcss-import": "^8.1.2"
+    "postcss-import": "^8.1.2",
+    "postcss-reporter": "^1.4.1",
+    "stylelint": "^7.1.0"
   }
 }
