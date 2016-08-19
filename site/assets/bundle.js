@@ -10920,7 +10920,7 @@ return Autolinker;
   }
 })();
 
-},{"./docsToggle":64,"./updatePanes":66}],64:[function(require,module,exports){
+},{"./docsToggle":64,"./updatePanes":67}],64:[function(require,module,exports){
 'use strict';
 
 function setup() {
@@ -10935,6 +10935,19 @@ function setup() {
 module.exports = { setup: setup };
 
 },{}],65:[function(require,module,exports){
+'use strict';
+
+module.exports = {
+  'vanilla-js': 'http://codepen.io/team/sparkbox/pen/AXzoGo', // JS
+  'css': 'http://codepen.io/team/sparkbox/pen/yJAomg', // css
+  'jquery': 'http://codepen.io/team/sparkbox/pen/mEgrNg', // jQuery
+  'greensock': 'http://codepen.io/team/sparkbox/pen/oLOpLZ', // Greensock
+  'velocity': 'http://codepen.io/team/sparkbox/pen/OXGzXB', // Velocity
+  'web-animations-api': 'http://codepen.io/team/sparkbox/pen/mEgpAK', // Web Animations API
+  'p5': 'http://codepen.io/team/sparkbox/pen/BzEJLv' // P5.js
+};
+
+},{}],66:[function(require,module,exports){
 'use strict';
 
 function sourceDump(url, dumpLocation, options) {
@@ -10972,12 +10985,13 @@ function sourceDump(url, dumpLocation, options) {
 
 module.exports = sourceDump;
 
-},{}],66:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
 var Prism = require('prismjs'),
     Remarkable = require('remarkable'),
-    sourceDump = require('./sourceDump');
+    sourceDump = require('./sourceDump'),
+    editLinks = require('./editLinks');
 
 /**
  * Updates the preview & source panes based to match the currently selected option.
@@ -10991,12 +11005,16 @@ function updatePanes(event) {
   srcUrl = 'examples/' + selected.id + '/' + srcFileName,
       demoUrl = 'examples/' + selected.id + '/index.html',
       docsUrl = 'examples/' + selected.id + '/readme.md',
+      editUrl = editLinks[selected.id],
 
   // pane elements
   srcEl = document.querySelector('.source-pane > pre > code'),
       demoEl = document.querySelector('.demo-frame'),
       docsEl = document.querySelector('.docs-pane-content'),
+      editEl = document.querySelector('.edit-toggle-link'),
       docsLinkDemoName = document.querySelector('.demo-name');
+
+  console.log(editUrl);
 
   // Update the page URL, when an option is changed.
   // We only do this on the change event to prevent hash updates on initial page load.
@@ -11010,6 +11028,9 @@ function updatePanes(event) {
 
   // Update the demo pane.
   demoEl.setAttribute('src', demoUrl);
+
+  // Update the edit link.
+  editEl.setAttribute('href', editUrl);
 
   // Update the docs pane.
   docsLinkDemoName.textContent = name;
@@ -11039,4 +11060,4 @@ function updatePanes(event) {
 
 module.exports = updatePanes;
 
-},{"./sourceDump":65,"prismjs":1,"remarkable":2}]},{},[63]);
+},{"./editLinks":65,"./sourceDump":66,"prismjs":1,"remarkable":2}]},{},[63]);

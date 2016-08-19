@@ -344,6 +344,23 @@ input[type="radio"]:checked + .label-webanimations {
     min-width: calc(160px - 1.3rem);
   }
   }
+.edit-toggle {
+  position: absolute;
+  top: 8.8px;
+  top: 0.55rem;
+  right: 0;
+  z-index: 1;
+  width: calc(40% - 1.1rem);
+  min-width: calc(160px - 1.1rem)
+}
+@media (min-width: 500px) {
+  .edit-toggle {
+    top: 0.75rem;
+    right: 1.3rem;
+    width: calc(40% - 1.3rem);
+    min-width: calc(160px - 1.3rem);
+  }
+  }
 .docs-toggle-link {
   font-size: 10px;
   color: #e6db74
@@ -353,6 +370,15 @@ input[type="radio"]:checked + .label-webanimations {
 }
 @media (min-width: 500px) {
   .docs-toggle-link {
+    font-size: 13px;
+  }
+  }
+.edit-toggle-link {
+  font-size: 10px;
+  color: #e6db74
+}
+@media (min-width: 500px) {
+  .edit-toggle-link {
     font-size: 13px;
   }
   }
@@ -385,6 +411,7 @@ input[type="radio"]:checked + .label-webanimations {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
@@ -406,7 +433,7 @@ input[type="radio"]:checked + .label-webanimations {
   border-radius: 0;
   font-size: 0.75em;
   margin: 0;
-  padding: 1.5em 0.5em 0.5em 1.5em;/* note: detailed source code styles are provided by prismjs */
+  padding: 2.5em 0.5em 0.5em 1.5em;/* note: detailed source code styles are provided by prismjs */
 }
 @media (min-width: 900px) {
   .source-pane > pre {

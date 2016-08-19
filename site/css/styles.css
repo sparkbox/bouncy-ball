@@ -212,6 +212,21 @@ input[type="radio"] {
   }
 }
 
+.edit-toggle {
+  position: absolute;
+  top: 0.55rem;
+  right: 0;
+  z-index: 1;
+  width: calc(40% - var(--docsLeftPadding));
+  min-width: calc(var(--paneMinWidth) - var(--docsLeftPadding));
+
+  @media (--midphone-plus) {
+    top: 0.75rem;
+    right: var(--docsLeftPaddingMedium);
+    width: calc(40% - var(--docsLeftPaddingMedium));
+    min-width: calc(var(--paneMinWidth) - var(--docsLeftPaddingMedium));
+  }
+}
 .docs-toggle-link {
   font-size: 10px;
   color: var(--linkYellow);
@@ -219,6 +234,15 @@ input[type="radio"] {
   &::before {
     content: 'More '
   }
+
+  @media (--midphone-plus) {
+    font-size: 13px;
+  }
+}
+
+.edit-toggle-link {
+  font-size: 10px;
+  color: var(--linkYellow);
 
   @media (--midphone-plus) {
     font-size: 13px;
@@ -244,6 +268,7 @@ input[type="radio"] {
 
 .source-pane {
   display: flex;
+  position: relative;
   align-items: stretch;
   flex-grow: 1;
   flex-shrink: 1;
@@ -257,7 +282,7 @@ input[type="radio"] {
     border-radius: 0;
     font-size: 0.75em;
     margin: 0;
-    padding: 1.5em 0.5em 0.5em 1.5em;
+    padding: 2.5em 0.5em 0.5em 1.5em;
 
     /* note: detailed source code styles are provided by prismjs */
 

@@ -1,6 +1,7 @@
 const Prism = require('prismjs'),
       Remarkable = require('remarkable'),
-      sourceDump = require('./sourceDump');
+      sourceDump = require('./sourceDump'),
+      editLinks = require('./editLinks');
 
 /**
  * Updates the preview & source panes based to match the currently selected option.
@@ -13,12 +14,16 @@ function updatePanes(event) {
         srcUrl = 'examples/' + selected.id + '/' + srcFileName,
         demoUrl = 'examples/' + selected.id + '/index.html',
         docsUrl = 'examples/' + selected.id + '/readme.md',
+        editUrl =  editLinks[selected.id],
         // pane elements
         srcEl = document.querySelector('.source-pane > pre > code'),
         demoEl = document.querySelector('.demo-frame'),
         docsEl = document.querySelector('.docs-pane-content'),
+        editEl = document.querySelector('.edit-toggle-link'),
 
         docsLinkDemoName = document.querySelector('.demo-name');
+
+  console.log(editUrl);
 
   // Update the page URL, when an option is changed.
   // We only do this on the change event to prevent hash updates on initial page load.
@@ -32,6 +37,9 @@ function updatePanes(event) {
 
   // Update the demo pane.
   demoEl.setAttribute('src', demoUrl);
+
+  // Update the edit link.
+  editEl.setAttribute('href', editUrl);
 
   // Update the docs pane.
   docsLinkDemoName.textContent = name;
