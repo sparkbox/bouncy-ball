@@ -109,9 +109,11 @@ pre[class*="language-"] {
  ********** Variables **********
  *******************************/
 :root {
+  /***** COLORS *****/
   /* dark background colors */
-
   /* This matches a color from our syntax highlighting */
+
+  /***** WIDTHS *****/
 }
 /*******************************
  ********* Site Styles *********
@@ -302,7 +304,8 @@ input[type="radio"]:checked + .label-webanimations {
 .docs-pane-content {
   color: #fff;
   font-size: 0.85em;
-  padding: 0 1em 1em 1.5em;
+  padding: 0 16px 16px 17.6px;
+  padding: 0 1rem 1rem 1.1rem;
 
   /* Provides a constant background for the more/less link */
   margin-top: 40px;
@@ -310,6 +313,11 @@ input[type="radio"]:checked + .label-webanimations {
   overflow: scroll;
   -webkit-overflow-scrolling: touch
 }
+@media (min-width: 500px) {
+  .docs-pane-content {
+    padding-left: 1.3rem;
+  }
+  }
 @media (min-width: 780px) {
   .docs-pane-content {
     font-size: 1em;
@@ -320,23 +328,35 @@ input[type="radio"]:checked + .label-webanimations {
 }
 .docs-toggle {
   position: absolute;
-  top: 0.75em;
-  left: 1em;
-  font-size: 10px;
-  color: #e6db74;
-  z-index: 1
-}
-.docs-toggle::before {
-  content: 'More ';
+  top: 8.8px;
+  top: 0.55rem;
+  left: 17.6px;
+  left: 1.1rem;
+  z-index: 1;
+  width: calc(40% - 1.1rem);
+  min-width: calc(160px - 1.1rem)
 }
 @media (min-width: 500px) {
   .docs-toggle {
+    top: 0.75rem;
+    left: 1.3rem;
+    width: calc(40% - 1.3rem);
+    min-width: calc(160px - 1.3rem);
+  }
+  }
+.docs-toggle-link {
+  font-size: 10px;
+  color: #e6db74
+}
+.docs-toggle-link::before {
+  content: 'More ';
+}
+@media (min-width: 500px) {
+  .docs-toggle-link {
     font-size: 13px;
-    top: 1em;
-    left: 1.5em;
   }
   }
-.docs-toggle_is-less::before {
+.docs-toggle-link_is-less::before {
   content: 'Less '
 }
 .preview-pane {
@@ -357,7 +377,7 @@ input[type="radio"]:checked + .label-webanimations {
           flex-grow: 1;
   -ms-flex-negative: 2;
       flex-shrink: 2;
-  min-width: 150px;
+  min-width: 160px;
   /* clips the bouncing ball, if the frame is too short */
   overflow: hidden;
 }

@@ -10924,7 +10924,7 @@ return Autolinker;
 'use strict';
 
 function setup() {
-  document.querySelector('.docs-toggle').addEventListener('click', function (e) {
+  document.querySelector('.docs-toggle-link').addEventListener('click', function (e) {
     var docsPane = document.querySelector('.docs-pane');
     docsPane.classList.toggle('docs-pane_is-open');
     e.currentTarget.classList.toggle('docs-toggle_is-less');

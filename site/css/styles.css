@@ -11,13 +11,18 @@
 @custom-media --tablet-plus (width >= 780px);
 @custom-media --megatablet-plus (width >= 900px);
 :root {
+  /***** COLORS *****/
   /* dark background colors */
   --previewDark: #111111;
   --docsDark: #151515;
   --sourceDark: #1d1d1d;
-
   /* This matches a color from our syntax highlighting */
   --linkYellow: #e6db74;
+
+  /***** WIDTHS *****/
+  --paneMinWidth: 160px;
+  --docsLeftPadding: 1.1rem;
+  --docsLeftPaddingMedium: 1.3rem;
 }
 
 
@@ -171,12 +176,16 @@ input[type="radio"] {
 .docs-pane-content {
   color: #fff;
   font-size: 0.85em;
-  padding: 0 1em 1em 1.5em;
+  padding: 0 1rem 1rem var(--docsLeftPadding);
 
   /* Provides a constant background for the more/less link */
   margin-top: 2.5rem;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
+
+  @media (--midphone-plus) {
+    padding-left: var(--docsLeftPaddingMedium);
+  }
 
   @media (--tablet-plus) {
     font-size: 1em;
@@ -189,11 +198,23 @@ input[type="radio"] {
 
 .docs-toggle {
   position: absolute;
-  top: 0.75em;
-  left: 1em;
+  top: 0.55rem;
+  left: var(--docsLeftPadding);
+  z-index: 1;
+  width: calc(40% - var(--docsLeftPadding));
+  min-width: calc(var(--paneMinWidth) - var(--docsLeftPadding));
+
+  @media (--midphone-plus) {
+    top: 0.75rem;
+    left: var(--docsLeftPaddingMedium);
+    width: calc(40% - var(--docsLeftPaddingMedium));
+    min-width: calc(var(--paneMinWidth) - var(--docsLeftPaddingMedium));
+  }
+}
+
+.docs-toggle-link {
   font-size: 10px;
   color: var(--linkYellow);
-  z-index: 1;
 
   &::before {
     content: 'More '
@@ -201,12 +222,10 @@ input[type="radio"] {
 
   @media (--midphone-plus) {
     font-size: 13px;
-    top: 1em;
-    left: 1.5em;
   }
 }
 
-.docs-toggle_is-less::before {
+.docs-toggle-link_is-less::before {
   content: 'Less '
 }
 
@@ -218,7 +237,7 @@ input[type="radio"] {
   flex-basis: 40%;
   flex-grow: 1;
   flex-shrink: 2;
-  min-width: 150px;
+  min-width: var(--paneMinWidth);
   /* clips the bouncing ball, if the frame is too short */
   overflow: hidden;
 }
