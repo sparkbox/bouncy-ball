@@ -1,7 +1,9 @@
 (function() {
   const updatePanes = require('./updatePanes'),
-        docsToggle = require('./docsToggle'),
-        options = document.querySelectorAll('input[type="radio"]');
+        toggleDocs = require('./toggleDocs'),
+        options = document.querySelectorAll('input[type="radio"]'),
+        unsupportedLink = document.querySelector('.unsupported-details'),
+        docsToggleLink = document.querySelector('.docs-toggle-link');
 
   // Pre-select an option, if it is found in the URL fragment.
   if (window.location.hash) {
@@ -10,9 +12,12 @@
   }
 
   updatePanes();
-  docsToggle.setup();
+
   // Set listeners for future updates:
   for (var i = 0; i < options.length; i++) {
     options[i].addEventListener('change', updatePanes);
   }
+  docsToggleLink.addEventListener('click', toggleDocs);
+  unsupportedLink.addEventListener('click', toggleDocs);
+
 })();

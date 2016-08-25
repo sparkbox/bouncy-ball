@@ -134,6 +134,7 @@ input[type="radio"] {
     & + .label-jquery        { color: #0769AD; }
     & + .label-velocity      { color: #FFFFFF; }
     & + .label-webanimations { color: #E44D26; }
+    & + .label-smil          { color: #FFB13B; }
   }
 }
 
@@ -174,7 +175,7 @@ input[type="radio"] {
 }
 
 .docs-pane-content {
-  color: #fff;
+  color: white;
   font-size: 0.85em;
   padding: 0 1rem 1rem var(--docsLeftPadding);
 
@@ -227,6 +228,24 @@ input[type="radio"] {
 
 .docs-toggle-link_is-less::before {
   content: 'Less '
+}
+
+.unsupported {
+  color: white;
+  width: 50%;
+  text-align: center;
+}
+.unsupported::before {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 1rem auto;
+  background-image: url('../assets/images/sad.svg');
+}
+
+.unsupported-details {
+  color: var(--linkYellow);
 }
 
 .preview-pane {

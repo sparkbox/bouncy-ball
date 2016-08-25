@@ -1,0 +1,23 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="66" height="226">
+
+  <circle
+    class="ball"
+    cx="33" cy="33" r="25"
+    fill="#FFB13B">
+
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      attributeType="XML"
+      dur="1.15s"
+      repeatCount="indefinite"
+      calcMode="spline"
+      values="0 0 ; 0 160 ; 0 0"
+      keyTimes="0 ; 0.5 ; 1"
+      keySplines="0.6 0.08 0.8 0.60;
+                  0.2 0.40 0.4 0.92" />
+  </circle>
+</svg>

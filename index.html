@@ -36,25 +36,25 @@
     <label for="web-animations-api" class="label label-webanimations">Web Animations API</label>
     <input type="radio" id="p5" name="approaches" />
     <label for="p5" class="label label-p5">P5.js</label>
-  <!--
     <input type="radio" id="smil" name="approaches" />
-    <label for="smil">SVG-SMIL (deprecated)</label>
-    -->
+    <label for="smil" class="label label-smil">SMIL</label>
   </form>
   <div class="panes">
     <div class="docs-toggle">
-      <a class="docs-toggle-link" href="#">about <span class="demo-name">Vanilla JS</span></a>
+      <a class="docs-toggle-link" id="toggle" href="#">about <span class="demo-name">Vanilla JS</span></a>
     </div>
     <div class="pane docs-pane">
       <div class="docs-pane-content"></div>
     </div>
     <div class="pane preview-pane">
+      <p class="unsupported">This technique is not supported in your browser. <a href="#" id="learn" class="unsupported-details">Learn more</a>.</p>
       <iframe class="demo-frame" src="examples/vanilla-js/index.html" name="bouncy ball demo" frameborder="1" scrolling="no"></iframe>
     </div>
     <div class="pane source-pane">
       <pre><code class="language-javascript"></code></pre>
     </div>
   </div>
+  <script src="site/assets/modernizr.js"></script>
   <script src="site/assets/bundle.js"></script>
 </body>
 </html>

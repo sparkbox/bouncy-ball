@@ -1,2 +1,1 @@
-site/assets/bundle.js binary
-site/assets/styles.css binary
+site/assets/**/* binary
