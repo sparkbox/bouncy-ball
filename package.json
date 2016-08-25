@@ -7,9 +7,10 @@
     "example": "examples"
   },
   "scripts": {
-    "build": "npm run build:css && npm run build:js",
+    "build": "npm run build:css && npm run build:modernizr && npm run build:js",
     "build:js": "browserify site/js/app.js -o site/assets/bundle.js -t [ babelify --presets [es2015] ]",
     "build:css": "postcss --use stylelint --use postcss-import --postcss-import.path 'node_modules/prismjs/themes' --use postcss-cssnext --use postcss-reporter -o site/assets/styles.css site/css/*.css",
+    "build:modernizr": "modernizr -c modernizr-config.json -d site/assets",
     "watch": "postcss --watch --use stylelint --use postcss-import --postcss-import.path 'node_modules/prismjs/themes' --use postcss-cssnext --use postcss-reporter -o site/assets/styles.css site/css/*.css"
   },
   "repository": {
@@ -26,6 +27,8 @@
   },
   "homepage": "https://github.com/sparkbox/bouncy-ball#readme",
   "dependencies": {
+    "modernizr": "^3.3.1",
+    "platform": "^1.3.1",
     "prismjs": "^1.5.1",
     "remarkable": "^1.6.2"
   },

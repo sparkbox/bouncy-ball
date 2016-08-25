@@ -1,6 +1,7 @@
 const Prism = require('prismjs'),
       Remarkable = require('remarkable'),
-      sourceDump = require('./sourceDump');
+      sourceDump = require('./sourceDump'),
+      Platform = require('platform');
 
 /**
  * Updates the preview & source panes based to match the currently selected option.
@@ -8,17 +9,19 @@ const Prism = require('prismjs'),
 function updatePanes(event) {
   const selected = document.querySelector('input[type="radio"]:checked'),
         name = selected.nextElementSibling.textContent,
-        srcFileName = (selected.id === 'css') ? 'styles.css' : 'script.js',
+        srcFileName = (selected.id === 'css') ? 'styles.css' :
+                      (selected.id === 'smil') ? 'image.svg' : 'script.js',
+        demoFileName = (selected.id === 'smil') ? 'image.svg' : 'index.html',
         // pane content urls
         srcUrl = 'examples/' + selected.id + '/' + srcFileName,
-        demoUrl = 'examples/' + selected.id + '/index.html',
+        demoUrl = 'examples/' + selected.id + '/' + demoFileName,
         docsUrl = 'examples/' + selected.id + '/readme.md',
         // pane elements
         srcEl = document.querySelector('.source-pane > pre > code'),
         demoEl = document.querySelector('.demo-frame'),
         docsEl = document.querySelector('.docs-pane-content'),
-
-        docsLinkDemoName = document.querySelector('.demo-name');
+        docsLinkDemoName = document.querySelector('.demo-name'),
+        unsupportedEl = document.querySelector('.unsupported');
 
   // Update the page URL, when an option is changed.
   // We only do this on the change event to prevent hash updates on initial page load.
@@ -32,6 +35,10 @@ function updatePanes(event) {
 
   // Update the demo pane.
   demoEl.setAttribute('src', demoUrl);
+  _resetIncompatibilityMessage();
+  if (!_isCompatible(selected.id)) {
+    _showIncompatibilityMessage();
+  }
 
   // Update the docs pane.
   docsLinkDemoName.textContent = name;
@@ -42,7 +49,8 @@ function updatePanes(event) {
    * @private
    */
   function _highlightSource() {
-    const srcLanguage = (selected.id === 'css') ? 'css' : 'javascript';
+    const srcLanguage = (selected.id === 'css') ? 'css' :
+                        (selected.id === 'smil') ? 'markup' : 'javascript';
     srcEl.className = '';
     srcEl.classList.add('language-' + srcLanguage);
 
@@ -57,6 +65,37 @@ function updatePanes(event) {
     const parser = new Remarkable('commonmark');
     docsEl.innerHTML = parser.render(response);
   }
+
+  /**
+   * @private
+   */
+  function _isCompatible(selected) {
+    const browser = Platform.name;
+
+    if (selected === 'smil') {
+      // only return true if there's a Modernizr 👍 and the browser isn't Safari.
+      return Modernizr.smil && (browser !== 'Safari');
+    }
+    return true;
+  }
+
+  /**
+   * @private
+   */
+  function _showIncompatibilityMessage() {
+    // hide iframe
+    demoEl.style.display = 'none';
+    // show message
+    unsupportedEl.style.display = '';
+  }
+  function _resetIncompatibilityMessage() {
+    // show iframe
+    demoEl.style.display = '';
+    // hide message
+    unsupportedEl.style.display = 'none';
+  }
+
+
 }
 
 module.exports = updatePanes;

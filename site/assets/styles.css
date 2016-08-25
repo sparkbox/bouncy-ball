@@ -254,6 +254,9 @@ input[type="radio"]:checked + .label-velocity {
 input[type="radio"]:checked + .label-webanimations {
   color: #E44D26;
 }
+input[type="radio"]:checked + .label-smil {
+  color: #FFB13B;
+}
 .demo-frame {
   width: 66px; /* 50px ball + 8px margin left/right */
   height: 226px; /* 160px range + 50px ball + 8px margin top/bottom */
@@ -302,7 +305,7 @@ input[type="radio"]:checked + .label-webanimations {
           align-items: stretch;
 }
 .docs-pane-content {
-  color: #fff;
+  color: white;
   font-size: 0.85em;
   padding: 0 16px 16px 17.6px;
   padding: 0 1rem 1rem 1.1rem;
@@ -358,6 +361,23 @@ input[type="radio"]:checked + .label-webanimations {
   }
 .docs-toggle-link_is-less::before {
   content: 'Less '
+}
+.unsupported {
+  color: white;
+  width: 50%;
+  text-align: center;
+}
+.unsupported::before {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 16px auto;
+  margin: 1rem auto;
+  background-image: url('../assets/images/sad.svg');
+}
+.unsupported-details {
+  color: #e6db74;
 }
 .preview-pane {
   background-color: #111111;
