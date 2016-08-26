@@ -2,10 +2,11 @@
 
 Uses only Javascript and DOM APIs. No external libraries.
 
-This technique uses physics equations (kinematic formulas) to calculate position as a function of time.
+This technique uses a mathematic function to determine the position of the ball over time, and repeatedly draws the position on the screen using `requestAnimationFrame`.
+
+Our function is a quadratic function in vertex form. It uses a modulus operator to make it discontinuous, matching the path of the ball.
 
 ## Resources
 
   * [Request Animation Frame Docs (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
-  * [Tutorial: Time-based Animation](https://www.viget.com/articles/time-based-animation)
-  * [What are the kinematic formulas? (Khan Academy)](https://www.khanacademy.org/science/physics/one-dimensional-motion/kinematic-formulas/a/what-are-the-kinematic-formulas)
+  * [The Vertex form of Quadratic Functions](http://mathbitsnotebook.com/Algebra1/Quadratics/QDVertexForm.html)
