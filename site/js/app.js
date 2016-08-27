@@ -1,14 +1,17 @@
 (function() {
   const updatePanes = require('./updatePanes'),
         toggleDocs = require('./toggleDocs'),
+
+        // DOM queries and a URL lookup.
         options = document.querySelectorAll('input[type="radio"]'),
         unsupportedLink = document.querySelector('.unsupported-details'),
-        docsToggleLink = document.querySelector('.docs-toggle-link');
+        docsToggleLink = document.querySelector('.docs-toggle-link'),
+        hashOption = window.location.hash;
 
   // Pre-select an option, if it is found in the URL fragment.
-  if (window.location.hash) {
+  if (hashOption) {
     document.querySelector('input[checked]').removeAttribute('checked');
-    document.getElementById(window.location.hash.slice(1)).setAttribute('checked', true);
+    document.getElementById(hashOption.slice(1)).setAttribute('checked', true);
   }
 
   updatePanes();
@@ -19,5 +22,4 @@
   }
   docsToggleLink.addEventListener('click', toggleDocs);
   unsupportedLink.addEventListener('click', toggleDocs);
-
 })();
