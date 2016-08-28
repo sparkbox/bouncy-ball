@@ -7,10 +7,16 @@
   <style>
     ball {
       display: block;
+      position: absolute;
       width: 50px;
       height: 50px;
       border-radius: 50%;
       background-color: #F0DB4F;
+
+      /* compensate for the opposite axis direction,
+         and initialize the ball height at its peak. */
+      top: 168px;
+      transform: translateY(-168);
     }
   </style>
 </head>

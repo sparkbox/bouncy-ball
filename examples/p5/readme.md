@@ -2,7 +2,9 @@
 
 P5.js is an open-source JavaScript library for "creating graphic and interactive experiences." It's based on the core principles of [Processing](https://github.com/processing/processing), a popular programming language for visual designers.
 
-In this demo, JavaScript is used to calculate the position of the ball, and P5 is used to draw the ball and display it on the page (using `<canvas>`).
+In this demo, we use JavaScript to calculate the position of the ball, and P5 to draw the ball and display it on the page (with `<canvas>`).
+
+We calculate the position with a physics-based approach, using the Kinematic formulas, but other approaches would work just as well (like the one used in the [VanillaJS demo](http://sparkbox.github.io/bouncy-ball/#vanilla-js)).
 
 P5.js License: GPL 2.1
 
@@ -14,3 +16,5 @@ P5.js License: GPL 2.1
 ## Resources
 
   * [A video introduction to P5.js](http://hello.p5js.org/)
+  * [Tutorial: Time-based Animation](https://www.viget.com/articles/time-based-animation)
+  * [What are the kinematic formulas? (Khan Academy)](https://www.khanacademy.org/science/physics/one-dimensional-motion/kinematic-formulas/a/what-are-the-kinematic-formulas)
