@@ -257,6 +257,9 @@ input[type="radio"]:checked + .label-webanimations {
 input[type="radio"]:checked + .label-smil {
   color: #FFB13B;
 }
+input[type="radio"]:checked + .label-mojs {
+  color: #613961;
+}
 .demo-frame {
   width: 66px; /* 50px ball + 8px margin left/right */
   height: 226px; /* 160px range + 50px ball + 8px margin top/bottom */

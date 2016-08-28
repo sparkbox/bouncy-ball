@@ -135,6 +135,7 @@ input[type="radio"] {
     & + .label-velocity      { color: #FFFFFF; }
     & + .label-webanimations { color: #E44D26; }
     & + .label-smil          { color: #FFB13B; }
+    & + .label-mojs          { color: #613961; }
   }
 }
 
