@@ -1,4 +1,4 @@
-const Prism = require('prismjs'),
+const Prism = require('./vendor/prismjs-custom'),
       Remarkable = require('remarkable'),
       sourceDump = require('./sourceDump'),
       Platform = require('platform'),

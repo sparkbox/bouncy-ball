@@ -1,3 +1,6 @@
+// Keeping Modernizr outside, since I'd like it to be global.
+const Modernizr = require('./vendor/modernizr-custom');
+
 (function() {
   const updatePanes = require('./updatePanes'),
         toggleDocs = require('./toggleDocs'),
