@@ -177,12 +177,13 @@ input[type="radio"] {
 
 .docs-pane-content {
   color: white;
+  width: 100%;
   font-size: 0.85em;
   padding: 0 1rem 1rem var(--docsLeftPadding);
 
   /* Provides a constant background for the more/less link */
   margin-top: 2.5rem;
-  overflow: scroll;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
   @media (--midphone-plus) {

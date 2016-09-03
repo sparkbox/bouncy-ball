@@ -309,6 +309,7 @@ input[type="radio"]:checked + .label-mojs {
 }
 .docs-pane-content {
   color: white;
+  width: 100%;
   font-size: 0.85em;
   padding: 0 16px 16px 17.6px;
   padding: 0 1rem 1rem 1.1rem;
@@ -316,7 +317,7 @@ input[type="radio"]:checked + .label-mojs {
   /* Provides a constant background for the more/less link */
   margin-top: 40px;
   margin-top: 2.5rem;
-  overflow: scroll;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch
 }
 @media (min-width: 500px) {
