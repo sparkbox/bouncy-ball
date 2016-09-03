@@ -39,10 +39,11 @@ function updatePanes(event) {
   sourceDump(srcUrl, srcCodeEl, { successCallback: _highlightSource });
 
   // Update the demo pane.
-  demoEl.setAttribute('src', demoUrl);
   _resetIncompatibilityMessage();
   if (!_isCompatible(selected.id)) {
     _showIncompatibilityMessage();
+  } else {
+    demoEl.setAttribute('src', demoUrl);
   }
 
   // Update the docs pane.
@@ -82,6 +83,8 @@ function _isCompatible(selected) {
   if (selected === 'smil') {
     // only return true if there's a Modernizr 👍 and the browser isn't Safari.
     return Modernizr.smil && (browser !== 'Safari');
+  } else if (selected === 'p5') {
+    return Modernizr.webgl;
   }
   return true;
 }

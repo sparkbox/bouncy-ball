@@ -11386,10 +11386,11 @@ function updatePanes(event) {
   sourceDump(srcUrl, srcCodeEl, { successCallback: _highlightSource });
 
   // Update the demo pane.
-  demoEl.setAttribute('src', demoUrl);
   _resetIncompatibilityMessage();
   if (!_isCompatible(selected.id)) {
     _showIncompatibilityMessage();
+  } else {
+    demoEl.setAttribute('src', demoUrl);
   }
 
   // Update the docs pane.
@@ -11428,6 +11429,8 @@ function _isCompatible(selected) {
   if (selected === 'smil') {
     // only return true if there's a Modernizr 👍 and the browser isn't Safari.
     return Modernizr.smil && browser !== 'Safari';
+  } else if (selected === 'p5') {
+    return Modernizr.webgl;
   }
   return true;
 }
@@ -11456,41 +11459,46 @@ module.exports = updatePanes;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 /*! modernizr 3.3.1 (Custom Build) | MIT *
- * http://modernizr.com/download/?-smil-svg-setclasses !*/
-!function (e, n, s) {
-  function t(e, n) {
+ * https://modernizr.com/download/?-smil-webgl-setclasses !*/
+!function (e, n, t) {
+  function a(e, n) {
     return (typeof e === "undefined" ? "undefined" : _typeof(e)) === n;
-  }function a() {
-    var e, n, s, a, o, l, c;for (var f in i) {
-      if (i.hasOwnProperty(f)) {
-        if (e = [], n = i[f], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length)) for (s = 0; s < n.options.aliases.length; s++) {
-          e.push(n.options.aliases[s].toLowerCase());
-        }for (a = t(n.fn, "function") ? n.fn() : n.fn, o = 0; o < e.length; o++) {
-          l = e[o], c = l.split("."), 1 === c.length ? Modernizr[c[0]] = a : (!Modernizr[c[0]] || Modernizr[c[0]] instanceof Boolean || (Modernizr[c[0]] = new Boolean(Modernizr[c[0]])), Modernizr[c[0]][c[1]] = a), r.push((a ? "" : "no-") + c.join("-"));
+  }function s() {
+    var e, n, t, s, o, i, c;for (var f in l) {
+      if (l.hasOwnProperty(f)) {
+        if (e = [], n = l[f], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length)) for (t = 0; t < n.options.aliases.length; t++) {
+          e.push(n.options.aliases[t].toLowerCase());
+        }for (s = a(n.fn, "function") ? n.fn() : n.fn, o = 0; o < e.length; o++) {
+          i = e[o], c = i.split("."), 1 === c.length ? Modernizr[c[0]] = s : (!Modernizr[c[0]] || Modernizr[c[0]] instanceof Boolean || (Modernizr[c[0]] = new Boolean(Modernizr[c[0]])), Modernizr[c[0]][c[1]] = s), r.push((s ? "" : "no-") + c.join("-"));
         }
       }
     }
   }function o(e) {
-    var n = c.className,
-        s = Modernizr._config.classPrefix || "";if (f && (n = n.baseVal), Modernizr._config.enableJSClass) {
-      var t = new RegExp("(^|\\s)" + s + "no-js(\\s|$)");n = n.replace(t, "$1" + s + "js$2");
-    }Modernizr._config.enableClasses && (n += " " + s + e.join(" " + s), f ? c.className.baseVal = n : c.className = n);
-  }var i = [],
-      l = { _version: "3.3.1", _config: { classPrefix: "", enableClasses: !0, enableJSClass: !0, usePrefixes: !0 }, _q: [], on: function on(e, n) {
-      var s = this;setTimeout(function () {
-        n(s[e]);
+    var n = f.className,
+        t = Modernizr._config.classPrefix || "";if (u && (n = n.baseVal), Modernizr._config.enableJSClass) {
+      var a = new RegExp("(^|\\s)" + t + "no-js(\\s|$)");n = n.replace(a, "$1" + t + "js$2");
+    }Modernizr._config.enableClasses && (n += " " + t + e.join(" " + t), u ? f.className.baseVal = n : f.className = n);
+  }function i() {
+    return "function" != typeof n.createElement ? n.createElement(arguments[0]) : u ? n.createElementNS.call(n, "http://www.w3.org/2000/svg", arguments[0]) : n.createElement.apply(n, arguments);
+  }var r = [],
+      l = [],
+      c = { _version: "3.3.1", _config: { classPrefix: "", enableClasses: !0, enableJSClass: !0, usePrefixes: !0 }, _q: [], on: function on(e, n) {
+      var t = this;setTimeout(function () {
+        n(t[e]);
       }, 0);
-    }, addTest: function addTest(e, n, s) {
-      i.push({ name: e, fn: n, options: s });
+    }, addTest: function addTest(e, n, t) {
+      l.push({ name: e, fn: n, options: t });
     }, addAsyncTest: function addAsyncTest(e) {
-      i.push({ name: null, fn: e });
+      l.push({ name: null, fn: e });
     } },
-      Modernizr = function Modernizr() {};Modernizr.prototype = l, Modernizr = new Modernizr();var r = [],
-      c = n.documentElement,
-      f = "svg" === c.nodeName.toLowerCase();Modernizr.addTest("svg", !!n.createElementNS && !!n.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect);var u = {}.toString;Modernizr.addTest("smil", function () {
-    return !!n.createElementNS && /SVGAnimate/.test(u.call(n.createElementNS("http://www.w3.org/2000/svg", "animate")));
-  }), a(), o(r), delete l.addTest, delete l.addAsyncTest;for (var d = 0; d < Modernizr._q.length; d++) {
-    Modernizr._q[d]();
+      Modernizr = function Modernizr() {};Modernizr.prototype = c, Modernizr = new Modernizr();var f = n.documentElement,
+      u = "svg" === f.nodeName.toLowerCase();Modernizr.addTest("webgl", function () {
+    var n = i("canvas"),
+        t = "probablySupportsContext" in n ? "probablySupportsContext" : "supportsContext";return t in n ? n[t]("webgl") || n[t]("experimental-webgl") : "WebGLRenderingContext" in e;
+  });var p = {}.toString;Modernizr.addTest("smil", function () {
+    return !!n.createElementNS && /SVGAnimate/.test(p.call(n.createElementNS("http://www.w3.org/2000/svg", "animate")));
+  }), s(), o(r), delete c.addTest, delete c.addAsyncTest;for (var m = 0; m < Modernizr._q.length; m++) {
+    Modernizr._q[m]();
   }e.Modernizr = Modernizr;
 }(window, document);
 

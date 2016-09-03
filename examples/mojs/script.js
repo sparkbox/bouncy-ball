@@ -9,5 +9,5 @@ var ball = new mojs.Shape({
   repeat:   1,
   easing:   'quad.in',
   isYoyo:   true,
-  onComplete () { ball.replay(); }
+  onComplete: function() { ball.replay(); }
 }).play();
