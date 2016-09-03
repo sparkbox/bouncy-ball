@@ -150,8 +150,12 @@ input[type="radio"] {
   display: flex;
   align-items: stretch;
   position: relative;
+
   /* Solves a Firefox issue. See: http://stackoverflow.com/a/29400042/1154642 */
   min-height: 0;
+
+  /* Solves an IE issue. See: https://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview */
+  height: 100%;
 
   flex-basis: auto;
   flex-grow: 1;
