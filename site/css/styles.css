@@ -312,4 +312,10 @@ iframe[scrolling='no'] {
 
 code {
   font-family: 'Source Code Pro', 'Courier', monospace;
+
+  & a {
+    /* causes autolinker links to inherit their respective syntax-
+       highlighted colors instead of being default-link-blue. */
+    color: inherit;
+  }
 }
