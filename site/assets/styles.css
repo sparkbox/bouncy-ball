@@ -111,7 +111,7 @@ pre[class*="language-"] {
 :root {
   /***** COLORS *****/
   /* dark background colors */
-  /* This matches a color from our syntax highlighting */
+  /* This matches a color from our prism-okaidia syntax highlighting theme */
 
   /***** WIDTHS *****/
 }
@@ -426,6 +426,7 @@ iframe[scrolling='no'] {
       flex-shrink: 1;
   -ms-flex-preferred-size: 60%;
       flex-basis: 60%;
+  position: relative;
   overflow: scroll;
   -webkit-overflow-scrolling: touch
 }
@@ -443,6 +444,19 @@ iframe[scrolling='no'] {
   .source-pane > pre {
     font-size: 0.9em;
   }
+}
+.prism-show-language {
+  right: 0;
+  top: 0;
+  padding: 2px 5px;
+  color: white;
+  /* slategray matches the source code comments in the prism-okaida
+     theme. We do this because language labels provide non-primary
+     contextual information, like code comments. */
+  background: slategray;
+  position: absolute;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 code {
   font-family: 'Source Code Pro', 'Courier', monospace;
