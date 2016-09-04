@@ -51,15 +51,19 @@ iframe[scrolling='no'] {
 
 .header {
   text-align: center;
-  margin: 0 16px;
-  border: 1px solid transparent;
+  padding: 0 42px;
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
 
+  /* prevents the github ribbon from leaking out
+     of the header and overlapping form inputs */
+  overflow: hidden;
+  position: relative;
+
   @media (--midphone-plus) {
-    margin-top: 6px;
-    margin-bottom: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 }
 .title {
@@ -115,27 +119,26 @@ iframe[scrolling='no'] {
       color: white;
     }
   }
-}
 
-input[type="radio"] {
-  opacity: 0;
-  position: absolute;
+  & input[type="radio"] {
+    display: none;
 
-  &:checked {
-    & + label {
-      background-color: var(--previewDark);
+    &:checked {
+      & + label {
+        background-color: var(--previewDark);
+      }
+
+      /* library-specific colors */
+      & + .label-css           { color: #16A1DC; }
+      & + .label-vanillajs     { color: #F0DB4F; }
+      & + .label-p5            { color: #EC245E; }
+      & + .label-greensock     { color: #88CE02; }
+      & + .label-jquery        { color: #0769AD; }
+      & + .label-velocity      { color: #FFFFFF; }
+      & + .label-webanimations { color: #E44D26; }
+      & + .label-smil          { color: #FFB13B; }
+      & + .label-mojs          { color: #613961; }
     }
-
-    /* library-specific colors */
-    & + .label-css           { color: #16A1DC; }
-    & + .label-vanillajs     { color: #F0DB4F; }
-    & + .label-p5            { color: #EC245E; }
-    & + .label-greensock     { color: #88CE02; }
-    & + .label-jquery        { color: #0769AD; }
-    & + .label-velocity      { color: #FFFFFF; }
-    & + .label-webanimations { color: #E44D26; }
-    & + .label-smil          { color: #FFB13B; }
-    & + .label-mojs          { color: #613961; }
   }
 }
 
