@@ -10,12 +10,15 @@
 @custom-media --midphone-plus (width >= 500px);
 @custom-media --tablet-plus (width >= 780px);
 @custom-media --megatablet-plus (width >= 900px);
+@custom-media --short-screens (height <= 560px);
+
 :root {
   /***** COLORS *****/
   /* dark background colors */
   --previewDark: #111111;
   --docsDark: #151515;
   --sourceDark: #1d1d1d;
+  --secondaryInfo: #49525a;
   /* This matches a color from our prism-okaidia syntax highlighting theme */
   --linkYellow: #e6db74;
 
@@ -237,6 +240,26 @@ iframe[scrolling='no'] {
 
 .docs-toggle-link_is-less::before {
   content: 'Less '
+}
+
+.credit {
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 12px;
+  text-align: center;
+  color: var(--secondaryInfo);
+  border-top: 1px solid var(--sourceDark);
+  background-color: var(--previewDark);
+  padding: 3px 0;
+
+  & :any-link {
+    color: var(--secondaryInfo);
+  }
+
+  /* preserve vertical space by hiding the credit on short screens */
+  @media (--short-screens) {
+    display: none;
+  }
 }
 
 .unsupported {

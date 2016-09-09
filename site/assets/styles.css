@@ -373,6 +373,29 @@ iframe[scrolling='no'] {
 .docs-toggle-link_is-less::before {
   content: 'Less '
 }
+.credit {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  font-size: 12px;
+  text-align: center;
+  color: #49525a;
+  border-top: 1px solid #1d1d1d;
+  background-color: #111111;
+  padding: 3px 0
+
+  /* preserve vertical space by hiding the credit on short screens */
+}
+.credit :link,.credit :visited {
+  color: #49525a;
+}
+@media (max-height: 560px) {
+  .credit {
+    display: none;
+  }
+  }
 .unsupported {
   color: white;
   width: 50%;
