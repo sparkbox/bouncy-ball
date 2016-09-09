@@ -325,10 +325,7 @@ iframe[scrolling='no'] {
   top: 0;
   padding: 2px 5px;
   color: white;
-  /* slategray matches the source code comments in the prism-okaida
-     theme. We do this because language labels provide non-primary
-     contextual information, like code comments. */
-  background: slategray;
+  background: var(--secondaryInfo);
   position: absolute;
   font-size: 10px;
   text-transform: uppercase;
@@ -342,4 +339,9 @@ code {
        highlighted colors instead of being default-link-blue. */
     color: inherit;
   }
+}
+
+.ribbon {
+  max-width: 24vw;
+  max-height: 138px;
 }
