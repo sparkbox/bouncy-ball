@@ -86,12 +86,13 @@ iframe[scrolling='no'] {
 }
 
 .selection-bar {
-  background: #eaeaea;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   padding: 14px 12vw;
+  background-color: #eaeaea;
+
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
@@ -300,7 +301,7 @@ iframe[scrolling='no'] {
   flex-shrink: 1;
   flex-basis: 60%;
   position: relative;
-  overflow: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
 
   & > pre {
