@@ -3,7 +3,7 @@ var $ball = $('ball'),
 
 function dropBall() {
   // We animate 'top' because jquery can't
-  // animate transforms (wihtout plugins):
+  // animate transforms (without plugins):
   // See https://bugs.jquery.com/ticket/4171
   $ball.animate({ top: '160px' }, DURATION, 'easeInQuad', restoreBall);
 }
