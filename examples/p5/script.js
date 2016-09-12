@@ -1,7 +1,7 @@
 var h = 575; // x vertex, half of total bounce duration
 var k = 160; // y vertex, total bounce height
 var a = -4 * k / Math.pow(h * 2, 2); // coefficient: -.000483932
-var ypos, start, time;
+var ypos, start, time, timestamp;
 
 function setup() {
   createCanvas(66, 226);
@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-  var timestamp = millis();
+  timestamp = millis();
   if (!start) { start = timestamp };
   time = timestamp - start;
 
@@ -21,5 +21,5 @@ function draw() {
   ypos = a * Math.pow(((time + h) % (h * 2) - h), 2) + k;
 
   clear();
-  ellipse(30, 200 - ypos, 30, 30);
+  ellipse(33, 200 - ypos, 50, 50);
 }
