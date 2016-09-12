@@ -1,19 +1,7 @@
-var initialPosition = 160,               // px
-    initialVelocity = 0,                 // px/second
-    initialTime = (Date.now() / 1000),   // seconds
-    acceleration = -1000,                // px/second^2
-
-    // this is either the initial height or the ground height
-    referencePosition = initialPosition,
-
-    // this is either the initial velocity or rebound velocity
-    referenceVelocity = initialVelocity,
-
-    // this is either the initial time or time at the ground
-    referenceTime = initialTime,    reboundVelocity,
-    reboundVelocitySquared,
-    elapsedTime,
-    currentPosition;
+var h = 575; // x vertex, half of total bounce duration
+var k = 160; // y vertex, total bounce height
+var a = -4 * k / Math.pow(h * 2, 2); // coefficient: -.000483932
+var ypos, start, time;
 
 function setup() {
   createCanvas(66, 226);
@@ -22,39 +10,16 @@ function setup() {
 }
 
 function draw() {
-  elapsedTime = (Date.now() / 1000) - referenceTime; // seconds
+  var timestamp = millis();
+  if (!start) { start = timestamp };
+  time = timestamp - start;
 
-  // Kinematic Equation 1
-  //   d = Vi*t + (1/2)a*t^2
-  distance = referenceVelocity * elapsedTime +
-             0.5 * acceleration * Math.pow(elapsedTime, 2);
-  currentPosition = referencePosition + distance;
+  // Position as a function of time, using the vertex form
+  // of the quadratic formula:  f(x) = a(x - h)^2 + k,
+  // (where [h, k] is the vertex). See it graphically at:
+  //    https://www.desmos.com/calculator/i6yunccp7v
+  ypos = a * Math.pow(((time + h) % (h * 2) - h), 2) + k;
 
-  if (currentPosition < 0 ) {
-    // This animation doesn't account for bounce decay
-    // so we can save processing by only calculating
-    // the return velocity on the first bounce.
-    if (!reboundVelocity) {
-
-      // Kinematic Equation 2
-      //   Vf^2 = Vi^2 + 2*a*d
-      reboundVelocitySquared = Math.pow(initialVelocity, 2) +
-                               2 * acceleration * initialPosition;
-
-      // The Math.abs reverses the ball direction
-      // while preventing imaginary numbers.
-      reboundVelocity = Math.sqrt(Math.abs(reboundVelocitySquared));
-      referenceVelocity = reboundVelocity;
-    }
-
-    // Reset initial states.
-    currentPosition = 0;
-    referencePosition = 0; // Our new initial position.
-    referenceTime = Date.now() / 1000; // Our new initial time.
-  }
-
-  // Draw the ball
-  translatedPos = initialPosition - currentPosition;
   clear();
-  ellipse(33, 33 + translatedPos, 50);
+  ellipse(30, 200 - ypos, 30, 30);
 }
