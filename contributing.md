@@ -12,5 +12,18 @@ Here's a few things you should know before you submit your PR:
 6. The browser compatibility requirement for the bouncy-ball site itself is modern browsers (IE9+, and latest: Chrome, Firefox, Opera, and Safari).
 7. Make your changes on a topic branch and submit PRs against the gh-pages branch.
 
-
 When in doubt on how to organize your example, start by copying the `examples/template` folder and using it as a base. You can look at the structure of existing examples for reference.
+
+## Development Workflow
+
+1. Clone the project down to your computer.
+2. From the project folder, run `npm install` in your terminal.
+3. Start a [local static server](https://gist.github.com/willurd/5720255). For example, if you're using a Mac with python installed, you can run `python -m SimpleHTTPServer 8000` in your terminal and go to `localhost:8000` in your browser to see the site.
+4. Make file changes.
+5. Run `npm run build` to build the assets, and refresh your browser to see the changes.
+
+## Contribution Workfow
+
+1. Fork and clone the repo.
+2. Make your changes on a [feature-branch](https://bocoup.com/weblog/git-workflow-walkthrough-feature-branches).
+3. Submit a Pull Request.
