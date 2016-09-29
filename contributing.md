@@ -26,4 +26,4 @@ When in doubt on how to organize your example, start by copying the `examples/te
 
 1. Fork and clone the repo.
 2. Make your changes on a [feature-branch](https://bocoup.com/weblog/git-workflow-walkthrough-feature-branches).
-3. Submit a Pull Request.
+3. Submit a Pull Request to the `master` branch.
