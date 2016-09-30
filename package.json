@@ -11,7 +11,7 @@
     "build:js": "browserify site/js/app.js -o site/assets/bundle.js -t [ babelify --presets [es2015] ]",
     "build:css": "postcss --use stylelint --use postcss-import --postcss-import.path 'node_modules/prismjs/themes' --use postcss-cssnext --use postcss-reporter -o site/assets/styles.css site/css/*.css",
     "watch": "postcss --watch --use stylelint --use postcss-import --postcss-import.path 'node_modules/prismjs/themes' --use postcss-cssnext --use postcss-reporter -o site/assets/styles.css site/css/*.css",
-    "start": "http-server ."
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,10 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.9.0",
     "babelify": "^7.3.0",
+    "browser-sync": "^2.16.0",
     "browserify": "^13.0.1",
-    "http-server": "^0.9.0",
+    "command-line-args": "^3.0.1",
+    "http-rewrite-middleware": "^0.1.6",
     "postcss": "^5.0.21",
     "postcss-cli": "^2.5.2",
     "postcss-cssnext": "^2.7.0",
