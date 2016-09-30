@@ -6,8 +6,6 @@ var bounceUp = anime({
     duration: 575,
     easing:   'easeOutQuad',
   },
-  direction: 'normal',
-  loop:      false,
   complete:  function(){ bounceDown.play() }, //Function encapsulation is necessary, otherwise we run into not defined error
 });
 
@@ -19,8 +17,6 @@ var bounceDown = anime({
     duration: 575,
     easing:   'easeInQuad',
   },
-  direction: 'normal',
-  loop:      false,
   complete:  function(){ bounceUp.play() }, //After we bounce down, start the bounce up animation
 });
 
