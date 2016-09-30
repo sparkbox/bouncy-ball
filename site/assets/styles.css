@@ -109,6 +109,8 @@ pre[class*="language-"] {
  ********** Variables **********
  *******************************/
 :root {
+  /***** FONTS *****/
+
   /***** COLORS *****/
   /* dark background colors */
   /* This matches a color from our prism-okaidia syntax highlighting theme */
@@ -342,12 +344,6 @@ iframe[scrolling='no'] {
 .docs-pane-content h1:first-of-type {
   margin-top: 0;
 }
-.button-link{
-    background-color: #111111;
-    border: none;
-    text-decoration: underline;
-    cursor: pointer;
-}
 .docs-toggle {
   position: absolute;
   top: 8.8px;
@@ -378,6 +374,15 @@ iframe[scrolling='no'] {
     font-size: 13px;
   }
   }
+.button-link {
+  font-family: 'Source Sans Pro', Verdana, sans-serif;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+  outline: none;
+}
 .docs-toggle-link_is-less::before {
   content: 'Less '
 }

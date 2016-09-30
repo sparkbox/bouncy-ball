@@ -13,6 +13,11 @@
 @custom-media --short-screens (height <= 560px);
 
 :root {
+  /***** FONTS *****/
+  --titleFont: 'Ubuntu', 'Source Sans Pro', Verdana, sans-serif;
+  --copyFont: 'Source Sans Pro', Verdana, sans-serif;
+  --sourceFont: 'Source Code Pro', 'Courier', monospace;
+
   /***** COLORS *****/
   /* dark background colors */
   --previewDark: #111111;
@@ -40,7 +45,7 @@ html {
 }
 
 body {
-  font-family: 'Source Sans Pro', Verdana, sans-serif;
+  font-family: var(--copyFont);
   margin: 0;
   height: 100vh;
   display: flex;
@@ -70,7 +75,7 @@ iframe[scrolling='no'] {
   }
 }
 .title {
-  font-family: 'Ubuntu', 'Source Sans Pro', Verdana, sans-serif;
+  font-family: var(--titleFont);
   font-size: 18px;
 
   @media (--midphone-plus) {
@@ -231,12 +236,22 @@ iframe[scrolling='no'] {
   color: var(--linkYellow);
 
   &::before {
-    content: 'More '
+    content: 'More ';
   }
 
   @media (--midphone-plus) {
     font-size: 13px;
   }
+}
+
+.button-link {
+  font-family: var(--copyFont);
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+  outline: none;
 }
 
 .docs-toggle-link_is-less::before {
@@ -332,7 +347,7 @@ iframe[scrolling='no'] {
 }
 
 code {
-  font-family: 'Source Code Pro', 'Courier', monospace;
+  font-family: var(--sourceFont);
 
   & a {
     /* causes autolinker links to inherit their respective syntax-
