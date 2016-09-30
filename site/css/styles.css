@@ -148,6 +148,7 @@ iframe[scrolling='no'] {
       & + .label-smil          { color: #FFB13B; }
       & + .label-mojs          { color: #613961; }
       & + .label-anime         { color: #AE27E7; }
+      & + .label-react         { color: #00CFFF; }
     }
   }
 }
