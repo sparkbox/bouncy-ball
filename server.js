@@ -39,7 +39,7 @@ if (options.proxy) {
 } else {
   // Rewrite URLs without .html to map to .html files
   var rewriteModule = require('http-rewrite-middleware').getMiddleware([
-    { from: '(^((?!css|html|js|img|\/$).)*$)', to: '$1.html' }
+    { from: '(^((?!css|html|js|img|svg|ico|md|\/$).)*$)', to: '$1.html' }
   ]);
   config = Object.assign({
     server: { baseDir: '.' },

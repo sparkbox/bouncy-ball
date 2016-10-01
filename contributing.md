@@ -18,7 +18,7 @@ When in doubt on how to organize your example, start by copying the `examples/te
 
 1. Clone the project down to your computer.
 2. From the project folder, run `npm install` in your terminal.
-3. Start a local static server with `npm start` in your terminal and go to `localhost:8080` in your browser to see the site.
+3. Start a local static server with `npm start` in your terminal and visit the URL given by the output to see the site.
    - For local server configurations see [server.md](/server.md)
 4. Make file changes.
 5. Run `npm run build` to build the assets, and refresh your browser to see the changes.
