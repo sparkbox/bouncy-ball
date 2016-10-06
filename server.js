@@ -23,7 +23,8 @@ let sharedSettings = {
   tunnel: tunnel,
   https: https,
   logPrefix: pkg.name,
-  open: false
+  open: false,
+  notify: false
 };
 
 // Configuration object passed to BrowserSync
