@@ -1,23 +1,27 @@
-var svg = d3.select("body").append("svg")
-      .attr("width", 500)
-      .attr("height", 500)
-      .append('g')
-      .attr('transform', 'translate(30,76)');
+var svg, ball;
 
-    var ball = svg.append("circle")
-      .attr('r', 25);
+svg = d3.select('body')
+        .append('svg')
+        .attr('width', 50)
+        .attr('height', 210)
+        .append('g')
+        .attr('transform', 'translate(25,25)');
 
-    bounce();
+ball = svg.append("circle")
+          .attr('r', 25)
+          .attr('fill', '#FF7B39');
 
-    function bounce() {
-      ball
-        .transition()
-        .duration(475)
-        .ease(d3.easeQuadIn)
-        .attr('cy', 120)
-        .transition()
-        .duration(475)
-        .ease(d3.easeQuadOut)
-        .attr('cy', 0)
-        .on('end', bounce);
-    }
+function bounce() {
+  ball
+    .transition()
+    .duration(575)
+    .ease(d3.easeQuadIn)
+    .attr('cy', 160)
+    .transition()
+    .duration(575)
+    .ease(d3.easeQuadOut)
+    .attr('cy', 0)
+    .on('end', bounce);
+}
+
+bounce();
