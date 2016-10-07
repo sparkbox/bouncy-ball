@@ -270,6 +270,9 @@ iframe[scrolling='no'] {
 .selection-bar input[type="radio"]:checked + .label-anime {
   color: #AE27E7;
 }
+.selection-bar input[type="radio"]:checked + .label-react {
+  color: #00CFFF;
+}
 .selection-bar input[type="radio"]:checked + .label-d3 {
   color: #FF7B39;
 }
