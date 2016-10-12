@@ -57,16 +57,17 @@ if (options.watch) {
         match: ['./site/css/*.css'],
         fn: function(e, path) {
           // shell.exec is synchronous
-          shell.exec('npm run build:css');
+          shell.exec('yarn run build:css');
           server.reload('*.css');
         },
         options: defaultOptions
       },
       {
-        match: ['./site/js/*.js'],
+        // Added specific React script to prevent infinite loop from js output
+        match: ['./site/js/*.js', './examples/react/script.js'],
         fn: function(e, path) {
           // shell.exec is synchronous
-          shell.exec('npm run build:js');
+          shell.exec('yarn run build:js');
           server.reload('*.js');
         },
         options: defaultOptions
