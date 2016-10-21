@@ -17,7 +17,7 @@ When in doubt on how to organize your example, start by copying the `examples/te
 ## Development Workflow
 
 1. Clone the project down to your computer.
-2. From the project folder, run `yarn install` in your terminal.
+2. From the project folder, run `yarn install` in your terminal ([install yarn](https://yarnpkg.com/en/docs/install), if you don't already have it installed).
 3. Start a local static server with `yarn start` in your terminal and visit the URL given by the output to see the site.
    - For local server configurations see [server.md](/server.md)
 4. Make file changes.
