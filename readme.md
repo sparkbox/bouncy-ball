@@ -36,7 +36,7 @@ To learn more on how to build, profile, and optimize, performant web-animations,
 
 ## Contributing
 
- For questions, ideas, or bugs, feel free to [open an issue](https://github.com/sparkbox/bouncy-ball/issues/new). Pull requests are even better, though you'll want to read the [contribution guidelines](https://github.com/sparkbox/bouncy-ball/blob/gh-pages/contributing.md) first.
+ For questions, ideas, or bugs, feel free to [open an issue](https://github.com/sparkbox/bouncy-ball/issues/new). Pull requests are even better, though you'll want to read the [contribution guidelines](contributing.md) first.
 
 ## License
 
