@@ -151,10 +151,10 @@ iframe[scrolling='no'] {
       & + .label-react         { color: #00CFFF; }
       & + .label-d3            { color: #FF7B39; }
       & + .label-gif           { color: #EE88E3; }
+      & + .label-video         { color: #CFD1AD; }
     }
   }
 }
-
 
 .demo-frame {
   width: 66px; /* 50px ball + 8px margin left/right */

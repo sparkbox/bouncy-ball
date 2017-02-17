@@ -22,10 +22,10 @@ function updatePanes(event) {
   const name = selected.nextElementSibling.textContent,
         srcFileName = (selected.id === 'css') ? 'styles.css' :
                       (selected.id === 'smil') ? 'image.svg' :
+                      (selected.id === 'video') ? 'index.html' :
                       (selected.id === 'animated-gif') ? 'index.html' : 'script.js',
 
         demoFileName = (selected.id === 'smil') ? 'image.svg' : 'index.html',
-                      // (selected.id === 'animated-gif') ? 'image.gif' : 'index.html',
 
         // pane content urls
         srcUrl = 'examples/' + selected.id + '/' + srcFileName,
@@ -62,6 +62,7 @@ function updatePanes(event) {
 function _highlightSource() {
   const srcLanguage = (selected.id === 'css') ? 'css' :
                       (selected.id === 'smil') ? 'markup' :
+                      (selected.id === 'video') ? 'markup' :
                       (selected.id === 'animated-gif') ? 'markup' : 'javascript';
 
   srcCodeEl.className = '';
