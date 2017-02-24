@@ -1,0 +1,29 @@
+/* See the sprite image we needed to create for this animation:
+   http://sparkbox.github.io/bouncy-ball/examples/css-step/image.gif
+*/
+ball {
+  display: block;
+  width: 66px;
+  height: 210px;
+  background: url(image.gif) no-repeat;
+  animation: bounce 1.15s steps(57) infinite;
+}
+
+@keyframes bounce {
+  from { background-position: 0px;     }
+  to   { background-position: -3762px; }
+}
+
+/* Vendor prefixes -- adds support for the browsers that need it */
+/* See http://caniuse.com/#feat=css-animation for support matrix */
+ball {
+  -webkit-animation: bounce 1.15s steps(57) infinite;
+  -moz-animation: bounce 1.15s steps(57) infinite;
+  -ms-animation: bounce 1.15s steps(57) infinite;
+  -o-animation: bounce 1.15s steps(57) infinite;
+}
+
+@-webkit-keyframes bounce {
+  from { background-position: 0px;     }
+  to   { background-position: -2850px; }
+}

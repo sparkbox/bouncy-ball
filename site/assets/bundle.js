@@ -11372,7 +11372,7 @@ var selected = void 0;
 function updatePanes(event) {
   selected = document.querySelector('input[type="radio"]:checked');
   var name = selected.nextElementSibling.textContent,
-      srcFileName = selected.id === 'css' ? 'styles.css' : selected.id === 'smil' ? 'image.svg' : selected.id === 'video' ? 'index.html' : selected.id === 'animated-gif' ? 'index.html' : 'script.js',
+      srcFileName = selected.id === 'css' ? 'styles.css' : selected.id === 'css-step' ? 'styles.css' : selected.id === 'smil' ? 'image.svg' : selected.id === 'video' ? 'index.html' : selected.id === 'animated-gif' ? 'index.html' : 'script.js',
       demoFileName = selected.id === 'smil' ? 'image.svg' : 'index.html',
 
 
@@ -11409,7 +11409,7 @@ function updatePanes(event) {
  * @private
  */
 function _highlightSource() {
-  var srcLanguage = selected.id === 'css' ? 'css' : selected.id === 'smil' ? 'markup' : selected.id === 'video' ? 'markup' : selected.id === 'animated-gif' ? 'markup' : 'javascript';
+  var srcLanguage = selected.id === 'css' ? 'css' : selected.id === 'css-step' ? 'css' : selected.id === 'smil' ? 'markup' : selected.id === 'video' ? 'markup' : selected.id === 'animated-gif' ? 'markup' : 'javascript';
 
   srcCodeEl.className = '';
   srcCodeEl.classList.add('language-' + srcLanguage);

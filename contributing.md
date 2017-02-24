@@ -10,7 +10,6 @@ Here's a few things you should know before you submit your PR:
 4. Any new animation should work on the demo page and be visually indistinguishable from existing animations (except for the color of the ball).
 5. Please test your animation across modern browsers. If some browsers don't support the animation, ensure the incompatibilty message is displayed.
 6. The browser compatibility requirement for the bouncy-ball site itself is modern browsers (IE9+, and latest: Chrome, Firefox, Opera, and Safari).
-7. Make your changes on a topic branch and submit PRs against the gh-pages branch.
 
 When in doubt on how to organize your example, start by copying the `examples/template` folder and using it as a base. You can look at the structure of existing examples for reference.
 

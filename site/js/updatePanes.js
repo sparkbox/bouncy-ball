@@ -21,6 +21,7 @@ function updatePanes(event) {
   selected = document.querySelector('input[type="radio"]:checked');
   const name = selected.nextElementSibling.textContent,
         srcFileName = (selected.id === 'css') ? 'styles.css' :
+                      (selected.id === 'css-step') ? 'styles.css' :
                       (selected.id === 'smil') ? 'image.svg' :
                       (selected.id === 'video') ? 'index.html' :
                       (selected.id === 'animated-gif') ? 'index.html' : 'script.js',
@@ -61,6 +62,7 @@ function updatePanes(event) {
  */
 function _highlightSource() {
   const srcLanguage = (selected.id === 'css') ? 'css' :
+                      (selected.id === 'css-step') ? 'css' :
                       (selected.id === 'smil') ? 'markup' :
                       (selected.id === 'video') ? 'markup' :
                       (selected.id === 'animated-gif') ? 'markup' : 'javascript';

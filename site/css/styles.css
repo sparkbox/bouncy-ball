@@ -152,6 +152,7 @@ iframe[scrolling='no'] {
       & + .label-d3            { color: #FF7B39; }
       & + .label-gif           { color: #EE88E3; }
       & + .label-video         { color: #CFD1AD; }
+      & + .label-cssstep       { color: #808080; }
     }
   }
 }

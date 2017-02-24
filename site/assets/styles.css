@@ -282,6 +282,9 @@ iframe[scrolling='no'] {
 .selection-bar input[type="radio"]:checked + .label-video {
   color: #CFD1AD;
 }
+.selection-bar input[type="radio"]:checked + .label-cssstep {
+  color: #808080;
+}
 .demo-frame {
   width: 66px; /* 50px ball + 8px margin left/right */
   height: 226px; /* 160px range + 50px ball + 8px margin top/bottom */
