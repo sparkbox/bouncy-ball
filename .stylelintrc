@@ -1,12 +1,3 @@
 {
- "rules": {
-  "max-empty-lines": 2,
-  "number-no-trailing-zeros": true,
-  "length-zero-no-unit": true,
-  "block-no-empty": true,
-  "comment-no-empty": true,
-  "color-no-invalid-hex": true,
-  "declaration-colon-space-after": "always",
-  "indentation": 2
- }
+  "extends": "stylelint-config-sparkbox"
 }

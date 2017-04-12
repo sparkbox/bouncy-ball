@@ -19,11 +19,13 @@
   --sourceFont: 'Source Code Pro', 'Courier', monospace;
 
   /***** COLORS *****/
+
   /* dark background colors */
   --previewDark: #111111;
   --docsDark: #151515;
   --sourceDark: #1d1d1d;
   --secondaryInfo: #49525a;
+
   /* This matches a color from our prism-okaidia syntax highlighting theme */
   --linkYellow: #e6db74;
 
@@ -40,7 +42,10 @@
 html {
   box-sizing: border-box;
 }
-*, *::before, *::after {
+
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -74,6 +79,7 @@ iframe[scrolling='no'] {
     padding-bottom: 6px;
   }
 }
+
 .title {
   font-family: var(--titleFont);
   font-size: 18px;
@@ -82,6 +88,7 @@ iframe[scrolling='no'] {
     font-size: 32px;
   }
 }
+
 .description {
   font-size: 14px;
 
@@ -138,6 +145,8 @@ iframe[scrolling='no'] {
       }
 
       /* library-specific colors */
+
+      /* stylelint-disable */
       & + .label-css           { color: #16A1DC; }
       & + .label-vanillajs     { color: #F0DB4F; }
       & + .label-p5            { color: #EC245E; }
@@ -153,6 +162,7 @@ iframe[scrolling='no'] {
       & + .label-gif           { color: #EE88E3; }
       & + .label-video         { color: #CFD1AD; }
       & + .label-cssstep       { color: #808080; }
+      /* stylelint-enable */
     }
   }
 }
@@ -260,7 +270,7 @@ iframe[scrolling='no'] {
 }
 
 .docs-toggle-link_is-less::before {
-  content: 'Less '
+  content: 'Less ';
 }
 
 .credit {
@@ -288,6 +298,7 @@ iframe[scrolling='no'] {
   width: 50%;
   text-align: center;
 }
+
 .unsupported::before {
   content: '';
   display: block;
@@ -310,6 +321,7 @@ iframe[scrolling='no'] {
   flex-grow: 1;
   flex-shrink: 2;
   min-width: var(--paneMinWidth);
+
   /* clips the bouncing ball, if the frame is too short */
   overflow: hidden;
 }
