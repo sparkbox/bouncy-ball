@@ -19,7 +19,7 @@ This repository is two things:
   2. **Compare** the techniques interactively.
   3. **Educate** developers with basic information for each technique.
 
-### Performance
+### Performance?
 
 This project does not attempt to compare the performance of these animation approaches. If you are interested in a comparison like this, consider using a FPS bookmarklet, like [this one from stats.js](https://github.com/mrdoob/stats.js/#bookmarklet).
 
