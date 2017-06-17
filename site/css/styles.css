@@ -147,19 +147,20 @@ iframe[scrolling='no'] {
       /* library-specific colors */
 
       /* stylelint-disable */
-      & + .label-css           { color: #16A1DC; }
-      & + .label-vanillajs     { color: #F0DB4F; }
-      & + .label-p5            { color: #EC245E; }
+      & + .label-matterjs      { color: #76F09B; }
       & + .label-greensock     { color: #88CE02; }
-      & + .label-jquery        { color: #0769AD; }
-      & + .label-velocity      { color: #FFFFFF; }
-      & + .label-webanimations { color: #E44D26; }
+      & + .label-vanillajs     { color: #F0DB4F; }
       & + .label-smil          { color: #FFB13B; }
-      & + .label-mojs          { color: #613961; }
-      & + .label-anime         { color: #AE27E7; }
-      & + .label-react         { color: #00CFFF; }
       & + .label-d3            { color: #FF7B39; }
+      & + .label-p5            { color: #EC245E; }
+      & + .label-webanimations { color: #E44D26; }
       & + .label-gif           { color: #EE88E3; }
+      & + .label-anime         { color: #AE27E7; }
+      & + .label-mojs          { color: #613961; }
+      & + .label-jquery        { color: #0769AD; }
+      & + .label-css           { color: #16A1DC; }
+      & + .label-react         { color: #00CFFF; }
+      & + .label-velocity      { color: #FFFFFF; }
       & + .label-video         { color: #CFD1AD; }
       & + .label-cssstep       { color: #808080; }
       /* stylelint-enable */
