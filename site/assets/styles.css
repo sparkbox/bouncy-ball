@@ -244,14 +244,11 @@ iframe[scrolling='no'] {
 .selection-bar input[type="radio"]:checked + label {
 	background-color: #111111;
 }
-.selection-bar input[type="radio"]:checked + .label-greensock {
-	color: #88CE02;
-}
-.selection-bar input[type="radio"]:checked + .label-video {
-	color: #CFD1AD;
-}
 .selection-bar input[type="radio"]:checked + .label-matterjs {
 	color: #76F09B;
+}
+.selection-bar input[type="radio"]:checked + .label-greensock {
+	color: #88CE02;
 }
 .selection-bar input[type="radio"]:checked + .label-vanillajs {
 	color: #F0DB4F;
@@ -268,17 +265,17 @@ iframe[scrolling='no'] {
 .selection-bar input[type="radio"]:checked + .label-webanimations {
 	color: #E44D26;
 }
+.selection-bar input[type="radio"]:checked + .label-gif {
+	color: #EE88E3;
+}
+.selection-bar input[type="radio"]:checked + .label-anime {
+	color: #AE27E7;
+}
 .selection-bar input[type="radio"]:checked + .label-mojs {
 	color: #613961;
 }
 .selection-bar input[type="radio"]:checked + .label-jquery {
 	color: #0769AD;
-}
-.selection-bar input[type="radio"]:checked + .label-anime {
-	color: #AE27E7;
-}
-.selection-bar input[type="radio"]:checked + .label-gif {
-	color: #EE88E3;
 }
 .selection-bar input[type="radio"]:checked + .label-css {
 	color: #16A1DC;
@@ -288,6 +285,9 @@ iframe[scrolling='no'] {
 }
 .selection-bar input[type="radio"]:checked + .label-velocity {
 	color: #FFFFFF;
+}
+.selection-bar input[type="radio"]:checked + .label-video {
+	color: #CFD1AD;
 }
 .selection-bar input[type="radio"]:checked + .label-cssstep {
 	color: #808080;

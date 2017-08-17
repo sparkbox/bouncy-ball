@@ -11260,19 +11260,15 @@ module.exports = function text(state, silent) {
 },{}],63:[function(require,module,exports){
 'use strict';
 
-// Keeping Modernizr outside, since I'd like it to be global.
-var Modernizr = require('./vendor/modernizr-custom');
+var updatePanes = require('./updatePanes');
+var toggleDocs = require('./toggleDocs');
 
-(function () {
-  var updatePanes = require('./updatePanes'),
-      toggleDocs = require('./toggleDocs'),
-
-
+function init() {
   // DOM queries and a URL lookup.
-  options = document.querySelectorAll('input[type="radio"]'),
-      unsupportedLink = document.querySelector('.unsupported-details'),
-      docsToggleLink = document.querySelector('.docs-toggle-link'),
-      hashOption = window.location.hash;
+  var options = document.querySelectorAll('input[type="radio"]');
+  var unsupportedLink = document.querySelector('.unsupported-details');
+  var docsToggleLink = document.querySelector('.docs-toggle-link');
+  var hashOption = window.location.hash;
 
   // Pre-select an option, if it is found in the URL fragment.
   if (hashOption) {
@@ -11283,14 +11279,26 @@ var Modernizr = require('./vendor/modernizr-custom');
   updatePanes();
 
   // Set listeners for future updates:
-  for (var i = 0; i < options.length; i++) {
-    options[i].addEventListener('change', updatePanes);
-  }
+  options.forEach(function (option) {
+    option.addEventListener('change', updatePanes);
+  });
   docsToggleLink.addEventListener('click', toggleDocs);
   unsupportedLink.addEventListener('click', toggleDocs);
-})();
+}
 
-},{"./toggleDocs":65,"./updatePanes":66,"./vendor/modernizr-custom":67}],64:[function(require,module,exports){
+module.exports = { init: init };
+
+},{"./toggleDocs":66,"./updatePanes":67}],64:[function(require,module,exports){
+'use strict';
+
+// Keeping Modernizr here, since I'd like it to be globally accessible.
+//   eslint-disable-next-line no-unused-vars
+var Modernizr = require('./vendor/modernizr-custom');
+var App = require('./app');
+
+App.init();
+
+},{"./app":63,"./vendor/modernizr-custom":68}],65:[function(require,module,exports){
 'use strict';
 
 function sourceDump(url, dumpLocation, options) {
@@ -11320,7 +11328,7 @@ function sourceDump(url, dumpLocation, options) {
 
     if (options.failureCallback) {
       options.failureCallback();
-    };
+    }
   };
 
   request.send();
@@ -11328,11 +11336,11 @@ function sourceDump(url, dumpLocation, options) {
 
 module.exports = sourceDump;
 
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 'use strict';
 
-var docsPane = document.querySelector('.docs-pane'),
-    docsToggle = document.querySelector('.docs-toggle-link');
+var docsPane = document.querySelector('.docs-pane');
+var docsToggle = document.querySelector('.docs-toggle-link');
 
 /**
  * Function that toggles the docs pane.
@@ -11346,69 +11354,77 @@ function toggleDocs(e) {
 
 module.exports = toggleDocs;
 
-},{}],66:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
-var Prism = require('./vendor/prismjs-custom'),
-    Remarkable = require('remarkable'),
-    sourceDump = require('./sourceDump'),
-    Platform = require('platform'),
-
+/*  eslint-disable no-nested-ternary */
+//  I'm disabling this rule here because the patterns and
+//  indenting in this case makes it pretty readable.
+var Prism = require('./vendor/prismjs-custom');
+var Remarkable = require('remarkable');
+var sourceDump = require('./sourceDump');
+var Platform = require('platform');
 
 // DOM queries
-srcPreEl = document.querySelector('.source-pane > pre'),
-    srcCodeEl = document.querySelector('.source-pane > pre > code'),
-    demoEl = document.querySelector('.demo-frame'),
-    docsEl = document.querySelector('.docs-pane-content'),
-    docsLinkDemoName = document.querySelector('.demo-name'),
-    unsupportedEl = document.querySelector('.unsupported');
+var srcPreEl = document.querySelector('.source-pane > pre');
+var srcCodeEl = document.querySelector('.source-pane > pre > code');
+var demoEl = document.querySelector('.demo-frame');
+var docsEl = document.querySelector('.docs-pane-content');
+var docsLinkDemoName = document.querySelector('.demo-name');
+var unsupportedEl = document.querySelector('.unsupported');
 
 // We pull this value to the top level, so callbacks can access its latest value.
 var selected = void 0;
 
 /**
- * Updates the preview & source panes based to match the currently selected option.
+ * @private
  */
-function updatePanes(event) {
-  selected = document.querySelector('input[type="radio"]:checked');
-  var name = selected.nextElementSibling.textContent,
-      srcFileName = selected.id === 'css' ? 'styles.css' : selected.id === 'css-step' ? 'styles.css' : selected.id === 'smil' ? 'image.svg' : selected.id === 'video' ? 'index.html' : selected.id === 'animated-gif' ? 'index.html' : 'script.js',
-      demoFileName = selected.id === 'smil' ? 'image.svg' : 'index.html',
+function showIncompatibilityMessage() {
+  // hide iframe
+  demoEl.style.display = 'none';
+  // show message
+  unsupportedEl.style.display = '';
+}
+/**
+ * @private
+ */
+function resetIncompatibilityMessage() {
+  // show iframe
+  demoEl.style.display = '';
+  // hide message
+  unsupportedEl.style.display = 'none';
+}
 
+/**
+ * Runs Remarkable on readme text, and drops it into the docs pane.
+ * @private
+ */
+function markdownToHtml(response) {
+  var parser = new Remarkable('commonmark');
+  docsEl.innerHTML = parser.render(response);
+}
 
-  // pane content urls
-  srcUrl = 'examples/' + selected.id + '/' + srcFileName,
-      demoUrl = 'examples/' + selected.id + '/' + demoFileName,
-      docsUrl = 'examples/' + selected.id + '/readme.md';
+/**
+ * Checks if the selected demo is compatible with this browser.
+ * @private
+ */
+function isCompatible(selectedId) {
+  var browser = Platform.name;
 
-  // Update the page URL, when an option is changed.
-  // We only do this on the change event to prevent hash updates on initial page load.
-  if (event && event.type === 'change') {
-    window.location.hash = selected.id;
+  if (selectedId === 'smil') {
+    // only return true if there's a Modernizr 👍 and the browser isn't Safari.
+    return Modernizr.smil && browser !== 'Safari';
+  } else if (selectedId === 'p5') {
+    return Modernizr.webgl;
   }
-
-  // Update the source pane (scroll it to the top, and get the new source).
-  srcPreEl.scrollTop = 0;
-  sourceDump(srcUrl, srcCodeEl, { successCallback: _highlightSource });
-
-  // Update the demo pane.
-  _resetIncompatibilityMessage();
-  if (!_isCompatible(selected.id)) {
-    _showIncompatibilityMessage();
-  } else {
-    demoEl.setAttribute('src', demoUrl);
-  }
-
-  // Update the docs pane.
-  docsLinkDemoName.textContent = name;
-  sourceDump(docsUrl, undefined, { successCallback: _markdownToHtml });
+  return true;
 }
 
 /**
  * Runs PrismJS on the page. Designed to be called once the new source is on the page.
  * @private
  */
-function _highlightSource() {
+function highlightSource() {
   var srcLanguage = selected.id === 'css' ? 'css' : selected.id === 'css-step' ? 'css' : selected.id === 'smil' ? 'markup' : selected.id === 'video' ? 'markup' : selected.id === 'animated-gif' ? 'markup' : 'javascript';
 
   srcCodeEl.className = '';
@@ -11418,49 +11434,46 @@ function _highlightSource() {
 }
 
 /**
- * Runs Remarkable on readme text, and drops it into the docs pane.
- * @private
+ * Updates the preview & source panes based to match the currently selected option.
  */
-function _markdownToHtml(response) {
-  var parser = new Remarkable('commonmark');
-  docsEl.innerHTML = parser.render(response);
-}
+function updatePanes(event) {
+  selected = document.querySelector('input[type="radio"]:checked');
+  var name = selected.nextElementSibling.textContent;
+  var srcFileName = selected.id === 'css' ? 'styles.css' : selected.id === 'css-step' ? 'styles.css' : selected.id === 'smil' ? 'image.svg' : selected.id === 'video' ? 'index.html' : selected.id === 'animated-gif' ? 'index.html' : 'script.js';
 
-/**
- * Checks if the selected demo is compatible with this browser.
- * @private
- */
-function _isCompatible(selected) {
-  var browser = Platform.name;
+  var demoFileName = selected.id === 'smil' ? 'image.svg' : 'index.html';
 
-  if (selected === 'smil') {
-    // only return true if there's a Modernizr 👍 and the browser isn't Safari.
-    return Modernizr.smil && browser !== 'Safari';
-  } else if (selected === 'p5') {
-    return Modernizr.webgl;
+  // pane content urls
+  var srcUrl = 'examples/' + selected.id + '/' + srcFileName;
+  var demoUrl = 'examples/' + selected.id + '/' + demoFileName;
+  var docsUrl = 'examples/' + selected.id + '/readme.md';
+
+  // Update the page URL, when an option is changed.
+  // We only do this on the change event to prevent hash updates on initial page load.
+  if (event && event.type === 'change') {
+    window.location.hash = selected.id;
   }
-  return true;
-}
 
-/**
- * @private
- */
-function _showIncompatibilityMessage() {
-  // hide iframe
-  demoEl.style.display = 'none';
-  // show message
-  unsupportedEl.style.display = '';
-}
-function _resetIncompatibilityMessage() {
-  // show iframe
-  demoEl.style.display = '';
-  // hide message
-  unsupportedEl.style.display = 'none';
+  // Update the source pane (scroll it to the top, and get the new source).
+  srcPreEl.scrollTop = 0;
+  sourceDump(srcUrl, srcCodeEl, { successCallback: highlightSource });
+
+  // Update the demo pane.
+  resetIncompatibilityMessage();
+  if (!isCompatible(selected.id)) {
+    showIncompatibilityMessage();
+  } else {
+    demoEl.setAttribute('src', demoUrl);
+  }
+
+  // Update the docs pane.
+  docsLinkDemoName.textContent = name;
+  sourceDump(docsUrl, undefined, { successCallback: markdownToHtml });
 }
 
 module.exports = updatePanes;
 
-},{"./sourceDump":64,"./vendor/prismjs-custom":68,"platform":2,"remarkable":3}],67:[function(require,module,exports){
+},{"./sourceDump":65,"./vendor/prismjs-custom":69,"platform":2,"remarkable":3}],68:[function(require,module,exports){
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -11509,7 +11522,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }e.Modernizr = Modernizr;
 }(window, document);
 
-},{}],68:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -11670,4 +11683,4 @@ Prism.languages.javascript = Prism.languages.extend("clike", { keyword: /\b(as|a
 }();
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[63]);
+},{}]},{},[64]);

@@ -27,7 +27,7 @@ function sourceDump(url, dumpLocation, options) {
 
     if (options.failureCallback) {
       options.failureCallback();
-    };
+    }
   };
 
   request.send();

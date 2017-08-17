@@ -1,15 +1,12 @@
-// Keeping Modernizr outside, since I'd like it to be global.
-const Modernizr = require('./vendor/modernizr-custom');
+const updatePanes = require('./updatePanes');
+const toggleDocs = require('./toggleDocs');
 
-(function() {
-  const updatePanes = require('./updatePanes'),
-        toggleDocs = require('./toggleDocs'),
-
-        // DOM queries and a URL lookup.
-        options = document.querySelectorAll('input[type="radio"]'),
-        unsupportedLink = document.querySelector('.unsupported-details'),
-        docsToggleLink = document.querySelector('.docs-toggle-link'),
-        hashOption = window.location.hash;
+function init() {
+  // DOM queries and a URL lookup.
+  const options = document.querySelectorAll('input[type="radio"]');
+  const unsupportedLink = document.querySelector('.unsupported-details');
+  const docsToggleLink = document.querySelector('.docs-toggle-link');
+  const hashOption = window.location.hash;
 
   // Pre-select an option, if it is found in the URL fragment.
   if (hashOption) {
@@ -20,9 +17,11 @@ const Modernizr = require('./vendor/modernizr-custom');
   updatePanes();
 
   // Set listeners for future updates:
-  for (var i = 0; i < options.length; i++) {
-    options[i].addEventListener('change', updatePanes);
-  }
+  options.forEach((option) => {
+    option.addEventListener('change', updatePanes);
+  });
   docsToggleLink.addEventListener('click', toggleDocs);
   unsupportedLink.addEventListener('click', toggleDocs);
-})();
+}
+
+module.exports = { init };

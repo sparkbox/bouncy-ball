@@ -1,5 +1,5 @@
-const docsPane = document.querySelector('.docs-pane'),
-      docsToggle = document.querySelector('.docs-toggle-link');
+const docsPane = document.querySelector('.docs-pane');
+const docsToggle = document.querySelector('.docs-toggle-link');
 
 /**
  * Function that toggles the docs pane.

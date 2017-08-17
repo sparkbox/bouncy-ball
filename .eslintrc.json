@@ -1,0 +1,6 @@
+{
+  "extends": "sparkbox",
+  "globals": {
+      "Modernizr": false
+  }
+}

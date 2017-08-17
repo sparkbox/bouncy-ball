@@ -8,10 +8,12 @@
   },
   "scripts": {
     "build": "yarn run build:css && yarn run build:js && yarn run build:react",
-    "build:js": "browserify site/js/app.js -o site/assets/bundle.js -t [ babelify --presets [es2015] ] && yarn run build:react",
+    "build:js": "browserify site/js/index.js -o site/assets/bundle.js -t [ babelify --presets [es2015] ] && yarn run build:react",
     "build:css": "postcss --use stylelint --use postcss-import --postcss-import.path 'node_modules/prismjs/themes' --use postcss-cssnext --use postcss-reporter -o site/assets/styles.css site/css/*.css",
     "build:react": "babel ./examples/react/script.js -o ./examples/react/script-compiled.js",
-    "start": "node server.js"
+    "test": "eslint site/js/*.js",
+    "start": "node server.js",
+    "watch": "node server.js --watch"
   },
   "repository": {
     "type": "git",
