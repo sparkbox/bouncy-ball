@@ -1,6 +1,4 @@
-var ball = document.getElementsByTagName('ball');
-
-TweenMax.to(ball, 0.575, {
+TweenMax.to("ball", 0.575, {
   y: 160,
   repeat: -1,
   yoyo: true,
