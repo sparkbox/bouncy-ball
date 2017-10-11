@@ -79,7 +79,7 @@ var QuadBounce = function (_React$Component) {
   _createClass(QuadBounce, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.setState({ interval: setInterval(this.updateValue) });
+      this.setState({ interval: setInterval(this.updateValue, 20) });
     }
   }, {
     key: 'componentWillUnmount',
