@@ -38,7 +38,7 @@ class QuadBounce extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({ interval: setInterval(this.updateValue) });
+    this.setState({ interval: setInterval(this.updateValue, 0) });
   }
 
   componentWillUnmount() {
