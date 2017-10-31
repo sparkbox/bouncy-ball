@@ -11425,7 +11425,7 @@ function isCompatible(selectedId) {
  * @private
  */
 function highlightSource() {
-  var srcLanguage = selected.id === 'css' ? 'css' : selected.id === 'css-step' ? 'css' : selected.id === 'smil' ? 'markup' : selected.id === 'video' ? 'markup' : selected.id === 'animated-gif' ? 'markup' : 'javascript';
+  var srcLanguage = selected.id === 'css' ? 'css' : selected.id === 'css-step' ? 'css' : selected.id === 'smil' ? 'markup' : selected.id === 'video' ? 'markup' : selected.id === 'flash' ? 'markup' : selected.id === 'animated-gif' ? 'markup' : 'javascript';
 
   srcCodeEl.className = '';
   srcCodeEl.classList.add('language-' + srcLanguage);
@@ -11439,7 +11439,7 @@ function highlightSource() {
 function updatePanes(event) {
   selected = document.querySelector('input[type="radio"]:checked');
   var name = selected.nextElementSibling.textContent;
-  var srcFileName = selected.id === 'css' ? 'styles.css' : selected.id === 'css-step' ? 'styles.css' : selected.id === 'smil' ? 'image.svg' : selected.id === 'video' ? 'index.html' : selected.id === 'animated-gif' ? 'index.html' : 'script.js';
+  var srcFileName = selected.id === 'css' ? 'styles.css' : selected.id === 'css-step' ? 'styles.css' : selected.id === 'smil' ? 'image.svg' : selected.id === 'video' ? 'index.html' : selected.id === 'flash' ? 'index.html' : selected.id === 'animated-gif' ? 'index.html' : 'script.js';
 
   var demoFileName = selected.id === 'smil' ? 'image.svg' : 'index.html';
 

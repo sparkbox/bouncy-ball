@@ -70,6 +70,7 @@ function highlightSource() {
                       (selected.id === 'css-step') ? 'css' :
                       (selected.id === 'smil') ? 'markup' :
                       (selected.id === 'video') ? 'markup' :
+                      (selected.id === 'flash') ? 'markup' :
                       (selected.id === 'animated-gif') ? 'markup' : 'javascript';
 
   srcCodeEl.className = '';
@@ -89,6 +90,7 @@ function updatePanes(event) {
                       (selected.id === 'css-step') ? 'styles.css' :
                       (selected.id === 'smil') ? 'image.svg' :
                       (selected.id === 'video') ? 'index.html' :
+                      (selected.id === 'flash') ? 'index.html' :
                       (selected.id === 'animated-gif') ? 'index.html' : 'script.js';
 
   const demoFileName = (selected.id === 'smil') ? 'image.svg' : 'index.html';
