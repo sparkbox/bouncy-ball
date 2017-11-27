@@ -40,7 +40,7 @@ if (options.proxy) {
   const rewriteModule = httpRewriteMiddleware.getMiddleware([
     // It's hard to tell if this escape is needed or not, so I'm leaving it here to be safe.
     //   eslint-disable-next-line no-useless-escape
-    { from: '(^((?!css|html|js|img|svg|gif|mp4|ogg|webm|ico|md|\/$).)*$)', to: '$1.html' },
+    { from: '(^((?!css|html|js|img|svg|gif|mp4|ogg|webm|ico|md|swf|\/$).)*$)', to: '$1.html' },
   ]);
   config = Object.assign({
     server: { baseDir: '.' },
