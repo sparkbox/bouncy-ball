@@ -165,6 +165,7 @@ iframe[scrolling='no'] {
       & + .label-cssstep       { color: #808080; }
       & + .label-webgl         { color: #AAAAAA; }
       & + .label-flash         { color: #FF00FF; }
+      & + .label-popmotion     { color: #FF1C68; }
       /* stylelint-enable */
     }
   }
