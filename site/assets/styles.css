@@ -298,6 +298,9 @@ iframe[scrolling='no'] {
 .selection-bar input[type="radio"]:checked + .label-flash {
 	color: #FF00FF;
 }
+.selection-bar input[type="radio"]:checked + .label-popmotion {
+	color: #FF1C68;
+}
 .demo-frame {
   width: 66px; /* 50px ball + 8px margin left/right */
   height: 226px; /* 160px range + 50px ball + 8px margin top/bottom */
