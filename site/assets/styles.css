@@ -301,6 +301,9 @@ iframe[scrolling='no'] {
 .selection-bar input[type="radio"]:checked + .label-popmotion {
 	color: #FF1C68;
 }
+.selection-bar input[type="radio"]:checked + .label-lottie {
+	color: #00E3C7;
+}
 .demo-frame {
   width: 66px; /* 50px ball + 8px margin left/right */
   height: 226px; /* 160px range + 50px ball + 8px margin top/bottom */

@@ -166,6 +166,7 @@ iframe[scrolling='no'] {
       & + .label-webgl         { color: #AAAAAA; }
       & + .label-flash         { color: #FF00FF; }
       & + .label-popmotion     { color: #FF1C68; }
+      & + .label-lottie        { color: #00E3C7; }
       /* stylelint-enable */
     }
   }
