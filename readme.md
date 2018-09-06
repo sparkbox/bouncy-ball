@@ -11,7 +11,7 @@ This project compares web animation techniques by recreating a simple animation 
 This repository is two things:
 
   1. A **[directory](https://github.com/sparkbox/bouncy-ball/tree/master/examples)** containing examples and documentation for each animation technique.
-  2. A **[demo site](http://sparkbox.github.io/bouncy-ball/)** where you can see the animations and read the source code required to create each one.
+  2. A **[demo site](https://sparkbox.github.io/bouncy-ball/)** where you can see the animations and read the source code required to create each one.
 
 ## Project Goals
 
