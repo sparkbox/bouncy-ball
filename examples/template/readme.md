@@ -1,4 +1,4 @@
-# Technique Name
+# Technique Names
 
 ## Project Links
 
