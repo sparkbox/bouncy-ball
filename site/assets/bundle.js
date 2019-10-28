@@ -12795,22 +12795,22 @@ var toggleDocs = require('./toggleDocs');
 
 function init() {
   // DOM queries and a URL lookup.
-  var options = document.querySelectorAll('input[type="radio"]');
+  var options = document.querySelectorAll('.selection-bar .nav-button');
   var unsupportedLink = document.querySelector('.unsupported-details');
   var docsToggleLink = document.querySelector('.docs-toggle-link');
   var hashOption = window.location.hash;
 
   // Pre-select an option, if it is found in the URL fragment.
   if (hashOption) {
-    document.querySelector('input[checked]').removeAttribute('checked');
-    document.getElementById(hashOption.slice(1)).setAttribute('checked', true);
+    document.querySelector('.is-active').classList.remove('is-active');
+    document.getElementById(hashOption.slice(1)).classList.add('is-active');
   }
 
   updatePanes();
 
   // Set listeners for future updates:
   options.forEach(function (option) {
-    option.addEventListener('change', updatePanes);
+    option.addEventListener('click', updatePanes);
   });
   docsToggleLink.addEventListener('click', toggleDocs);
   unsupportedLink.addEventListener('click', toggleDocs);
@@ -12825,6 +12825,14 @@ module.exports = { init: init };
 //   eslint-disable-next-line no-unused-vars
 var Modernizr = require('./vendor/modernizr-custom');
 var App = require('./app');
+
+// outline.js replacement that handles outline styling in our stylesheets.
+document.addEventListener('mousedown', function () {
+  return document.body.classList.add('no-focus');
+});
+document.addEventListener('keydown', function () {
+  return document.body.classList.remove('no-focus');
+});
 
 App.init();
 
@@ -12967,8 +12975,19 @@ function highlightSource() {
  * Updates the preview & source panes based to match the currently selected option.
  */
 function updatePanes(event) {
-  selected = document.querySelector('input[type="radio"]:checked');
-  var name = selected.nextElementSibling.textContent;
+  if (event && event.type === 'click') {
+    // If a click triggered this function, we'll need to change .is-active
+    // and update the url (these don't need to be done when this function
+    // is run on the initial page load).
+    document.querySelector('.is-active').classList.remove('is-active');
+    event.currentTarget.classList.add('is-active');
+
+    window.location.hash = selected.id;
+  }
+
+  selected = document.querySelector('.is-active');
+
+  var name = selected.textContent;
   var srcFileName = selected.id === 'css' ? 'styles.css' : selected.id === 'css-step' ? 'styles.css' : selected.id === 'smil' ? 'image.svg' : selected.id === 'video' ? 'index.html' : selected.id === 'flash' ? 'index.html' : selected.id === 'animated-gif' ? 'index.html' : 'script.js';
 
   var demoFileName = selected.id === 'smil' ? 'image.svg' : 'index.html';
@@ -12977,12 +12996,6 @@ function updatePanes(event) {
   var srcUrl = 'examples/' + selected.id + '/' + srcFileName;
   var demoUrl = 'examples/' + selected.id + '/' + demoFileName;
   var docsUrl = 'examples/' + selected.id + '/readme.md';
-
-  // Update the page URL, when an option is changed.
-  // We only do this on the change event to prevent hash updates on initial page load.
-  if (event && event.type === 'change') {
-    window.location.hash = selected.id;
-  }
 
   // Update the source pane (scroll it to the top, and get the new source).
   srcPreEl.scrollTop = 0;

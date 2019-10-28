@@ -84,8 +84,19 @@ function highlightSource() {
  * Updates the preview & source panes based to match the currently selected option.
  */
 function updatePanes(event) {
-  selected = document.querySelector('input[type="radio"]:checked');
-  const name = selected.nextElementSibling.textContent;
+  if (event && event.type === 'click') {
+    // If a click triggered this function, we'll need to change .is-active
+    // and update the url (these don't need to be done when this function
+    // is run on the initial page load).
+    document.querySelector('.is-active').classList.remove('is-active');
+    event.currentTarget.classList.add('is-active');
+
+    window.location.hash = selected.id;
+  }
+
+  selected = document.querySelector('.is-active');
+
+  const name = selected.textContent;
   const srcFileName = (selected.id === 'css') ? 'styles.css' :
                       (selected.id === 'css-step') ? 'styles.css' :
                       (selected.id === 'smil') ? 'image.svg' :
@@ -99,12 +110,6 @@ function updatePanes(event) {
   const srcUrl = `examples/${selected.id}/${srcFileName}`;
   const demoUrl = `examples/${selected.id}/${demoFileName}`;
   const docsUrl = `examples/${selected.id}/readme.md`;
-
-  // Update the page URL, when an option is changed.
-  // We only do this on the change event to prevent hash updates on initial page load.
-  if (event && event.type === 'change') {
-    window.location.hash = selected.id;
-  }
 
   // Update the source pane (scroll it to the top, and get the new source).
   srcPreEl.scrollTop = 0;

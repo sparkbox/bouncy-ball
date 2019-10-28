@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="site/assets/styles.css">
 </head>
 
-<body>
+<body class="no-focus">
   <header class="header">
     <h1 class="title">Bouncy Ball</h1>
     <p class="description">Comparing web animation techniques by showing how to bounce a ball with each one.</p>
@@ -29,46 +29,26 @@
     </a>
   </header>
   <form class="selection-bar">
-    <input type="radio" id="vanilla-js" name="approaches" checked="true" />
-    <label for="vanilla-js" class="label label-vanillajs">Vanilla JS</label>
-    <input type="radio" id="css" name="approaches" />
-    <label for="css" class="label label-css">CSS</label>
-    <input type="radio" id="css-step" name="approaches" />
-    <label for="css-step" class="label label-cssstep">CSS (step)</label>
-    <input type="radio" id="jquery" name="approaches" />
-    <label for="jquery" class="label label-jquery">jQuery</label>
-    <input type="radio" id="greensock" name="approaches" />
-    <label for="greensock" class="label label-greensock">GreenSock</label>
-    <input type="radio" id="velocity" name="approaches" />
-    <label for="velocity" class="label label-velocity">Velocity</label>
-    <input type="radio" id="web-animations-api" name="approaches" />
-    <label for="web-animations-api" class="label label-webanimations">Web Animations API</label>
-    <input type="radio" id="p5" name="approaches" />
-    <label for="p5" class="label label-p5">P5.js</label>
-    <input type="radio" id="smil" name="approaches" />
-    <label for="smil" class="label label-smil">SMIL</label>
-    <input type="radio" id="mojs" name="approaches" />
-    <label for="mojs" class="label label-mojs">mo.js</label>
-    <input type="radio" id="anime" name="approaches" />
-    <label for="anime" class="label label-anime">anime.js</label>
-    <input type="radio" id="react" name="approaches" />
-    <label for="react" class="label label-react">React</label>
-    <input type="radio" id="d3" name="approaches" />
-    <label for="d3" class="label label-d3">D3</label>
-    <input type="radio" id="animated-gif" name="approaches" />
-    <label for="animated-gif" class="label label-gif">Animated Gif</label>
-    <input type="radio" id="video" name="approaches" />
-    <label for="video" class="label label-video">Video</label>
-    <input type="radio" id="matter-js" name="approaches" />
-    <label for="matter-js" class="label label-matterjs">Matter.js</label>
-    <input type="radio" id="webgl" name="approaches" />
-    <label for="webgl" class="label label-webgl">WebGL</label>
-    <input type="radio" id="flash" name="approaches" />
-    <label for="flash" class="label label-flash">Flash</label>
-    <input type="radio" id="popmotion" name="approaches" />
-    <label for="popmotion" class="label label-popmotion">Popmotion</label>
-    <input type="radio" id="lottie" name="approaches" />
-    <label for="lottie" class="label label-lottie">Lottie</label>
+    <a href="#vanilla-js" id="vanilla-js" class="nav-button button-vanillajs is-active">Vanilla JS</a>
+    <a href="#css" id="css" class="nav-button button-css">CSS</a>
+    <a href="#css-step" id="css-step" class="nav-button button-cssstep">CSS (step)</a>
+    <a href="#jquery" id="jquery" class="nav-button button-jquery">jQuery</a>
+    <a href="#greensock" id="greensock" class="nav-button button-greensock">GreenSock</a>
+    <a href="#velocity" id="velocity" class="nav-button button-velocity">Velocity</a>
+    <a href="#web-animations-api" id="web-animations-api" class="nav-button button-webanimations">Web Animations API</a>
+    <a href="#p5" id="p5" class="nav-button button-p5">P5.js</a>
+    <a href="#smil" id="smil" class="nav-button button-smil">SMIL</a>
+    <a href="#mojs" id="mojs" class="nav-button button-mojs">mo.js</a>
+    <a href="#anime" id="anime" class="nav-button button-anime">anime.js</a>
+    <a href="#react" id="react" class="nav-button button-react">React</a>
+    <a href="#d3" id="d3" class="nav-button button-d3">D3</a>
+    <a href="#animated-gif" id="animated-gif" class="nav-button button-gif">Animated Gif</a>
+    <a href="#video" id="video" class="nav-button button-video">Video</a>
+    <a href="#matter-js" id="matter-js" class="nav-button button-matterjs">Matter.js</a>
+    <a href="#webgl" id="webgl" class="nav-button button-webgl">WebGL</a>
+    <a href="#flash" id="flash" class="nav-button button-flash">Flash</a>
+    <a href="#popmotion" id="popmotion" class="nav-button button-popmotion">Popmotion</a>
+    <a href="#lottie" id="lottie" class="nav-button button-lottie">Lottie</a>
   </form>
   <div class="panes">
     <div class="docs-toggle">

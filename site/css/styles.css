@@ -62,6 +62,19 @@ iframe[scrolling='no'] {
   overflow: hidden;
 }
 
+/*
+  We like focus rings, but only when a person is tabbing (not clicking).
+  Thus, we scope all focus ring suppression to a "no-focus" class, which
+  is added to the body tag when a person is clicking, and removed when a
+  person is tabbing. Same idea as https://github.com/lindsayevans/outline.js
+*/
+.no-focus :focus {
+  outline: 0;
+}
+.no-focus ::-moz-focus-inner {
+  border: 0;
+}
+
 .header {
   text-align: center;
   padding: 0 42px;
@@ -113,62 +126,67 @@ iframe[scrolling='no'] {
     padding-top: 16px;
     padding-bottom: 16px;
   }
+}
 
-  & > label {
-    text-align: center;
-    list-style-type: none;
-    font-size: 14px;
-    padding: 4px 9px;
-    margin: 4px;
-    border-radius: 16px;
-    background-color: white;
-    cursor: pointer;
-    box-shadow: 0 1px 6px -3px black;
+.nav-button {
+  text-decoration: none;
+  text-align: center;
+  list-style-type: none;
+  font-family: var(--copyFont);
+  font-size: 14px;
+  padding: 4px 9px;
+  margin: 4px;
+  border: 0;
+  border-radius: 16px;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 0 1px 6px -3px black;
 
-    @media (--midphone-plus) {
-      font-size: 16px;
-      padding: 6px 12px;
-    }
-
-    &:hover {
-      background-color: var(--previewDark);
-      color: white;
-    }
+  @media (--midphone-plus) {
+    font-size: 16px;
+    padding: 6px 12px;
   }
 
-  & input[type="radio"] {
-    display: none;
+  &:link {
+    color: black;
+  }
 
-    &:checked {
-      & + label {
-        background-color: var(--previewDark);
-      }
+  &:visited {
+    color: black;
+  }
 
-      /* library-specific colors */
+  &:hover {
+    background-color: var(--previewDark);
+    color: white;
+  }
 
-      /* stylelint-disable */
-      & + .label-matterjs      { color: #76F09B; }
-      & + .label-greensock     { color: #88CE02; }
-      & + .label-vanillajs     { color: #F0DB4F; }
-      & + .label-smil          { color: #FFB13B; }
-      & + .label-d3            { color: #FF7B39; }
-      & + .label-p5            { color: #EC245E; }
-      & + .label-webanimations { color: #E44D26; }
-      & + .label-gif           { color: #EE88E3; }
-      & + .label-anime         { color: #AE27E7; }
-      & + .label-mojs          { color: #613961; }
-      & + .label-jquery        { color: #0769AD; }
-      & + .label-css           { color: #16A1DC; }
-      & + .label-react         { color: #00CFFF; }
-      & + .label-velocity      { color: #FFFFFF; }
-      & + .label-video         { color: #CFD1AD; }
-      & + .label-cssstep       { color: #808080; }
-      & + .label-webgl         { color: #AAAAAA; }
-      & + .label-flash         { color: #FF00FF; }
-      & + .label-popmotion     { color: #FF1C68; }
-      & + .label-lottie        { color: #00E3C7; }
-      /* stylelint-enable */
-    }
+  &.is-active {
+    background-color: var(--previewDark);
+
+    /* library-specific colors */
+
+    /* stylelint-disable */
+    &.button-matterjs      { color: #76F09B; }
+    &.button-greensock     { color: #88CE02; }
+    &.button-vanillajs     { color: #F0DB4F; }
+    &.button-smil          { color: #FFB13B; }
+    &.button-d3            { color: #FF7B39; }
+    &.button-p5            { color: #EC245E; }
+    &.button-webanimations { color: #E44D26; }
+    &.button-gif           { color: #EE88E3; }
+    &.button-anime         { color: #AE27E7; }
+    &.button-mojs          { color: #613961; }
+    &.button-jquery        { color: #0769AD; }
+    &.button-css           { color: #16A1DC; }
+    &.button-react         { color: #00CFFF; }
+    &.button-velocity      { color: #FFFFFF; }
+    &.button-video         { color: #CFD1AD; }
+    &.button-cssstep       { color: #808080; }
+    &.button-webgl         { color: #AAAAAA; }
+    &.button-flash         { color: #FF00FF; }
+    &.button-popmotion     { color: #FF1C68; }
+    &.button-lottie        { color: #00E3C7; }
+    /* stylelint-enable */
   }
 }
 
@@ -271,7 +289,6 @@ iframe[scrolling='no'] {
   padding: 0;
   text-decoration: underline;
   cursor: pointer;
-  outline: none;
 }
 
 .docs-toggle-link_is-less::before {

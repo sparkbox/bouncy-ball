@@ -148,6 +148,18 @@ body {
 iframe[scrolling='no'] {
   overflow: hidden;
 }
+/*
+  We like focus rings, but only when a person is tabbing (not clicking).
+  Thus, we scope all focus ring suppression to a "no-focus" class, which
+  is added to the body tag when a person is clicking, and removed when a
+  person is tabbing. Same idea as https://github.com/lindsayevans/outline.js
+*/
+.no-focus :focus {
+  outline: 0;
+}
+.no-focus ::-moz-focus-inner {
+  border: 0;
+}
 .header {
   text-align: center;
   padding: 0 42px;
@@ -217,93 +229,97 @@ iframe[scrolling='no'] {
 		padding-bottom: 16px;
 	}
   }
-.selection-bar > label {
-	text-align: center;
-	list-style-type: none;
-	font-size: 14px;
-	padding: 4px 9px;
-	margin: 4px;
-	border-radius: 16px;
-	background-color: white;
-	cursor: pointer;
-	box-shadow: 0 1px 6px -3px black;
+.nav-button {
+  text-decoration: none;
+  text-align: center;
+  list-style-type: none;
+  font-family: 'Source Sans Pro', Verdana, sans-serif;
+  font-size: 14px;
+  padding: 4px 9px;
+  margin: 4px;
+  border: 0;
+  border-radius: 16px;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 0 1px 6px -3px black
 }
 @media (min-width: 500px) {
-	.selection-bar > label {
+	.nav-button {
 		font-size: 16px;
 		padding: 6px 12px;
 	}
+  }
+.nav-button:link {
+	color: black;
 }
-.selection-bar > label:hover {
+.nav-button:visited {
+	color: black;
+}
+.nav-button:hover {
 	background-color: #111111;
 	color: white;
 }
-.selection-bar input[type="radio"] {
-	display: none;
+.nav-button.is-active {
+	background-color: #111111;/* library-specific colors *//* stylelint-disable *//* stylelint-enable */
 }
-.selection-bar input[type="radio"]:checked {/* library-specific colors *//* stylelint-disable *//* stylelint-enable */
-}
-.selection-bar input[type="radio"]:checked + label {
-	background-color: #111111;
-}
-.selection-bar input[type="radio"]:checked + .label-matterjs {
+.nav-button.is-active.button-matterjs {
 	color: #76F09B;
 }
-.selection-bar input[type="radio"]:checked + .label-greensock {
+.nav-button.is-active.button-greensock {
 	color: #88CE02;
 }
-.selection-bar input[type="radio"]:checked + .label-vanillajs {
+.nav-button.is-active.button-vanillajs {
 	color: #F0DB4F;
 }
-.selection-bar input[type="radio"]:checked + .label-smil {
+.nav-button.is-active.button-smil {
 	color: #FFB13B;
 }
-.selection-bar input[type="radio"]:checked + .label-d3 {
+.nav-button.is-active.button-d3 {
 	color: #FF7B39;
 }
-.selection-bar input[type="radio"]:checked + .label-p5 {
+.nav-button.is-active.button-p5 {
 	color: #EC245E;
 }
-.selection-bar input[type="radio"]:checked + .label-webanimations {
+.nav-button.is-active.button-webanimations {
 	color: #E44D26;
 }
-.selection-bar input[type="radio"]:checked + .label-gif {
+.nav-button.is-active.button-gif {
 	color: #EE88E3;
 }
-.selection-bar input[type="radio"]:checked + .label-anime {
+.nav-button.is-active.button-anime {
 	color: #AE27E7;
 }
-.selection-bar input[type="radio"]:checked + .label-mojs {
+.nav-button.is-active.button-mojs {
 	color: #613961;
 }
-.selection-bar input[type="radio"]:checked + .label-jquery {
+.nav-button.is-active.button-jquery {
 	color: #0769AD;
 }
-.selection-bar input[type="radio"]:checked + .label-css {
+.nav-button.is-active.button-css {
 	color: #16A1DC;
 }
-.selection-bar input[type="radio"]:checked + .label-react {
+.nav-button.is-active.button-react {
 	color: #00CFFF;
 }
-.selection-bar input[type="radio"]:checked + .label-velocity {
+.nav-button.is-active.button-velocity {
 	color: #FFFFFF;
 }
-.selection-bar input[type="radio"]:checked + .label-video {
+.nav-button.is-active.button-video {
 	color: #CFD1AD;
 }
-.selection-bar input[type="radio"]:checked + .label-cssstep {
+.nav-button.is-active.button-cssstep {
 	color: #808080;
 }
-.selection-bar input[type="radio"]:checked + .label-webgl {
+.nav-button.is-active.button-webgl {
 	color: #AAAAAA;
 }
-.selection-bar input[type="radio"]:checked + .label-flash {
+.nav-button.is-active.button-flash {
 	color: #FF00FF;
 }
-.selection-bar input[type="radio"]:checked + .label-popmotion {
+.nav-button.is-active.button-popmotion {
 	color: #FF1C68;
 }
-.selection-bar input[type="radio"]:checked + .label-lottie {
+.nav-button.is-active.button-lottie {
 	color: #00E3C7;
 }
 .demo-frame {
@@ -420,7 +436,6 @@ iframe[scrolling='no'] {
   padding: 0;
   text-decoration: underline;
   cursor: pointer;
-  outline: none;
 }
 .docs-toggle-link_is-less::before {
   content: 'Less ';
