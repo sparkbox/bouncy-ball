@@ -18,11 +18,11 @@ When in doubt on how to organize your example, start by copying the `examples/te
 1. Clone the project down to your computer.
 2. From the project folder, run `yarn install` in your terminal ([install yarn](https://yarnpkg.com/en/docs/install), if you don't already have it installed).
 3. Start a local static server with `yarn start` in your terminal and visit the URL given by the output to see the site.
-   - For local server configurations see [server.md](/server.md)
+   - For custom local server configurations see [server.md](/server.md)
 4. Make file changes.
-5. Run `yarn run build` to build the assets, and refresh your browser to see the changes.
+5. The browser should refresh automatically, allowing you to see your changes.
 
-## Contribution Workfow
+## Contribution Workflow
 
 1. Fork and clone the repo.
 2. Make your changes on a [feature-branch](https://bocoup.com/weblog/git-workflow-walkthrough-feature-branches).
