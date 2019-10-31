@@ -44,7 +44,7 @@
     "browser-sync": "^2.26.7",
     "browserify": "^16.5.0",
     "command-line-args": "^5.1.1",
-    "eslint": "6.1.0",
+    "eslint": "6.6.0",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-sparkbox": "^0.5.6",
     "eslint-plugin-flowtype": "^4.3.0",
