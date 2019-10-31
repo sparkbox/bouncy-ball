@@ -112,14 +112,25 @@ pre[class*="language-"] {
  *******************************/
 :root {
   /***** FONTS *****/
+  --titleFont: 'Ubuntu', 'Source Sans Pro', Verdana, sans-serif;
+  --copyFont: 'Source Sans Pro', Verdana, sans-serif;
+  --sourceFont: 'Source Code Pro', 'Courier', monospace;
 
   /***** COLORS *****/
 
   /* dark background colors */
+  --previewDark: #111111;
+  --docsDark: #151515;
+  --sourceDark: #1d1d1d;
+  --secondaryInfo: #49525a;
 
   /* This matches a color from our prism-okaidia syntax highlighting theme */
+  --linkYellow: #e6db74;
 
   /***** WIDTHS *****/
+  --paneMinWidth: 160px;
+  --docsLeftPadding: 1.1rem;
+  --docsLeftPaddingMedium: 1.3rem;
 }
 /*******************************
  ********* Site Styles *********
@@ -134,14 +145,13 @@ html {
 }
 body {
   font-family: 'Source Sans Pro', Verdana, sans-serif;
+  font-family: var(--copyFont);
   margin: 0;
   height: 100vh;
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
           flex-direction: column;
 }
 /* Cross-browser support of CSS-hidden iframe scrollbars */
@@ -163,13 +173,10 @@ iframe[scrolling='no'] {
 .header {
   text-align: center;
   padding: 0 42px;
-  -ms-flex-preferred-size: auto;
-      flex-basis: auto;
+  flex-basis: auto;
   -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
           flex-grow: 0;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  flex-shrink: 0;
 
   /* prevents the github ribbon from leaking out
      of the header and overlapping form inputs */
@@ -177,63 +184,57 @@ iframe[scrolling='no'] {
   position: relative
 }
 @media (min-width: 500px) {
-	.header {
-		padding-top: 6px;
-		padding-bottom: 6px;
-	}
+.header {
+    padding-top: 6px;
+    padding-bottom: 6px
+}
   }
 .title {
   font-family: 'Ubuntu', 'Source Sans Pro', Verdana, sans-serif;
+  font-family: var(--titleFont);
   font-size: 18px
 }
 @media (min-width: 500px) {
-	.title {
-		font-size: 32px;
-	}
+.title {
+    font-size: 32px
+}
   }
 .description {
   font-size: 14px
 }
 @media (min-width: 500px) {
-	.description {
-		font-size: 16px;
-	}
+.description {
+    font-size: 16px
+}
   }
 .selection-bar {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-align: center;
-      -ms-flex-align: center;
           align-items: center;
   padding: 14px 12vw;
   background-color: #eaeaea;
 
-  -ms-flex-preferred-size: auto;
-
-      flex-basis: auto;
+  flex-basis: auto;
   -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
           flex-grow: 0;
-  -ms-flex-negative: 0;
-      flex-shrink: 0
+  flex-shrink: 0
 }
 @media (min-width: 500px) {
-	.selection-bar {
-		padding-top: 16px;
-		padding-bottom: 16px;
-	}
+.selection-bar {
+    padding-top: 16px;
+    padding-bottom: 16px
+}
   }
 .nav-button {
   text-decoration: none;
   text-align: center;
   list-style-type: none;
   font-family: 'Source Sans Pro', Verdana, sans-serif;
+  font-family: var(--copyFont);
   font-size: 14px;
   padding: 4px 9px;
   margin: 4px;
@@ -244,84 +245,53 @@ iframe[scrolling='no'] {
   box-shadow: 0 1px 6px -3px black
 }
 @media (min-width: 500px) {
-	.nav-button {
-		font-size: 16px;
-		padding: 6px 12px;
-	}
+.nav-button {
+    font-size: 16px;
+    padding: 6px 12px
+}
   }
 .nav-button:link {
-	color: black;
-}
+    color: black;
+  }
 .nav-button:visited {
-	color: black;
-}
+    color: black;
+  }
 .nav-button:hover {
-	background-color: #111111;
-	color: white;
-}
+    background-color: #111111;
+    background-color: var(--previewDark);
+    color: white;
+  }
 .nav-button.is-active {
-	background-color: #111111;/* library-specific colors *//* stylelint-disable *//* stylelint-enable */
-}
-.nav-button.is-active.button-matterjs {
-	color: #76F09B;
-}
-.nav-button.is-active.button-greensock {
-	color: #88CE02;
-}
-.nav-button.is-active.button-vanillajs {
-	color: #F0DB4F;
-}
-.nav-button.is-active.button-smil {
-	color: #FFB13B;
-}
-.nav-button.is-active.button-d3 {
-	color: #FF7B39;
-}
-.nav-button.is-active.button-p5 {
-	color: #EC245E;
-}
-.nav-button.is-active.button-webanimations {
-	color: #E44D26;
-}
-.nav-button.is-active.button-gif {
-	color: #EE88E3;
-}
-.nav-button.is-active.button-anime {
-	color: #AE27E7;
-}
-.nav-button.is-active.button-mojs {
-	color: #613961;
-}
-.nav-button.is-active.button-jquery {
-	color: #0769AD;
-}
-.nav-button.is-active.button-css {
-	color: #16A1DC;
-}
-.nav-button.is-active.button-react {
-	color: #00CFFF;
-}
-.nav-button.is-active.button-velocity {
-	color: #FFFFFF;
-}
-.nav-button.is-active.button-video {
-	color: #CFD1AD;
-}
-.nav-button.is-active.button-cssstep {
-	color: #808080;
-}
-.nav-button.is-active.button-webgl {
-	color: #AAAAAA;
-}
-.nav-button.is-active.button-flash {
-	color: #FF00FF;
-}
-.nav-button.is-active.button-popmotion {
-	color: #FF1C68;
-}
-.nav-button.is-active.button-lottie {
-	color: #00E3C7;
-}
+    background-color: #111111;
+    background-color: var(--previewDark)
+
+    /* library-specific colors */
+
+    /* stylelint-disable */
+  }
+.nav-button.is-active.button-matterjs      { color: #76F09B; }
+.nav-button.is-active.button-greensock     { color: #88CE02; }
+.nav-button.is-active.button-vanillajs     { color: #F0DB4F; }
+.nav-button.is-active.button-smil          { color: #FFB13B; }
+.nav-button.is-active.button-d3            { color: #FF7B39; }
+.nav-button.is-active.button-p5            { color: #EC245E; }
+.nav-button.is-active.button-webanimations { color: #E44D26; }
+.nav-button.is-active.button-gif           { color: #EE88E3; }
+.nav-button.is-active.button-anime         { color: #AE27E7; }
+.nav-button.is-active.button-mojs          { color: #613961; }
+.nav-button.is-active.button-jquery        { color: #0769AD; }
+.nav-button.is-active.button-css           { color: #16A1DC; }
+.nav-button.is-active.button-react         { color: #00CFFF; }
+.nav-button.is-active.button-velocity      { color: #FFFFFF; }
+.nav-button.is-active.button-video         { color: #CFD1AD; }
+.nav-button.is-active.button-cssstep       { color: #808080; }
+.nav-button.is-active.button-webgl         { color: #AAAAAA; }
+.nav-button.is-active.button-flash         { color: #FF00FF; }
+.nav-button.is-active.button-popmotion     { color: #FF1C68; }
+.nav-button.is-active.button-lottie        { color: #00E3C7; }
+.nav-button.is-active {
+    /* stylelint-enable */
+  }
 .demo-frame {
   width: 66px; /* 50px ball + 8px margin left/right */
   height: 226px; /* 160px range + 50px ball + 8px margin top/bottom */
@@ -329,10 +299,8 @@ iframe[scrolling='no'] {
 }
 .panes {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
           align-items: stretch;
   position: relative;
 
@@ -342,95 +310,94 @@ iframe[scrolling='no'] {
   /* Solves an IE issue. See: https://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview */
   height: 100%;
 
-  -ms-flex-preferred-size: auto;
-
-      flex-basis: auto;
+  flex-basis: auto;
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
           flex-grow: 1;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
+  flex-shrink: 1;
 }
 .docs-pane {
   display: none;
   background-color: #151515;
-  -ms-flex-preferred-size: 400px;
-      flex-basis: 400px;
+  background-color: var(--docsDark);
+  flex-basis: 400px;
   -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
           flex-grow: 0;
-  -ms-flex-negative: 1;
-      flex-shrink: 1
+  flex-shrink: 1
 }
 .docs-pane a {
-	color: #e6db74;
-}
+    color: #e6db74;
+    color: var(--linkYellow);
+  }
 .docs-pane_is-open {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
           align-items: stretch;
 }
 .docs-pane-content {
   color: white;
   width: 100%;
   font-size: 0.85em;
-  padding: 0 16px 16px 17.6px;
   padding: 0 1rem 1rem 1.1rem;
+  padding: 0 1rem 1rem var(--docsLeftPadding);
 
   /* Provides a constant background for the more/less link */
-  margin-top: 40px;
   margin-top: 2.5rem;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch
 }
 @media (min-width: 500px) {
-	.docs-pane-content {
-		padding-left: 1.3rem;
-	}
+.docs-pane-content {
+    padding-left: 1.3rem;
+    padding-left: var(--docsLeftPaddingMedium)
+}
   }
 @media (min-width: 780px) {
-	.docs-pane-content {
-		font-size: 1em;
-	}
+.docs-pane-content {
+    font-size: 1em
+}
   }
 .docs-pane-content h1:first-of-type {
-	margin-top: 0;
-}
+    margin-top: 0;
+  }
 .docs-toggle {
   position: absolute;
-  top: 8.8px;
   top: 0.55rem;
-  left: 17.6px;
   left: 1.1rem;
+  left: var(--docsLeftPadding);
   z-index: 1;
   width: calc(40% - 1.1rem);
-  min-width: calc(160px - 1.1rem)
+  width: calc(40% - var(--docsLeftPadding));
+  min-width: calc(160px - 1.1rem);
+  min-width: calc(var(--paneMinWidth) - var(--docsLeftPadding))
 }
 @media (min-width: 500px) {
-	.docs-toggle {
-		top: 0.75rem;
-		left: 1.3rem;
-		width: calc(40% - 1.3rem);
-		min-width: calc(160px - 1.3rem);
-	}
+.docs-toggle {
+    top: 0.75rem;
+    left: 1.3rem;
+    left: var(--docsLeftPaddingMedium);
+    width: calc(40% - 1.3rem);
+    width: calc(40% - var(--docsLeftPaddingMedium));
+    min-width: calc(160px - 1.3rem);
+    min-width: calc(var(--paneMinWidth) - var(--docsLeftPaddingMedium))
+}
   }
 .docs-toggle-link {
   font-size: 10px;
-  color: #e6db74
+  color: #e6db74;
+  color: var(--linkYellow)
 }
 .docs-toggle-link::before {
-	content: 'More ';
-}
+    content: 'More ';
+  }
 @media (min-width: 500px) {
-	.docs-toggle-link {
-		font-size: 13px;
-	}
+.docs-toggle-link {
+    font-size: 13px
+}
   }
 .button-link {
   font-family: 'Source Sans Pro', Verdana, sans-serif;
+  font-family: var(--copyFont);
   background-color: transparent;
   border: none;
   padding: 0;
@@ -442,26 +409,42 @@ iframe[scrolling='no'] {
 }
 .credit {
   -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
           flex-grow: 0;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  flex-shrink: 0;
   font-size: 12px;
   text-align: center;
   color: #49525a;
+  color: var(--secondaryInfo);
   border-top: 1px solid #1d1d1d;
+  border-top: 1px solid var(--sourceDark);
   background-color: #111111;
+  background-color: var(--previewDark);
   padding: 3px 0
+}
+.credit :link,.credit :visited {
+    color: #49525a;
+    color: var(--secondaryInfo);
+  }
+.credit :-webkit-any-link {
+    color: #49525a;
+    color: var(--secondaryInfo);
+  }
+.credit :-moz-any-link {
+    color: #49525a;
+    color: var(--secondaryInfo);
+  }
+.credit :any-link {
+    color: #49525a;
+    color: var(--secondaryInfo);
+  }
+.credit {
 
   /* preserve vertical space by hiding the credit on short screens */
 }
-.credit :link,.credit :visited {
-	color: #49525a;
-}
 @media (max-height: 560px) {
-	.credit {
-		display: none;
-	}
+.credit {
+    display: none
+}
   }
 .unsupported {
   color: white;
@@ -473,86 +456,82 @@ iframe[scrolling='no'] {
   display: block;
   width: 50px;
   height: 50px;
-  margin: 16px auto;
   margin: 1rem auto;
   background-image: url('../assets/images/sad.svg');
 }
 .unsupported-details {
   color: #e6db74;
+  color: var(--linkYellow);
 }
 .preview-pane {
   background-color: #111111;
+  background-color: var(--previewDark);
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-preferred-size: 40%;
-      flex-basis: 40%;
+  flex-basis: 40%;
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
           flex-grow: 1;
-  -ms-flex-negative: 2;
-      flex-shrink: 2;
+  flex-shrink: 2;
   min-width: 160px;
+  min-width: var(--paneMinWidth);
 
   /* clips the bouncing ball, if the frame is too short */
   overflow: hidden;
 }
 .source-pane {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
           align-items: stretch;
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
           flex-grow: 1;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
-  -ms-flex-preferred-size: 60%;
-      flex-basis: 60%;
+  flex-shrink: 1;
+  flex-basis: 60%;
   position: relative;
   overflow: auto;
   -webkit-overflow-scrolling: touch
 }
 .source-pane > pre {
-	-webkit-box-flex: 1;
-	    -ms-flex-positive: 1;
-	        flex-grow: 1;
-	background-color: #1d1d1d;
-	border-radius: 0;
-	font-size: 0.75em;
-	margin: 0;
-	padding: 1.5em 0.5em 0.5em 1.5em;/* note: detailed source code styles are provided by prismjs */
-}
+    -webkit-box-flex: 1;
+            flex-grow: 1;
+    background-color: #1d1d1d;
+    background-color: var(--sourceDark);
+    border-radius: 0;
+    font-size: 0.75em;
+    margin: 0;
+    padding: 1.5em 0.5em 0.5em 1.5em
+
+    /* note: detailed source code styles are provided by prismjs */
+  }
 @media (min-width: 900px) {
-	.source-pane > pre {
-		font-size: 0.9em;
-	}
-}
+.source-pane > pre {
+      font-size: 0.9em
+  }
+    }
 .prism-show-language {
   right: 0;
   top: 0;
   padding: 2px 5px;
   color: white;
   background: #49525a;
+  background: var(--secondaryInfo);
   position: absolute;
   font-size: 10px;
   text-transform: uppercase;
 }
 code {
-  font-family: 'Source Code Pro', 'Courier', monospace
+  font-family: 'Source Code Pro', 'Courier', monospace;
+  font-family: var(--sourceFont)
 }
-code a {/* causes autolinker links to inherit their respective syntax-
+code a {
+    /* causes autolinker links to inherit their respective syntax-
        highlighted colors instead of being default-link-blue. */
-	color: inherit;
-}
+    color: inherit;
+  }
 .ribbon {
   max-width: 24vw;
   max-height: 138px;

@@ -5,8 +5,8 @@ function sourceDump(url, dumpLocation, options) {
   request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
       const dumpElement = (typeof dumpLocation === 'string' || dumpLocation instanceof String)
-                            ? document.querySelector(dumpLocation)
-                            : dumpLocation;
+        ? document.querySelector(dumpLocation)
+        : dumpLocation;
 
       // If no dumpLocation value is provided, it won't dump the text,
       // and will defer to the successCallback to handle the response.

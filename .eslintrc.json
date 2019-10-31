@@ -1,5 +1,9 @@
 {
   "extends": "sparkbox",
+  "rules": {
+    "operator-linebreak": "off",
+    "no-nested-ternary": "off"
+  },
   "globals": {
     "Modernizr": false
   }

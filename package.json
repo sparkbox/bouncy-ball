@@ -8,8 +8,8 @@
   },
   "scripts": {
     "build": "yarn run build:css && yarn run build:js && yarn run build:react",
-    "build:js": "browserify site/js/index.js -o site/assets/bundle.js -t [ babelify --presets [es2015] ] && yarn run build:react",
-    "build:css": "postcss --use stylelint --use postcss-import --postcss-import.path 'node_modules/prismjs/themes' --use postcss-cssnext --use postcss-reporter -o site/assets/styles.css site/css/*.css",
+    "build:js": "browserify site/js/index.js -o site/assets/bundle.js -t [ babelify --presets [@babel/preset-env] --plugins [babel-plugin-transform-class-properties @babel/plugin-proposal-object-rest-spread] ] && yarn run build:react",
+    "build:css": "postcss site/css/styles.css -o site/assets/styles.css",
     "build:react": "babel ./examples/react/script.js -o ./examples/react/script-compiled.js",
     "test": "eslint site/js/*.js",
     "start": "node server.js --watch"
@@ -30,34 +30,47 @@
   "dependencies": {
     "platform": "^1.3.5",
     "prismjs": "^1.17.1",
-    "remarkable": "^1.7.4"
+    "remarkable": "^2.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^7.0.0",
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babelify": "^7.3.0",
+    "babelify": "^10.0.0",
     "browser-sync": "^2.26.7",
-    "browserify": "^13.0.1",
-    "command-line-args": "^3.0.1",
-    "eslint": "^4.18.2",
-    "eslint-config-airbnb": "^12.0.0",
+    "browserify": "^16.5.0",
+    "command-line-args": "^5.1.1",
+    "eslint": "6.1.0",
+    "eslint-config-airbnb": "18.0.1",
     "eslint-config-sparkbox": "^0.5.6",
-    "eslint-plugin-flowtype": "^2.20.0",
+    "eslint-plugin-flowtype": "^4.3.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.4.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "http-rewrite-middleware": "^0.1.6",
-    "postcss": "^5.0.21",
-    "postcss-cli": "^2.5.2",
-    "postcss-cssnext": "^2.7.0",
-    "postcss-import": "^8.1.2",
-    "postcss-reporter": "^1.4.1",
-    "shelljs": "^0.7.4",
-    "stylelint": "^7.10.1",
-    "stylelint-config-sparkbox": "^0.1.0"
+    "postcss": "^7.0.21",
+    "postcss-cli": "^6.1.3",
+    "postcss-custom-media": "^7.0.8",
+    "postcss-import": "^12.0.1",
+    "postcss-load-config": "2.1.0",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-reporter": "^6.0.1",
+    "shelljs": "^0.8.3"
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-import": {
+        "path": "node_modules/prismjs/themes"
+      },
+      "postcss-preset-env": {
+        "stage": 1
+      },
+      "postcss-reporter": {}
+    }
   }
 }

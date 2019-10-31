@@ -1,10 +1,12 @@
-/*  eslint-disable no-nested-ternary */
+/*  eslint-disable indent */
 //  I'm disabling this rule here because the patterns and
 //  indenting in this case makes it pretty readable.
-const Prism = require('./vendor/prismjs-custom');
-const Remarkable = require('remarkable');
-const sourceDump = require('./sourceDump');
+
+const { Remarkable } = require('remarkable');
 const Platform = require('platform');
+const sourceDump = require('./sourceDump');
+const Prism = require('./vendor/prismjs-custom');
+
 
 // DOM queries
 const srcPreEl = document.querySelector('.source-pane > pre');
@@ -55,7 +57,11 @@ function isCompatible(selectedId) {
   if (selectedId === 'smil') {
     // only return true if there's a Modernizr 👍 and the browser isn't Safari.
     return Modernizr.smil && (browser !== 'Safari');
-  } else if (selectedId === 'p5') {
+  }
+  if (selectedId === 'flash') {
+    return browser !== 'Safari';
+  }
+  if (selectedId === 'p5') {
     return Modernizr.webgl;
   }
   return true;
