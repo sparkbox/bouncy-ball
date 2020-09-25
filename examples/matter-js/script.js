@@ -16,7 +16,7 @@ var render = Render.create({
 });
 
 // Use a many-sided polygon as a ball, to ensure 100% elasticity.
-// See https://github.com/liabru/matter-js/issues/256.
+// See https://github.com/liabru/matter-js/issues/256
 var ball = Bodies.polygon(33, 25, 30, 25, {
   restitution: 1,
   friction: 0,
