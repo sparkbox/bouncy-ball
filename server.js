@@ -57,7 +57,7 @@ if (options.watch) {
         match: ['./site/css/*.css'],
         fn: function watchTask() {
           // shell.exec is synchronous
-          shell.exec('yarn run build:css');
+          shell.exec('npm run build:css');
           server.reload('*.css');
         },
         options: defaultOptions,
@@ -67,7 +67,7 @@ if (options.watch) {
         match: ['./site/js/*.js', './examples/react/script.js'],
         fn: function watchTask() {
           // shell.exec is synchronous
-          shell.exec('yarn run build:js');
+          shell.exec('npm run build:js');
           server.reload('*.js');
         },
         options: defaultOptions,
