@@ -7,8 +7,8 @@
     "example": "examples"
   },
   "scripts": {
-    "build": "yarn run build:css && yarn run build:js && yarn run build:react",
-    "build:js": "browserify site/js/index.js -o site/assets/bundle.js -t [ babelify --presets [@babel/preset-env] --plugins [babel-plugin-transform-class-properties @babel/plugin-proposal-object-rest-spread] ] && yarn run build:react",
+    "build": "npm run build:css && npm run build:js && npm run build:react",
+    "build:js": "browserify site/js/index.js -o site/assets/bundle.js -t [ babelify --presets [@babel/preset-env] --plugins [babel-plugin-transform-class-properties @babel/plugin-proposal-object-rest-spread] ] && npm run build:react",
     "build:css": "postcss site/css/styles.css -o site/assets/styles.css",
     "build:react": "babel ./examples/react/script.js -o ./examples/react/script-compiled.js",
     "test": "eslint site/js/*.js",

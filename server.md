@@ -1,7 +1,7 @@
 # Server Options
 You can pass the following options to the server on start up.
 ```
-yarn start -- --option [value]
+npm start -- --option [value]
 ```
 Typically, the default server configuration will be all you need. Options are shown below with their defaults.
 
@@ -31,5 +31,5 @@ Typically, the default server configuration will be all you need. Options are sh
 
 Fully qualified example:
 ```
-yarn start -- --proxy my-local-apache.whatever --port 3000 --tunnel b0uncyba11
+npm start -- --proxy my-local-apache.whatever --port 3000 --tunnel b0uncyba11
 ```
