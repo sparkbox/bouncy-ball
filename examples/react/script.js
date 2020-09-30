@@ -1,3 +1,5 @@
+const { useCallback, useEffect, useRef, useState } = React;
+
 // slightly modified code from the Vanilla.js example
 const getPosition = (elapsedTime, h, k) => {
   const a = (4 * k) / Math.pow(h * 2, 2); // coefficient: -.000483932
@@ -11,6 +13,33 @@ const getPosition = (elapsedTime, h, k) => {
   return ypos;
 };
 
+// performs a Quadratic Ease in and Ease out repeatedly
+function useQuadBounce({
+  duration = 1150,
+  start = 0,
+  end = 160,
+} = {}) {
+  const timeStart = useRef(Date.now());
+  const interval = useRef();
+  const [value, setValue] = useState(start);
+
+  const updateValue = useCallback(() => {
+    const time = Date.now() - timeStart.current;
+    setValue(start + getPosition(time, duration / 2, end - start));
+  }, [duration, start, end]);
+
+  useEffect(() => {
+    interval.current = setInterval(updateValue, 20);
+    return () => {
+      if (interval.current) {
+        clearInterval(interval.current);
+      }
+    };
+  }, [updateValue]);
+
+  return value;
+}
+
 // default ball style, CSS in JS
 const style = {
   display: 'block',
@@ -21,60 +50,10 @@ const style = {
   backgroundColor: '#00CFFF',
 };
 
-// renders a Ball at a certain height
-const Ball = ({ y }) => (
-  <div
-    style={{
-      ...style,
-      top: y,
-    }}
-  />
-);
+function BouncyBall() {
+  const y = useQuadBounce();
 
-// performs a Quadratic Ease in and Ease out repeatedly
-class QuadBounce extends React.Component {
-  state = {
-    beginning: Date.now(),
-  }
-
-  componentWillMount() {
-    this.setState({ interval: setInterval(this.updateValue, 20) });
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.interval);
-  }
-
-  updateValue = () => {
-    const {
-      props: {
-        duration,
-        start,
-        end,
-      },
-      state: {
-        beginning,
-      },
-    } = this;
-
-    const time = Date.now() - beginning;
-    const value = start + getPosition(time, duration / 2, end - start);
-    this.setState({ value });
-  };
-
-  render() {
-    const renderedChildren = this.props.children(this.state.value);
-    return renderedChildren && React.Children.only(renderedChildren);
-  }
+  return <div style={{ ...style, transform: `translate3d(0, ${y}px, 0)` }} />;
 }
 
-ReactDOM.render(
-  <QuadBounce
-    duration={1150}
-    start={0}
-    end={160}
-  >
-    { value => <Ball y={value} /> }
-  </QuadBounce>,
-  document.getElementById('root')
-);
+ReactDOM.render(<BouncyBall />, document.getElementById('root'));

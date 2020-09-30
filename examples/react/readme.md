@@ -8,7 +8,7 @@ This example simply borrows the animation function from the [VanillaJS example](
 ## Project Links
 - [React Github Repo](https://github.com/facebook/react)
 - [React Community Github Org (containing supporting projects)](https://github.com/reactjs)
-- [React Website & Docs](https://facebook.github.io/react/)
+- [React Website & Docs](https://reactjs.org/)
 
 ## Resources
 - [React: Getting Started](https://facebook.github.io/react/docs/getting-started.html)
