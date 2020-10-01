@@ -1,14 +1,13 @@
-var ball = document.getElementsByTagName('ball');
+const ball = document.getElementsByTagName('ball');
 
-function bounce() {
-  Velocity(ball, { translateY: '160px' }, {
-    duration: 575,
-    easing: 'easeInQuad'
-  });
-  Velocity(ball, 'reverse', {
-    easing: 'easeOutQuad',
-    complete: bounce
-  });
-}
-
-bounce();
+ball.velocity({
+  transform: [
+    'translateY(150px)',
+    'translateY(0px)',
+    'translateY(150px)',
+  ],
+}, {
+  duration: 575,
+  easing: 'easeInQuad',
+  loop: true,
+});
