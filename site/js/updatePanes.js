@@ -7,7 +7,6 @@ const Platform = require('platform');
 const sourceDump = require('./sourceDump');
 const Prism = require('./vendor/prismjs-custom');
 
-
 // DOM queries
 const srcPreEl = document.querySelector('.source-pane > pre');
 const srcCodeEl = document.querySelector('.source-pane > pre > code');
@@ -84,7 +83,6 @@ function highlightSource() {
 
   Prism.highlightAll();
 }
-
 
 /**
  * Updates the preview & source panes based to match the currently selected option.
