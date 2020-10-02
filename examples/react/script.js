@@ -1,4 +1,4 @@
-const { useCallback, useEffect, useRef, useState } = React;
+const { useEffect, useRef, useState } = React;
 
 // slightly modified code from the Vanilla.js example
 const getPosition = (elapsedTime, h, k) => {
@@ -20,22 +20,16 @@ function useQuadBounce({
   end = 160,
 } = {}) {
   const timeStart = useRef(Date.now());
-  const interval = useRef();
   const [value, setValue] = useState(start);
 
-  const updateValue = useCallback(() => {
-    const time = Date.now() - timeStart.current;
-    setValue(start + getPosition(time, duration / 2, end - start));
-  }, [duration, start, end]);
-
   useEffect(() => {
-    interval.current = setInterval(updateValue, 20);
-    return () => {
-      if (interval.current) {
-        clearInterval(interval.current);
-      }
-    };
-  }, [updateValue]);
+    const interval = setInterval(() => {
+      const time = Date.now() - timeStart.current;
+      setValue(start + getPosition(time, duration / 2, end - start));
+    }, 16);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return value;
 }
