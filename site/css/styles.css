@@ -2,6 +2,7 @@
  *** Imports (must be first) ***
  *******************************/
 @import "prism-okaidia";
+@import "./example-colors.css";
 
 
 /*******************************
@@ -166,26 +167,26 @@ iframe[scrolling='no'] {
     /* library-specific colors */
 
     /* stylelint-disable */
-    &.button-matterjs      { color: #76F09B; }
-    &.button-greensock     { color: #88CE02; }
-    &.button-vanillajs     { color: #F0DB4F; }
-    &.button-smil          { color: #FFB13B; }
-    &.button-d3            { color: #FF7B39; }
-    &.button-p5            { color: #EC245E; }
-    &.button-webanimations { color: #E44D26; }
-    &.button-gif           { color: #EE88E3; }
-    &.button-anime         { color: #AE27E7; }
-    &.button-mojs          { color: #613961; }
-    &.button-jquery        { color: #0769AD; }
-    &.button-css           { color: #16A1DC; }
-    &.button-react         { color: #00CFFF; }
-    &.button-velocity      { color: #FFFFFF; }
-    &.button-video         { color: #CFD1AD; }
-    &.button-cssstep       { color: #808080; }
-    &.button-webgl         { color: #AAAAAA; }
-    &.button-flash         { color: #FF00FF; }
-    &.button-popmotion     { color: #FF1C68; }
-    &.button-lottie        { color: #00E3C7; }
+    &.button-matterjs      { color: var(--matterjs); }
+    &.button-greensock     { color: var(--greensock); }
+    &.button-vanillajs     { color: var(--vanillajs); }
+    &.button-smil          { color: var(--smil); }
+    &.button-d3            { color: var(--d3); }
+    &.button-p5            { color: var(--p5); }
+    &.button-webanimations { color: var(--webanimations); }
+    &.button-gif           { color: var(--gif); }
+    &.button-anime         { color: var(--anime); }
+    &.button-mojs          { color: var(--mojs); }
+    &.button-jquery        { color: var(--jquery); }
+    &.button-css           { color: var(--css); }
+    &.button-react         { color: var(--react); }
+    &.button-velocity      { color: var(--velocity); }
+    &.button-video         { color: var(--video); }
+    &.button-cssstep       { color: var(--cssstep); }
+    &.button-webgl         { color: var(--webgl); }
+    &.button-flash         { color: var(--flash); }
+    &.button-popmotion     { color: var(--popmotion); }
+    &.button-lottie        { color: var(--lottie); }
     /* stylelint-enable */
   }
 }

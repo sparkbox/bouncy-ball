@@ -1,4 +1,6 @@
-/* resets the document for all our demos */ 
+@import "../site/css/example-colors.css";
+
+/* resets the document for all our demos */
 body {
   background-color: #111;
 }
