@@ -1,16 +1,19 @@
-/* colors for navigation buttons and bouncy balls */
+/*
+  colors for navigation buttons and bouncy balls
+  ! make sure all colors meet WCAG AA standards for normal text
+*/
 :root {
   --matterjs:      #76F09B;
   --greensock:     #88CE02;
   --vanillajs:     #F0DB4F;
   --smil:          #FFB13B;
   --d3:            #FF7B39;
-  --p5:            #EC245E;
+  --p5:            #ED3166;
   --webanimations: #E44D26;
   --gif:           #EE88E3;
-  --anime:         #AE27E7;
-  --mojs:          #613961;
-  --jquery:        #0769AD;
+  --anime:         #FF4B4B;
+  --mojs:          #A668A6;
+  --jquery:        #0981D7;
   --css:           #16A1DC;
   --react:         #00CFFF;
   --velocity:      #FFFFFF;
