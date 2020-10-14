@@ -49,12 +49,12 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: slategray;
+	color: #8292a2;
 }
 .token.punctuation {
 	color: #f8f8f2;
 }
-.namespace {
+.token.namespace {
 	opacity: .7;
 }
 .token.property,
@@ -107,6 +107,32 @@ pre[class*="language-"] {
 .token.entity {
 	cursor: help;
 }
+/*
+  colors for navigation buttons and bouncy balls
+  ! make sure all colors meet WCAG AA standards for normal text
+*/
+:root {
+  --matterjs:      #76F09B;
+  --greensock:     #88CE02;
+  --vanillajs:     #F0DB4F;
+  --smil:          #FFB13B;
+  --d3:            #FF7B39;
+  --p5:            #ED3166;
+  --webanimations: #E44D26;
+  --gif:           #EE88E3;
+  --anime:         #FF4B4B;
+  --mojs:          #A668A6;
+  --jquery:        #0981D7;
+  --css:           #16A1DC;
+  --react:         #00CFFF;
+  --velocity:      #FFFFFF;
+  --video:         #CFD1AD;
+  --cssstep:       #808080;
+  --webgl:         #AAAAAA;
+  --flash:         #FF00FF;
+  --popmotion:     #FF1C68;
+  --lottie:        #00E3C7;
+}
 /*******************************
  ********** Variables **********
  *******************************/
@@ -122,7 +148,7 @@ pre[class*="language-"] {
   --previewDark: #111111;
   --docsDark: #151515;
   --sourceDark: #1d1d1d;
-  --secondaryInfo: #49525a;
+  --secondaryInfo: #707e89;
 
   /* This matches a color from our prism-okaidia syntax highlighting theme */
   --linkYellow: #e6db74;
@@ -148,11 +174,8 @@ body {
   font-family: var(--copyFont);
   margin: 0;
   height: 100vh;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
+  flex-direction: column;
 }
 /* Cross-browser support of CSS-hidden iframe scrollbars */
 iframe[scrolling='no'] {
@@ -174,8 +197,7 @@ iframe[scrolling='no'] {
   text-align: center;
   padding: 0 42px;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-          flex-grow: 0;
+  flex-grow: 0;
   flex-shrink: 0;
 
   /* prevents the github ribbon from leaking out
@@ -208,19 +230,15 @@ iframe[scrolling='no'] {
 }
   }
 .selection-bar {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
+  justify-content: center;
   flex-wrap: wrap;
-  -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
   padding: 14px 12vw;
   background-color: #eaeaea;
 
   flex-basis: auto;
-  -webkit-box-flex: 0;
-          flex-grow: 0;
+  flex-grow: 0;
   flex-shrink: 0
 }
 @media (min-width: 500px) {
@@ -269,26 +287,26 @@ iframe[scrolling='no'] {
 
     /* stylelint-disable */
   }
-.nav-button.is-active.button-matterjs      { color: #76F09B; }
-.nav-button.is-active.button-greensock     { color: #88CE02; }
-.nav-button.is-active.button-vanillajs     { color: #F0DB4F; }
-.nav-button.is-active.button-smil          { color: #FFB13B; }
-.nav-button.is-active.button-d3            { color: #FF7B39; }
-.nav-button.is-active.button-p5            { color: #EC245E; }
-.nav-button.is-active.button-webanimations { color: #E44D26; }
-.nav-button.is-active.button-gif           { color: #EE88E3; }
-.nav-button.is-active.button-anime         { color: #AE27E7; }
-.nav-button.is-active.button-mojs          { color: #613961; }
-.nav-button.is-active.button-jquery        { color: #0769AD; }
-.nav-button.is-active.button-css           { color: #16A1DC; }
-.nav-button.is-active.button-react         { color: #00CFFF; }
-.nav-button.is-active.button-velocity      { color: #FFFFFF; }
-.nav-button.is-active.button-video         { color: #CFD1AD; }
-.nav-button.is-active.button-cssstep       { color: #808080; }
-.nav-button.is-active.button-webgl         { color: #AAAAAA; }
-.nav-button.is-active.button-flash         { color: #FF00FF; }
-.nav-button.is-active.button-popmotion     { color: #FF1C68; }
-.nav-button.is-active.button-lottie        { color: #00E3C7; }
+.nav-button.is-active.button-matterjs      { color: #76F09B; color: var(--matterjs); }
+.nav-button.is-active.button-greensock     { color: #88CE02; color: var(--greensock); }
+.nav-button.is-active.button-vanillajs     { color: #F0DB4F; color: var(--vanillajs); }
+.nav-button.is-active.button-smil          { color: #FFB13B; color: var(--smil); }
+.nav-button.is-active.button-d3            { color: #FF7B39; color: var(--d3); }
+.nav-button.is-active.button-p5            { color: #ED3166; color: var(--p5); }
+.nav-button.is-active.button-webanimations { color: #E44D26; color: var(--webanimations); }
+.nav-button.is-active.button-gif           { color: #EE88E3; color: var(--gif); }
+.nav-button.is-active.button-anime         { color: #FF4B4B; color: var(--anime); }
+.nav-button.is-active.button-mojs          { color: #A668A6; color: var(--mojs); }
+.nav-button.is-active.button-jquery        { color: #0981D7; color: var(--jquery); }
+.nav-button.is-active.button-css           { color: #16A1DC; color: var(--css); }
+.nav-button.is-active.button-react         { color: #00CFFF; color: var(--react); }
+.nav-button.is-active.button-velocity      { color: #FFFFFF; color: var(--velocity); }
+.nav-button.is-active.button-video         { color: #CFD1AD; color: var(--video); }
+.nav-button.is-active.button-cssstep       { color: #808080; color: var(--cssstep); }
+.nav-button.is-active.button-webgl         { color: #AAAAAA; color: var(--webgl); }
+.nav-button.is-active.button-flash         { color: #FF00FF; color: var(--flash); }
+.nav-button.is-active.button-popmotion     { color: #FF1C68; color: var(--popmotion); }
+.nav-button.is-active.button-lottie        { color: #00E3C7; color: var(--lottie); }
 .nav-button.is-active {
     /* stylelint-enable */
   }
@@ -298,10 +316,8 @@ iframe[scrolling='no'] {
   border: none;
 }
 .panes {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: stretch;
-          align-items: stretch;
+  align-items: stretch;
   position: relative;
 
   /* Solves a Firefox issue. See: http://stackoverflow.com/a/29400042/1154642 */
@@ -311,8 +327,7 @@ iframe[scrolling='no'] {
   height: 100%;
 
   flex-basis: auto;
-  -webkit-box-flex: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   flex-shrink: 1;
 }
 .docs-pane {
@@ -320,8 +335,7 @@ iframe[scrolling='no'] {
   background-color: #151515;
   background-color: var(--docsDark);
   flex-basis: 400px;
-  -webkit-box-flex: 0;
-          flex-grow: 0;
+  flex-grow: 0;
   flex-shrink: 1
 }
 .docs-pane a {
@@ -329,10 +343,8 @@ iframe[scrolling='no'] {
     color: var(--linkYellow);
   }
 .docs-pane_is-open {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: stretch;
-          align-items: stretch;
+  align-items: stretch;
 }
 .docs-pane-content {
   color: white;
@@ -408,12 +420,11 @@ iframe[scrolling='no'] {
   content: 'Less ';
 }
 .credit {
-  -webkit-box-flex: 0;
-          flex-grow: 0;
+  flex-grow: 0;
   flex-shrink: 0;
   font-size: 12px;
   text-align: center;
-  color: #49525a;
+  color: #707e89;
   color: var(--secondaryInfo);
   border-top: 1px solid #1d1d1d;
   border-top: 1px solid var(--sourceDark);
@@ -422,19 +433,19 @@ iframe[scrolling='no'] {
   padding: 3px 0
 }
 .credit :link,.credit :visited {
-    color: #49525a;
+    color: #707e89;
     color: var(--secondaryInfo);
   }
 .credit :-webkit-any-link {
-    color: #49525a;
+    color: #707e89;
     color: var(--secondaryInfo);
   }
 .credit :-moz-any-link {
-    color: #49525a;
+    color: #707e89;
     color: var(--secondaryInfo);
   }
 .credit :any-link {
-    color: #49525a;
+    color: #707e89;
     color: var(--secondaryInfo);
   }
 .credit {
@@ -466,15 +477,11 @@ iframe[scrolling='no'] {
 .preview-pane {
   background-color: #111111;
   background-color: var(--previewDark);
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   flex-basis: 40%;
-  -webkit-box-flex: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   flex-shrink: 2;
   min-width: 160px;
   min-width: var(--paneMinWidth);
@@ -483,12 +490,9 @@ iframe[scrolling='no'] {
   overflow: hidden;
 }
 .source-pane {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: stretch;
-          align-items: stretch;
-  -webkit-box-flex: 1;
-          flex-grow: 1;
+  align-items: stretch;
+  flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 60%;
   position: relative;
@@ -496,8 +500,7 @@ iframe[scrolling='no'] {
   -webkit-overflow-scrolling: touch
 }
 .source-pane > pre {
-    -webkit-box-flex: 1;
-            flex-grow: 1;
+    flex-grow: 1;
     background-color: #1d1d1d;
     background-color: var(--sourceDark);
     border-radius: 0;
@@ -517,7 +520,7 @@ iframe[scrolling='no'] {
   top: 0;
   padding: 2px 5px;
   color: white;
-  background: #49525a;
+  background: #707e89;
   background: var(--secondaryInfo);
   position: absolute;
   font-size: 10px;
