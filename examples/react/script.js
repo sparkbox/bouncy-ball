@@ -34,20 +34,10 @@ function useQuadBounce({
   return value;
 }
 
-// default ball style, CSS in JS
-const style = {
-  display: 'block',
-  position: 'absolute',
-  width: 50,
-  height: 50,
-  borderRadius: '50%',
-  backgroundColor: '#00CFFF',
-};
-
 function BouncyBall() {
   const y = useQuadBounce();
 
-  return <div style={{ ...style, transform: `translate3d(0, ${y}px, 0)` }} />;
+  return <div id="ball" style={{ transform: `translate3d(0, ${y}px, 0)` }} />;
 }
 
 ReactDOM.render(<BouncyBall />, document.getElementById('root'));

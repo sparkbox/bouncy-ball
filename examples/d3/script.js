@@ -1,4 +1,5 @@
 var svg, ball;
+var ballColor = getComputedStyle(document.documentElement).getPropertyValue('--d3');
 
 svg = d3.select('body')
         .append('svg')
@@ -9,7 +10,7 @@ svg = d3.select('body')
 
 ball = svg.append('circle')
           .attr('r', 25)
-          .attr('fill', '#FF7B39');
+          .attr('fill', ballColor);
 
 function bounce() {
   ball

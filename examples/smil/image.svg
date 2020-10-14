@@ -2,11 +2,15 @@
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   width="66" height="226">
-
+  <style>
+    @import '../shared-styles.css';
+    circle {
+      fill: var(--smil);
+    }
+  </style>
   <circle
     class="ball"
-    cx="33" cy="33" r="25"
-    fill="#FFB13B">
+    cx="33" cy="33" r="25">
 
     <animateTransform
       attributeName="transform"
