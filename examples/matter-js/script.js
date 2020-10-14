@@ -14,6 +14,7 @@ var render = Render.create({
       background: '#111'
     }
 });
+var ballColor = getComputedStyle(document.documentElement).getPropertyValue('--matterjs');
 
 // Use a many-sided polygon as a ball, to ensure 100% elasticity.
 // See https://github.com/liabru/matter-js/issues/256
@@ -23,7 +24,7 @@ var ball = Bodies.polygon(33, 25, 30, 25, {
   frictionAir: 0,
   frictionStatic: 0,
   inertia: Infinity,
-  render: { fillStyle: '#76F09B' }
+  render: { fillStyle: ballColor }
 });
 var ground = Bodies.rectangle(33, 225, 66, 1, {
   isStatic: true,

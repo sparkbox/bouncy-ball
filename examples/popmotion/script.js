@@ -1,5 +1,5 @@
 const { styler, tween, easing } = popmotion;
-const ballStyler = styler(document.getElementById('ball'));
+const ballStyler = styler(document.querySelector('ball'));
 
 tween({
   to: 160,

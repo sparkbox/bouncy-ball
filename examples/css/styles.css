@@ -3,7 +3,7 @@ ball {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #16A1DC;
+  background-color: var(--css);
 
   /* animation properties */
   animation-name: bounce;

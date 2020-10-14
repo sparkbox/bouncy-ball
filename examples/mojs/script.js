@@ -1,6 +1,5 @@
 var ball = new mojs.Shape({
   shape:    'circle',
-  fill:     '#613961',
   radius:   25,
   top:      33,
   left:     33,
