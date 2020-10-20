@@ -4,8 +4,6 @@ P5.js is an open-source JavaScript library for "creating graphic and interactive
 
 In this demo, we use JavaScript to calculate the position of the ball, and P5 to draw the ball and display it on the page (with `<canvas>`).
 
-We calculate the position with a physics-based approach, using the Kinematic formulas, but other approaches would work just as well (like the one used in the [VanillaJS demo](http://sparkbox.github.io/bouncy-ball/#vanilla-js)).
-
 P5.js License: GPL 2.1
 
 ## Project Links

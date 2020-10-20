@@ -208,6 +208,7 @@ code a {
 .button-flash.is-active         { color: var(--flash); }
 .button-popmotion.is-active     { color: var(--popmotion); }
 .button-lottie.is-active        { color: var(--lottie); }
+.button-canvas.is-active        { color: var(--canvas); }
 /* stylelint-enable */
 
 .demo-frame {
