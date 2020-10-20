@@ -1,10 +1,14 @@
 {
-  "extends": "sparkbox",
+  "extends": ["@sparkbox/eslint-config-sparkbox"],
   "rules": {
     "operator-linebreak": "off",
     "no-nested-ternary": "off"
   },
+  "ignorePatterns": [
+    "examples/**/*"
+  ],
   "globals": {
-    "Modernizr": false
+    "Modernizr": "readonly",
+    "Prism": "readonly"
   }
 }

@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="http://sparkbox.github.io/bouncy-ball/">
-    <img alt="Bouncy Ball Graphic" src="site/assets/images/graphic.png" />
+    <img alt="Bouncy Ball Graphic" src="site/images/graphic.png" />
   </a>
 </p>
 

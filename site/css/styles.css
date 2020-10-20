@@ -1,22 +1,16 @@
 /*******************************
  *** Imports (must be first) ***
  *******************************/
-@import "prism-okaidia";
+@import "../vendor_custom/prism-okaidia-custom.css";
 @import "./example-colors.css";
-
 
 /*******************************
  ********** Variables **********
  *******************************/
-@custom-media --midphone-plus (width >= 500px);
-@custom-media --tablet-plus (width >= 780px);
-@custom-media --megatablet-plus (width >= 900px);
-@custom-media --short-screens (height <= 560px);
-
 :root {
   /***** FONTS *****/
-  --titleFont: 'Ubuntu', 'Source Sans Pro', Verdana, sans-serif;
-  --copyFont: 'Source Sans Pro', Verdana, sans-serif;
+  --titleFont: 'Ubuntu', 'Source Sans Pro', 'Verdana', sans-serif;
+  --copyFont: 'Source Sans Pro', 'Verdana', sans-serif;
   --sourceFont: 'Source Code Pro', 'Courier', monospace;
 
   /***** COLORS *****/
@@ -34,6 +28,17 @@
   --paneMinWidth: 160px;
   --docsLeftPadding: 1.1rem;
   --docsLeftPaddingMedium: 1.3rem;
+
+  /***** Media Queries *****
+  // Custom properties can't actually be used for media
+  // queries so these are just here for documentation.
+
+  --midphone-plus (width >= 500px);
+  --tablet-plus (width >= 780px);
+  --megatablet-plus (width >= 900px);
+  --short-screens (height <= 560px);
+
+  */
 }
 
 
@@ -63,17 +68,28 @@ iframe[scrolling='no'] {
   overflow: hidden;
 }
 
+code {
+  font-family: var(--sourceFont);
+}
+
+code a {
+  /* causes autolinker links to inherit their respective syntax-
+      highlighted colors instead of being default-link-blue. */
+  color: inherit;
+}
+
 /*
   We like focus rings, but only when a person is tabbing (not clicking).
   Thus, we scope all focus ring suppression to a "no-focus" class, which
   is added to the body tag when a person is clicking, and removed when a
   person is tabbing. Same idea as https://github.com/lindsayevans/outline.js
 */
-.no-focus :focus {
-  outline: 0;
-}
 .no-focus ::-moz-focus-inner {
   border: 0;
+}
+
+.no-focus :focus {
+  outline: 0;
 }
 
 .header {
@@ -87,8 +103,9 @@ iframe[scrolling='no'] {
      of the header and overlapping form inputs */
   overflow: hidden;
   position: relative;
-
-  @media (--midphone-plus) {
+}
+@media (min-width: 500px) { /* --midphone-plus */
+  .header {
     padding-top: 6px;
     padding-bottom: 6px;
   }
@@ -97,16 +114,18 @@ iframe[scrolling='no'] {
 .title {
   font-family: var(--titleFont);
   font-size: 18px;
-
-  @media (--midphone-plus) {
+}
+@media (min-width: 500px) { /* --midphone-plus */
+  .title {
     font-size: 32px;
   }
 }
 
 .description {
   font-size: 14px;
-
-  @media (--midphone-plus) {
+}
+@media (min-width: 500px) { /* --midphone-plus */
+  .description {
     font-size: 16px;
   }
 }
@@ -122,8 +141,9 @@ iframe[scrolling='no'] {
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
-
-  @media (--midphone-plus) {
+}
+@media (min-width: 500px) { /* --midphone-plus */
+  .selection-bar {
     padding-top: 16px;
     padding-bottom: 16px;
   }
@@ -142,54 +162,53 @@ iframe[scrolling='no'] {
   background-color: white;
   cursor: pointer;
   box-shadow: 0 1px 6px -3px black;
-
-  @media (--midphone-plus) {
+}
+@media (min-width: 500px) { /* --midphone-plus */
+  .nav-button {
     font-size: 16px;
     padding: 6px 12px;
   }
-
-  &:link {
-    color: black;
-  }
-
-  &:visited {
-    color: black;
-  }
-
-  &:hover {
-    background-color: var(--previewDark);
-    color: white;
-  }
-
-  &.is-active {
-    background-color: var(--previewDark);
-
-    /* library-specific colors */
-
-    /* stylelint-disable */
-    &.button-matterjs      { color: var(--matterjs); }
-    &.button-greensock     { color: var(--greensock); }
-    &.button-vanillajs     { color: var(--vanillajs); }
-    &.button-smil          { color: var(--smil); }
-    &.button-d3            { color: var(--d3); }
-    &.button-p5            { color: var(--p5); }
-    &.button-webanimations { color: var(--webanimations); }
-    &.button-gif           { color: var(--gif); }
-    &.button-anime         { color: var(--anime); }
-    &.button-mojs          { color: var(--mojs); }
-    &.button-jquery        { color: var(--jquery); }
-    &.button-css           { color: var(--css); }
-    &.button-react         { color: var(--react); }
-    &.button-velocity      { color: var(--velocity); }
-    &.button-video         { color: var(--video); }
-    &.button-cssstep       { color: var(--cssstep); }
-    &.button-webgl         { color: var(--webgl); }
-    &.button-flash         { color: var(--flash); }
-    &.button-popmotion     { color: var(--popmotion); }
-    &.button-lottie        { color: var(--lottie); }
-    /* stylelint-enable */
-  }
 }
+
+.nav-button:link {
+  color: black;
+}
+
+.nav-button:visited {
+  color: black;
+}
+
+.nav-button:hover {
+  background-color: var(--previewDark);
+  color: white;
+}
+
+.nav-button.is-active {
+  background-color: var(--previewDark);
+}
+
+/* stylelint-disable */
+.button-matterjs.is-active      { color: var(--matterjs); }
+.button-greensock.is-active     { color: var(--greensock); }
+.button-vanillajs.is-active     { color: var(--vanillajs); }
+.button-smil.is-active          { color: var(--smil); }
+.button-d3.is-active            { color: var(--d3); }
+.button-p5.is-active            { color: var(--p5); }
+.button-webanimations.is-active { color: var(--webanimations); }
+.button-gif.is-active           { color: var(--gif); }
+.button-anime.is-active         { color: var(--anime); }
+.button-mojs.is-active          { color: var(--mojs); }
+.button-jquery.is-active        { color: var(--jquery); }
+.button-css.is-active           { color: var(--css); }
+.button-react.is-active         { color: var(--react); }
+.button-velocity.is-active      { color: var(--velocity); }
+.button-video.is-active         { color: var(--video); }
+.button-cssstep.is-active       { color: var(--cssstep); }
+.button-webgl.is-active         { color: var(--webgl); }
+.button-flash.is-active         { color: var(--flash); }
+.button-popmotion.is-active     { color: var(--popmotion); }
+.button-lottie.is-active        { color: var(--lottie); }
+/* stylelint-enable */
 
 .demo-frame {
   width: 66px; /* 50px ball + 8px margin left/right */
@@ -219,10 +238,10 @@ iframe[scrolling='no'] {
   flex-basis: 400px;
   flex-grow: 0;
   flex-shrink: 1;
+}
 
-  & a {
-    color: var(--linkYellow);
-  }
+.docs-pane a {
+  color: var(--linkYellow);
 }
 
 .docs-pane_is-open {
@@ -240,18 +259,20 @@ iframe[scrolling='no'] {
   margin-top: 2.5rem;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-
-  @media (--midphone-plus) {
+}
+@media (min-width: 500px) { /* --midphone-plus */
+  .docs-pane-content {
     padding-left: var(--docsLeftPaddingMedium);
   }
-
-  @media (--tablet-plus) {
+}
+@media (min-width: 780px) { /* --tablet-plus */
+  .docs-pane-content {
     font-size: 1em;
   }
+}
 
-  & h1:first-of-type {
-    margin-top: 0;
-  }
+.docs-pane-content h1:first-of-type {
+  margin-top: 0;
 }
 
 .docs-toggle {
@@ -261,8 +282,9 @@ iframe[scrolling='no'] {
   z-index: 1;
   width: calc(40% - var(--docsLeftPadding));
   min-width: calc(var(--paneMinWidth) - var(--docsLeftPadding));
-
-  @media (--midphone-plus) {
+}
+@media (min-width: 500px) { /* --midphone-plus */
+  .docs-toggle {
     top: 0.75rem;
     left: var(--docsLeftPaddingMedium);
     width: calc(40% - var(--docsLeftPaddingMedium));
@@ -273,14 +295,15 @@ iframe[scrolling='no'] {
 .docs-toggle-link {
   font-size: 10px;
   color: var(--linkYellow);
-
-  &::before {
-    content: 'More ';
-  }
-
-  @media (--midphone-plus) {
+}
+@media (min-width: 500px) { /* --midphone-plus */
+  .docs-toggle-link {
     font-size: 13px;
   }
+}
+
+.docs-toggle-link::before {
+  content: 'More ';
 }
 
 .button-link {
@@ -305,15 +328,16 @@ iframe[scrolling='no'] {
   border-top: 1px solid var(--sourceDark);
   background-color: var(--previewDark);
   padding: 3px 0;
-
-  & :any-link {
-    color: var(--secondaryInfo);
-  }
-
+}
+@media (max-height: 560px) { /* --short-screens */
   /* preserve vertical space by hiding the credit on short screens */
-  @media (--short-screens) {
+  .credit {
     display: none;
   }
+}
+
+.credit :any-link {
+  color: var(--secondaryInfo);
 }
 
 .unsupported {
@@ -328,7 +352,7 @@ iframe[scrolling='no'] {
   width: 50px;
   height: 50px;
   margin: 1rem auto;
-  background-image: url('../assets/images/sad.svg');
+  background-image: url('../images/sad.svg');
 }
 
 .unsupported-details {
@@ -358,20 +382,21 @@ iframe[scrolling='no'] {
   position: relative;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+}
 
-  & > pre {
-    flex-grow: 1;
-    background-color: var(--sourceDark);
-    border-radius: 0;
-    font-size: 0.75em;
-    margin: 0;
-    padding: 1.5em 0.5em 0.5em 1.5em;
-
-    /* note: detailed source code styles are provided by prismjs */
-
-    @media (--megatablet-plus) {
-      font-size: 0.9em;
-    }
+/* note: Most source code styles are provided by PrismJS.
+         The styles below just apply a few tweaks and overrides.  */
+.source-pane > pre {
+  flex-grow: 1;
+  background-color: var(--sourceDark);
+  border-radius: 0;
+  font-size: 0.75em;
+  margin: 0;
+  padding: 1.5em 0.5em 0.5em 1.5em;
+}
+@media (min-width: 900px) { /* --megatablet-plus */
+  .source-pane > pre {
+    font-size: 0.9em;
   }
 }
 
@@ -384,16 +409,6 @@ iframe[scrolling='no'] {
   position: absolute;
   font-size: 10px;
   text-transform: uppercase;
-}
-
-code {
-  font-family: var(--sourceFont);
-
-  & a {
-    /* causes autolinker links to inherit their respective syntax-
-       highlighted colors instead of being default-link-blue. */
-    color: inherit;
-  }
 }
 
 .ribbon {

@@ -1,15 +1,15 @@
 /*  eslint-disable indent */
 //  I'm disabling this rule here because the patterns and
 //  indenting in this case makes it pretty readable.
-
-const { Remarkable } = require('remarkable');
-const Platform = require('platform');
-const sourceDump = require('./sourceDump');
-const Prism = require('./vendor/prismjs-custom');
+import '../vendor_custom/prismjs-custom.js';
+import { sourceDump } from './sourceDump.js';
+import { Remarkable } from '../web_modules/remarkable.js';
+import Platform from '../web_modules/platform.js';
 
 // DOM queries
 const srcPreEl = document.querySelector('.source-pane > pre');
 const srcCodeEl = document.querySelector('.source-pane > pre > code');
+const srcLabelEl = document.querySelector('.prism-show-language');
 const demoEl = document.querySelector('.demo-frame');
 const docsEl = document.querySelector('.docs-pane-content');
 const docsLinkDemoName = document.querySelector('.demo-name');
@@ -18,18 +18,51 @@ const unsupportedEl = document.querySelector('.unsupported');
 // We pull this value to the top level, so callbacks can access its latest value.
 let selected;
 
-/**
- * @private
- */
+const srcDetails = {
+  css: {
+    label: 'CSS',
+    prismId: 'css',
+    filename: 'styles.css',
+  },
+  'css-step': {
+    label: 'CSS',
+    prismId: 'css',
+    filename: 'styles.css',
+  },
+  smil: {
+    label: 'SVG',
+    prismId: 'markup',
+    filename: 'image.svg',
+  },
+  video: {
+    label: 'HTML',
+    prismId: 'markup',
+    filename: 'index.html',
+  },
+  flash: {
+    label: 'HTML',
+    prismId: 'markup',
+    filename: 'index.html',
+  },
+  'animated-gif': {
+    label: 'HTML',
+    prismId: 'markup',
+    filename: 'index.html',
+  },
+  default: {
+    label: 'JavaScript',
+    prismId: 'javascript',
+    filename: 'script.js',
+  },
+};
+
 function showIncompatibilityMessage() {
   // hide iframe
   demoEl.style.display = 'none';
   // show message
   unsupportedEl.style.display = '';
 }
-/**
- * @private
- */
+
 function resetIncompatibilityMessage() {
   // show iframe
   demoEl.style.display = '';
@@ -39,7 +72,6 @@ function resetIncompatibilityMessage() {
 
 /**
  * Runs Remarkable on readme text, and drops it into the docs pane.
- * @private
  */
 function markdownToHtml(response) {
   const parser = new Remarkable('commonmark');
@@ -48,7 +80,6 @@ function markdownToHtml(response) {
 
 /**
  * Checks if the selected demo is compatible with this browser.
- * @private
  */
 function isCompatible(selectedId) {
   const browser = Platform.name;
@@ -68,18 +99,16 @@ function isCompatible(selectedId) {
 
 /**
  * Runs PrismJS on the page. Designed to be called once the new source is on the page.
- * @private
  */
 function highlightSource() {
-  const srcLanguage = (selected.id === 'css') ? 'css' :
-                      (selected.id === 'css-step') ? 'css' :
-                      (selected.id === 'smil') ? 'markup' :
-                      (selected.id === 'video') ? 'markup' :
-                      (selected.id === 'flash') ? 'markup' :
-                      (selected.id === 'animated-gif') ? 'markup' : 'javascript';
+  const srcPrismId =
+    srcDetails[selected.id] ? srcDetails[selected.id].prismId : srcDetails.default.prismId;
+  const srcLabelText =
+    srcDetails[selected.id] ? srcDetails[selected.id].label : srcDetails.default.label;
 
   srcCodeEl.className = '';
-  srcCodeEl.classList.add(`language-${srcLanguage}`);
+  srcCodeEl.classList.add(`language-${srcPrismId}`);
+  srcLabelEl.textContent = srcLabelText;
 
   Prism.highlightAll();
 }
@@ -101,13 +130,8 @@ function updatePanes(event) {
   selected = document.querySelector('.is-active');
 
   const name = selected.textContent;
-  const srcFileName = (selected.id === 'css') ? 'styles.css' :
-                      (selected.id === 'css-step') ? 'styles.css' :
-                      (selected.id === 'smil') ? 'image.svg' :
-                      (selected.id === 'video') ? 'index.html' :
-                      (selected.id === 'flash') ? 'index.html' :
-                      (selected.id === 'animated-gif') ? 'index.html' : 'script.js';
-
+  const srcFileName =
+    srcDetails[selected.id] ? srcDetails[selected.id].filename : srcDetails.default.filename;
   const demoFileName = (selected.id === 'smil') ? 'image.svg' : 'index.html';
 
   // pane content urls
@@ -132,4 +156,6 @@ function updatePanes(event) {
   sourceDump(docsUrl, undefined, { successCallback: markdownToHtml });
 }
 
-module.exports = updatePanes;
+export {
+  updatePanes,
+};

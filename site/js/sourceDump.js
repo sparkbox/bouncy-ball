@@ -1,4 +1,4 @@
-function sourceDump(url, dumpLocation, options) {
+export function sourceDump(url, dumpLocation, options) {
   const request = new XMLHttpRequest();
   request.open('GET', url, true);
 
@@ -32,5 +32,3 @@ function sourceDump(url, dumpLocation, options) {
 
   request.send();
 }
-
-module.exports = sourceDump;

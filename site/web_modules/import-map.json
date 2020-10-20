@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "platform": "./platform.js",
+    "remarkable": "./remarkable.js"
+  }
+}
