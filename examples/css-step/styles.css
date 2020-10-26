@@ -1,5 +1,5 @@
 /* See the sprite image we needed to create for this animation:
-   http://sparkbox.github.io/bouncy-ball/examples/css-step/image.gif
+   https://sparkbox.github.io/bouncy-ball/examples/css-step/image.gif
 */
 ball {
   display: block;
@@ -10,7 +10,12 @@ ball {
 }
 
 @keyframes bounce {
-  from { background-position: 0px;     }
-  to   { background-position: -3762px; }
+  from {
+    background-position: 0;
+  }
+
+  to {
+    background-position: -3762px;
+  }
 }
 

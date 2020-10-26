@@ -1,3 +1,9 @@
 {
-  "extends": "@sparkbox/stylelint-config-sparkbox"
+  "extends": "@sparkbox/stylelint-config-sparkbox",
+  "ignoreFiles": ["site/vendor_custom/*"],
+  "rules": {
+    "selector-type-no-unknown": [true, {
+      "ignoreTypes": ["/^ball/"]
+    }]
+  }
 }

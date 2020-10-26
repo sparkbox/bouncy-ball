@@ -24,8 +24,7 @@ When in doubt on how to organize your example, start by copying the `examples/te
 
 1. Animation examples using a library have a downloaded copy of the library in their folder. To update it, replace it with a newer version of the file and rename it accordingly.
 2. Other JavaScript dependencies are declared in `packaged.json`. They use Snowpack to generate ES6 modules bundles which are saved in `site/web_modules`. To update them:
-    - Update the version number in `package.json`
-    - Run `npm install`
+    - Install the updated version of the package: `npm i package@x.x.x`
     - Rebuild the dependencies with Snowpack: `npm run build`
     - Test the functionality and check the files into version control.
 3. Dependencies with custom builds are kept in `site/vendor_custom`. To update these, browse to the URL at the top of the file, regenerate the code snippet, and paste it over the existing snippet.

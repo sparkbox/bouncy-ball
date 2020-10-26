@@ -5,30 +5,19 @@ ball {
   border-radius: 50%;
   background-color: var(--css);
 
-  /* animation properties */
   animation-name: bounce;
   animation-duration: 0.575s;
   animation-direction: alternate;
-  animation-timing-function: cubic-bezier(.6,0.08,0.8,.6);
+  animation-timing-function: cubic-bezier(0.6, 0.08, 0.8, 0.6);
   animation-iteration-count: infinite;
 }
 
 @keyframes bounce {
-  from { transform: translate3d(0, 0, 0);     }
-  to   { transform: translate3d(0, 160px, 0); }
-}
+  from {
+    transform: translate3d(0, 0, 0);
+  }
 
-/* Vendor prefixes -- adds support for the browsers that need it */
-/* See http://caniuse.com/#feat=css-animation for support matrix */
-ball {
-  -webkit-animation-name: bounce;
-  -webkit-animation-duration: 0.575s;
-  -webkit-animation-direction: alternate;
-  -webkit-animation-timing-function: cubic-bezier(.6,0.08,0.8,.6);
-  -webkit-animation-iteration-count: infinite;
-}
-
-@-webkit-keyframes bounce {
-  from { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
-  to   { -webkit-transform: translate3d(0, 160px, 0); transform: translate3d(0, 160px, 0); }
+  to {
+    transform: translate3d(0, 160px, 0);
+  }
 }

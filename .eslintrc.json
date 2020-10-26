@@ -5,7 +5,8 @@
     "no-nested-ternary": "off"
   },
   "ignorePatterns": [
-    "examples/**/*"
+    "examples/**/*",
+    "site/vendor_custom/*"
   ],
   "globals": {
     "Modernizr": "readonly",
