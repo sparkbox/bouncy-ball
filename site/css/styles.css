@@ -183,32 +183,32 @@ code a {
   color: white;
 }
 
-.nav-button.is-active {
+.nav-button:target {
   background-color: var(--previewDark);
 }
 
 /* stylelint-disable */
-.button-matterjs.is-active      { color: var(--matterjs); }
-.button-greensock.is-active     { color: var(--greensock); }
-.button-vanillajs.is-active     { color: var(--vanillajs); }
-.button-smil.is-active          { color: var(--smil); }
-.button-d3.is-active            { color: var(--d3); }
-.button-p5.is-active            { color: var(--p5); }
-.button-webanimations.is-active { color: var(--webanimations); }
-.button-gif.is-active           { color: var(--gif); }
-.button-anime.is-active         { color: var(--anime); }
-.button-mojs.is-active          { color: var(--mojs); }
-.button-jquery.is-active        { color: var(--jquery); }
-.button-css.is-active           { color: var(--css); }
-.button-react.is-active         { color: var(--react); }
-.button-velocity.is-active      { color: var(--velocity); }
-.button-video.is-active         { color: var(--video); }
-.button-cssstep.is-active       { color: var(--cssstep); }
-.button-webgl.is-active         { color: var(--webgl); }
-.button-flash.is-active         { color: var(--flash); }
-.button-popmotion.is-active     { color: var(--popmotion); }
-.button-lottie.is-active        { color: var(--lottie); }
-.button-canvas.is-active        { color: var(--canvas); }
+.button-matterjs:target      { color: var(--matterjs); }
+.button-greensock:target     { color: var(--greensock); }
+.button-vanillajs:target     { color: var(--vanillajs); }
+.button-smil:target          { color: var(--smil); }
+.button-d3:target            { color: var(--d3); }
+.button-p5:target            { color: var(--p5); }
+.button-webanimations:target { color: var(--webanimations); }
+.button-gif:target           { color: var(--gif); }
+.button-anime:target         { color: var(--anime); }
+.button-mojs:target          { color: var(--mojs); }
+.button-jquery:target        { color: var(--jquery); }
+.button-css:target           { color: var(--css); }
+.button-react:target         { color: var(--react); }
+.button-velocity:target      { color: var(--velocity); }
+.button-video:target         { color: var(--video); }
+.button-cssstep:target       { color: var(--cssstep); }
+.button-webgl:target         { color: var(--webgl); }
+.button-flash:target         { color: var(--flash); }
+.button-popmotion:target     { color: var(--popmotion); }
+.button-lottie:target        { color: var(--lottie); }
+.button-canvas:target        { color: var(--canvas); }
 /* stylelint-enable */
 
 .demo-frame {

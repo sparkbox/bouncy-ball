@@ -116,18 +116,8 @@ function highlightSource() {
 /**
  * Updates the preview & source panes based to match the currently selected option.
  */
-function updatePanes(event) {
-  if (event && event.type === 'click') {
-    // If a click triggered this function, we'll need to change .is-active
-    // and update the url (these don't need to be done when this function
-    // is run on the initial page load).
-    document.querySelector('.is-active').classList.remove('is-active');
-    event.currentTarget.classList.add('is-active');
-
-    window.location.hash = selected.id;
-  }
-
-  selected = document.querySelector('.is-active');
+function updatePanes() {
+  selected = document.querySelector(window.location.hash);
 
   const name = selected.textContent;
   const srcFileName =
