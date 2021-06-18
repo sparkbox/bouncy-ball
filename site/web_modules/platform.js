@@ -27,10 +27,10 @@ var platform = createCommonjsModule(function (module, exports) {
   var root = (objectTypes[typeof window] && window) || this;
 
   /** Detect free variable `exports`. */
-  var freeExports = objectTypes['object'] && exports;
+  var freeExports = exports;
 
   /** Detect free variable `module`. */
-  var freeModule = objectTypes['object'] && module && !module.nodeType && module;
+  var freeModule = module && !module.nodeType && module;
 
   /** Detect free variable `global` from Node.js or Browserified code and use it as `root`. */
   var freeGlobal = freeExports && freeModule && typeof commonjsGlobal == 'object' && commonjsGlobal;
