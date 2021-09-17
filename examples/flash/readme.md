@@ -1,14 +1,14 @@
 # Flash
 
-Flash is a deprecated multimedia technology, created by Macromedia in 1996 before being acquired and maintained by Adobe. At the height of its popularity, Flash was used to produce media, animations, rich Internet applications, and games, and then embed them in websites (and other platforms). As a proprietary technology, Flash embeds could only be rendered in web browsers by installing a plugin.
+Flash is a deprecated multimedia technology, created by Macromedia in 1996 before being acquired and maintained by Adobe. At the height of its popularity, Flash was used to produce media, animations, rich Internet applications, and games, to be embedded in websites (and other platforms). As a proprietary technology, Flash embeds could only be rendered in web browsers by installing a plugin.
 
-Developers building Flash animations usually use the [Adobe Animate](adobe.com/products/animate.html) (previously Adobe Flash Professional) application which provides a visual canvas, timeline, and programming environment for building animations.
+Developers building Flash animations used the [Adobe Animate](https://adobe.com/products/animate.html) (previously Adobe Flash Professional) application which provided a visual canvas, timeline, and programming environment for building animations.
 
-Flash usage has been declining for years as platforms and developers have embraced web-native technologies like HTML5. Adobe [plans to end support](https://blogs.adobe.com/conversations/2017/07/adobe-flash-update.html) for the Flash platform by 2020.
+Over time, Flash usage declined as platforms and developers embraced web-native technologies like HTML5. The Flash Player was deprecated in 2017 and officially discontinued at the end of 2020. By January 2021, all major modern browsers were blocking Flash content unconditionally.
 
 ## Project Links
 
-- [Adobe Animate CC](adobe.com/products/animate.html).
+- [Adobe Animate CC](https://www.adobe.com/products/animate.html).
 
 ## Resources
 
