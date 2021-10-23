@@ -209,6 +209,7 @@ code a {
 .button-popmotion:target     { color: var(--popmotion); }
 .button-lottie:target        { color: var(--lottie); }
 .button-canvas:target        { color: var(--canvas); }
+.button-motion:target        { color: var(--motion); }
 /* stylelint-enable */
 
 .demo-frame {
