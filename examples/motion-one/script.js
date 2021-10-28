@@ -1,13 +1,12 @@
-const motion = window.Motion;
 const ball = document.getElementsByTagName("ball");
 
-motion.animate(
-  ball, 
+Motion.animate(
+  ball,
   { y: [160, 0] },
   {
     duration: .575,
     repeat: Infinity,
     direction: "alternate-reverse",
-    ease: "ease-in"
+    ease: "cubic-bezier(.6, 0.08, 0.8, .6)"
   },
 );
