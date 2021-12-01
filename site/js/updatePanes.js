@@ -4,7 +4,7 @@
 import '../vendor_custom/prismjs-custom.js';
 import { sourceDump } from './sourceDump.js';
 import { Remarkable } from '../web_modules/remarkable.js';
-import Platform from '../web_modules/platform.js';
+import { name as browserName } from '../web_modules/platform.js';
 
 // DOM queries
 const srcPreEl = document.querySelector('.source-pane > pre');
@@ -82,14 +82,13 @@ function markdownToHtml(response) {
  * Checks if the selected demo is compatible with this browser.
  */
 function isCompatible(selectedId) {
-  const browser = Platform.name;
-
   if (selectedId === 'smil') {
     // only return true if there's a Modernizr 👍 and the browser isn't Safari.
-    return Modernizr.smil && (browser !== 'Safari');
+    return Modernizr.smil && (browserName !== 'Safari');
   }
   if (selectedId === 'flash') {
-    return browser !== 'Safari';
+    // Flash is now deprecated in all browsers.
+    return false;
   }
   if (selectedId === 'p5') {
     return Modernizr.webgl;
