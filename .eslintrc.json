@@ -6,7 +6,8 @@
   },
   "ignorePatterns": [
     "examples/**/*",
-    "site/vendor_custom/*"
+    "site/vendor_custom/*",
+    "site/web_modules/*"
   ],
   "globals": {
     "Modernizr": "readonly",
