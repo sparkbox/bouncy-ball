@@ -23,9 +23,10 @@ When in doubt on how to organize your example, start by copying the `examples/te
 ## Updating Dependencies
 
 1. Animation examples using a library have a downloaded copy of the library in their folder. To update it, replace it with a newer version of the file and rename it accordingly.
-2. Other JavaScript dependencies are declared in `packaged.json`. They use Snowpack to generate ES6 modules bundles which are saved in `site/web_modules`. To update them:
+2. Other JavaScript dependencies are declared in `package.json`. They use `esinstall` to generate ES6 modules bundles which are saved in `site/web_modules`. To update them:
     - Install the updated version of the package: `npm i package@x.x.x`
-    - Rebuild the dependencies with Snowpack: `npm run build`
+      - Ensure the package is listed [in the esinstall config in `package.json`](https://github.com/sparkbox/bouncy-ball/blob/6241868ac2cedf8523558856b62cf16e6ebb2ac7/package.json#L45), if it isn't already.
+    - Rebuild the dependencies with `esinstall`: `npm run build`
     - Test the functionality and check the files into version control.
 3. Dependencies with custom builds are kept in `site/vendor_custom`. To update these, browse to the URL at the top of the file, regenerate the code snippet, and paste it over the existing snippet.
 
@@ -33,4 +34,4 @@ When in doubt on how to organize your example, start by copying the `examples/te
 
 1. Fork and clone the repo.
 2. Make your changes on a [feature-branch](https://bocoup.com/weblog/git-workflow-walkthrough-feature-branches).
-3. Submit a Pull Request to the `master` branch.
+3. Submit a Pull Request to the `main` branch.
