@@ -1,24 +1,30 @@
-var Engine = Matter.Engine,
-    Render = Matter.Render,
-    Bodies = Matter.Bodies,
-    World = Matter.World;
+const Engine = Matter.Engine,
+  Render = Matter.Render,
+  Runner = Matter.Runner,
+  Bodies = Matter.Bodies,
+  World = Matter.World;
 
-var engine = Engine.create();
-var render = Render.create({
-    element: document.body,
-    engine: engine,
-    options: {
-      width: 66,
-      height: 226,
-      wireframes: false,
-      background: '#111'
-    }
+const runner = Runner.create({
+  isFixed: true,
+  delta: 1000 / 120,
 });
-var ballColor = getComputedStyle(document.documentElement).getPropertyValue('--matterjs');
+const engine = Engine.create();
+const render = Render.create({
+  element: document.body,
+  engine: engine,
+  options: {
+    width: 66,
+    height: 226,
+    wireframes: false,
+    background: '#111'
+  }
+});
+const ballColor = getComputedStyle(document.documentElement).getPropertyValue('--matterjs');
+
 
 // Use a many-sided polygon as a ball, to ensure 100% elasticity.
 // See https://github.com/liabru/matter-js/issues/256
-var ball = Bodies.polygon(33, 25, 30, 25, {
+const ball = Bodies.polygon(33, 25, 30, 25, {
   restitution: 1,
   friction: 0,
   frictionAir: 0,
@@ -26,11 +32,11 @@ var ball = Bodies.polygon(33, 25, 30, 25, {
   inertia: Infinity,
   render: { fillStyle: ballColor }
 });
-var ground = Bodies.rectangle(33, 225, 66, 1, {
+const ground = Bodies.rectangle(33, 225, 66, 1, {
   isStatic: true,
   render: { fillStyle: '#111' }
 });
 
 World.add(engine.world, [ball, ground]);
-Engine.run(engine);
+Runner.run(runner, engine);
 Render.run(render);
