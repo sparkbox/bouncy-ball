@@ -15,7 +15,7 @@ context.configure({
 const module = device.createShaderModule({
   code: `
     // Define the four corners of the square being rendered
-    var<private> pos : array<vec2f, 4> = array<vec2f, 4>(
+    var<private> pos = array(
       vec2f(-1, -1),
       vec2f(1, -1),
       vec2f(-1, 1),
@@ -74,6 +74,7 @@ const module = device.createShaderModule({
 
 // Create a render pipeline that uses the above shader.
 const pipeline = device.createRenderPipeline({
+  label: 'Bouncing Ball Pipeline',
   layout: 'auto',
   vertex: {
     module,
@@ -91,6 +92,7 @@ const pipeline = device.createRenderPipeline({
 
 // Create a buffer for the shader uniforms.
 const uniformBuffer = device.createBuffer({
+  label: 'Uniform Buffer',
   size: 8 * Float32Array.BYTES_PER_ELEMENT,
   usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
 });
@@ -111,6 +113,7 @@ uniformArray[5] = canvas.clientHeight;
 
 // Create a bind group with the uniformBuffer.
 const bindGroup = device.createBindGroup({
+  label: 'Bouncing Ball Bind Group',
   layout: pipeline.getBindGroupLayout(0),
   entries: [{
     binding: 0,
