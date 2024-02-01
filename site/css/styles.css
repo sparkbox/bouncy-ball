@@ -205,6 +205,7 @@ code a {
 .button-video:target         { color: var(--video); }
 .button-cssstep:target       { color: var(--cssstep); }
 .button-webgl:target         { color: var(--webgl); }
+.button-webgpu:target        { color: var(--webgpu); }
 .button-flash:target         { color: var(--flash); }
 .button-popmotion:target     { color: var(--popmotion); }
 .button-lottie:target        { color: var(--lottie); }

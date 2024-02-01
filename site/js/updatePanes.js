@@ -93,6 +93,10 @@ function isCompatible(selectedId) {
   if (selectedId === 'p5') {
     return Modernizr.webgl;
   }
+  if (selectedId === 'webgpu') {
+    // WebGPU is still in development on some browsers.
+    return navigator.gpu;
+  }
   return true;
 }
 
