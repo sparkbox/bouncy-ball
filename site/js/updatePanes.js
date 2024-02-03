@@ -87,8 +87,10 @@ function isCompatible(selectedId) {
     return Modernizr.smil && (browserName !== 'Safari');
   }
   if (selectedId === 'flash') {
-    // Flash is now deprecated in all browsers.
-    return false;
+    // Flash is deprecated in most browsers but can still be emulated by tools like
+    // https://ruffle.rs. Both emulators and legacy flash plugins should be detected
+    // by the check below (see: https://stackoverflow.com/a/42815720/1154642).
+    return !!navigator.plugins.namedItem("Shockwave Flash");
   }
   if (selectedId === 'p5') {
     return Modernizr.webgl;
