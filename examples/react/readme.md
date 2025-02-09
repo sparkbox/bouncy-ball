@@ -1,9 +1,9 @@
 # React
-React.js is a javascript library for building user interfaces. It allows developers to build encapsulated components that manage their own state, and then compose them to make complex UIs.
+React.js is a JavaScript library for building user interfaces. It allows developers to build functionality as stateful components and compose them to make complex UIs.
 
-React provides several methods of animations and transitions. Libraries like [React-Motion](https://github.com/chenglou/react-motion) allow realistic spring animations, and it is easy to use several popular animation libraries like [Velocity](https://github.com/twitter-fabric/velocity-react) or [GreenSock](https://github.com/azazdeaz/react-gsap-enhancer) directly.
+React provides several methods of animations and transitions. Dedicated libraries like [React-Motion](https://github.com/chenglou/react-motion) provide animation with React conventions, but you can also use web-platform features to animate within React (with the right techniques).
 
-This example simply borrows the animation function from the [VanillaJS example](https://github.com/sparkbox/bouncy-ball/blob/master/examples/vanilla-js/script.js) to update the ball's CSS values using javascript.
+This example uses the animation function from the [VanillaJS example](https://github.com/sparkbox/bouncy-ball/blob/master/examples/vanilla-js/script.js) to repeatedly render the component and update the ball's CSS values.
 
 ## Project Links
 - [React Github Repo](https://github.com/facebook/react)

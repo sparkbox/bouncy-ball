@@ -189,7 +189,7 @@ code a {
 
 /* stylelint-disable */
 .button-matterjs:target      { color: var(--matterjs); }
-.button-greensock:target     { color: var(--greensock); }
+.button-gsap:target          { color: var(--gsap); }
 .button-vanillajs:target     { color: var(--vanillajs); }
 .button-smil:target          { color: var(--smil); }
 .button-d3:target            { color: var(--d3); }

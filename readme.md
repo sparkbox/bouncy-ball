@@ -25,7 +25,7 @@ This project does not attempt to compare the performance of these animation appr
 
 To learn more on how to build, profile, and optimize, performant web-animations, check out these resources:
 
-  * [HTML5 Animation Speed Test](https://greensock.com/js/speed.html) - A performance comparison / stress-test of several animation libraries, by GreenSock.
+  * [HTML5 Animation Speed Test](https://gsap.com/js/speed.html) - A performance comparison / stress-test of several animation libraries, by the GSAP team.
   * [An Introduction to Hardware Acceleration with CSS Animations](https://www.sitepoint.com/introduction-to-hardware-acceleration-css-animations/) - A detailed post on hardware acceleration for web animations.
   * [jankfree.org](http://jankfree.org/) - A great collection of resources for learning about high-performance web rendering, and performance profiling tools.
 
