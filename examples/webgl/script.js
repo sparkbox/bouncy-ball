@@ -1,9 +1,9 @@
-var canvas = document.getElementById('canvas');
-var gl = canvas.getContext('webgl');
+const canvas = document.getElementById('canvas');
+const gl = canvas.getContext('webgl');
 gl.viewport(0, 0, canvas.clientWidth, canvas.clientHeight);
 
 // Setting up vertex shader. It is used to compute position of the circle.
-var vertex = gl.createShader(gl.VERTEX_SHADER);
+const vertex = gl.createShader(gl.VERTEX_SHADER);
 gl.shaderSource(vertex, `
   uniform float time;
   uniform float a;
@@ -19,7 +19,7 @@ gl.shaderSource(vertex, `
 gl.compileShader(vertex);
 
 // Setting up the fragment shader. This is used to color the individual pixels of the circle.
-var fragment = gl.createShader(gl.FRAGMENT_SHADER);
+const fragment = gl.createShader(gl.FRAGMENT_SHADER);
 gl.shaderSource(fragment, `
   precision mediump float;
 
@@ -35,21 +35,21 @@ gl.shaderSource(fragment, `
 gl.compileShader(fragment);
 
 // Linking shaders to the program.
-var program = gl.createProgram();
+const program = gl.createProgram();
 gl.attachShader(program, vertex);
 gl.attachShader(program, fragment);
 gl.linkProgram(program);
 gl.useProgram(program);
 
 // Calculating variables for animation and sending them to the program.
-var h = 575;
-var k = 2 - (2*(50/canvas.clientHeight));
-var a = -4 * k / Math.pow(h * 2, 2);
+const h = 575;
+const k = 2 - (2 * (50 / canvas.clientHeight));
+const a = -4 * k / Math.pow(h * 2, 2);
 gl.uniform1f(gl.getUniformLocation(program, "h"), h);
 gl.uniform1f(gl.getUniformLocation(program, "k"), k);
 gl.uniform1f(gl.getUniformLocation(program, "a"), a);
 
-var start, time;
+let start, time;
 (function drawPosition(timestamp) {
   if (!start) { start = timestamp };
   time = timestamp - start;

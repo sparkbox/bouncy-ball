@@ -1,13 +1,13 @@
-var h = 575; // x vertex, half of total bounce duration
-var k = 160; // total bounce height
-var a = 4 * k / Math.pow(h * 2, 2); // coefficient: 0.000483932
-var ballColor = getComputedStyle(document.documentElement).getPropertyValue('--canvas');
-var ypos, start, time, timestamp;
+const h = 575; // x vertex, half of total bounce duration
+const k = 160; // total bounce height
+const a = 4 * k / Math.pow(h * 2, 2); // coefficient: 0.000483932
+const ballColor = getComputedStyle(document.documentElement).getPropertyValue('--canvas');
+let ypos, start, time, timestamp;
 
 // Canvas setup
-var canvasEl = document.querySelector('canvas');
-var offset = canvasEl.width / 2;
-var ctx = canvasEl.getContext('2d');
+const canvasEl = document.querySelector('canvas');
+const offset = canvasEl.width / 2;
+const ctx = canvasEl.getContext('2d');
 ctx.fillStyle = ballColor;
 
 // Animation Loop

@@ -1,5 +1,5 @@
-var $ball = $('ball'),
-    DURATION = 575;
+const DURATION = 575;
+const $ball = $('ball');
 
 function dropBall() {
   // We animate 'top' because jquery can't
@@ -12,6 +12,6 @@ function restoreBall() {
   $ball.animate({ top: '0' }, DURATION, 'easeOutQuad', dropBall);
 }
 
-$(document).ready(function(){
+$(document).ready(() => {
   dropBall();
 });

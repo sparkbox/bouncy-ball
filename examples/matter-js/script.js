@@ -1,13 +1,10 @@
+const ballColor = getComputedStyle(document.documentElement).getPropertyValue('--matterjs');
 const Engine = Matter.Engine,
   Render = Matter.Render,
   Runner = Matter.Runner,
   Bodies = Matter.Bodies,
   World = Matter.World;
 
-const runner = Runner.create({
-  isFixed: true,
-  delta: 1000 / 120,
-});
 const engine = Engine.create();
 const render = Render.create({
   element: document.body,
@@ -19,8 +16,10 @@ const render = Render.create({
     background: '#111'
   }
 });
-const ballColor = getComputedStyle(document.documentElement).getPropertyValue('--matterjs');
-
+const runner = Runner.create({
+  isFixed: true,
+  delta: 1000 / 120,
+});
 
 // Use a many-sided polygon as a ball, to ensure 100% elasticity.
 // See https://github.com/liabru/matter-js/issues/256

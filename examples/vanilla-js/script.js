@@ -1,8 +1,8 @@
-var ball = document.querySelector('ball');
-var h = 575; // x vertex, half of total bounce duration
-var k = 160; // y vertex, total bounce height
-var a = -4 * k / Math.pow(h * 2, 2); // coefficient: -.000483932
-var ypos, start, time;
+const ball = document.querySelector('ball');
+const h = 575; // x vertex, half of total bounce duration
+const k = 160; // y vertex, total bounce height
+const a = -4 * k / Math.pow(h * 2, 2); // coefficient: -.000483932
+let ypos, start, time;
 
 (function drawPosition(timestamp) {
   if (!start) { start = timestamp };

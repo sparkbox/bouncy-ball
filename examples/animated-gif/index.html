@@ -1,10 +1,12 @@
-<!-- use the picture element to use a more
-     modern animated image format, if supported,
-     and fall back to .gif if not -->
+<!--
+  The picture element enables browsers to use a more modern
+  animated image format if supported, and fall back to .gif
+  if not. The formats are listed in ascending filesize order,
+  because browsers use the first one they support.
+-->
 <picture>
-  <!-- these formats are listed in ascending filesize order, because browsers use the first one they support -->
-  <source srcset="image.mp4" type="video/mp4"> <!-- Safari 11.1+ -->
-  <source srcset="image.apng" type="image/apng"> <!-- Firefox -->
-  <source srcset="image.webp" type="image/webp"> <!-- Firefox, Blink-based browsers -->
-  <img src="image.gif" alt="Bouncy ball"> <!-- everything else -->
+  <source srcset="image.mp4" type="video/mp4">
+  <source srcset="image.apng" type="image/apng">
+  <source srcset="image.webp" type="image/webp">
+  <img src="image.gif" alt="Bouncy ball">
 </picture>

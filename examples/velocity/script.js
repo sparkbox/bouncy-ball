@@ -1,4 +1,4 @@
-const ball = document.getElementsByTagName('ball');
+const ball = document.querySelector('ball');
 
 ball.velocity({
   transform: [

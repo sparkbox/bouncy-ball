@@ -1,8 +1,8 @@
-var h = 575; // x vertex, half of total bounce duration
-var k = 160; // y vertex, total bounce height
-var a = -4 * k / Math.pow(h * 2, 2); // coefficient: -.000483932
-var ypos, start, time, timestamp;
-var ballColor = getComputedStyle(document.documentElement).getPropertyValue('--p5');
+const h = 575; // x vertex, half of total bounce duration
+const k = 160; // y vertex, total bounce height
+const a = -4 * k / Math.pow(h * 2, 2); // coefficient: -.000483932
+const ballColor = getComputedStyle(document.documentElement).getPropertyValue('--p5');
+let ypos, start, time, timestamp;
 
 function setup() {
   createCanvas(66, 226);
